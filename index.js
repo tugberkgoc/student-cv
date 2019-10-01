@@ -9,6 +9,7 @@ const port = 8080
 app.use(views(`${__dirname}/views`, { extension: 'html' }, {map: { handlebars: 'handlebars' }}))
 
 router.get('/', async ctx => await ctx.render('index'))
+router.get('/account', async ctx => await ctx.render('account'))
 
 app.use(router.routes())
 module.exports = app.listen(port, () => console.log(`listening on port ${port}`))
