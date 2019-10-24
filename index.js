@@ -59,6 +59,13 @@ router.get('/', async ctx => {
 	}
 })
 
+
+/**
+ *  MIKE
+ */
+//router.get('/', async ctx => await ctx.render('index'))
+router.get('/account', async ctx => await ctx.render('account'))
+
 /**
  * The user registration page.
  *
@@ -108,8 +115,10 @@ router.post('/login', async ctx => {
 	}
 })
 
-router.get('/', async ctx => await ctx.render('index'))
-router.get('/account', async ctx => await ctx.render('account'))
+router.get('/logout', async ctx => {
+	ctx.session.authorised = null
+	ctx.redirect('/?msg=you are now logged out')
+})
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
