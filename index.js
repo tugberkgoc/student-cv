@@ -48,7 +48,7 @@ const dbName = 'website.db'
 router.get('/', async ctx => {
 	try {
         const data = {}
-        if(ctx.cookies.get('authorised')) {
+        if(ctx.session.authorised) {
             if (ctx.query.msg) data.msg = ctx.query.msg
             data.isUserLoggedIn = true
             return await ctx.render('index', data)
@@ -111,7 +111,6 @@ router.post('/login', async ctx => {
 		const user = await new User(dbName)
 		await user.login(body.user, body.pass)
 		ctx.session.authorised = true
-        ctx.cookies.set('authorised', true)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -120,7 +119,6 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
-    ctx.cookies.set('authorised', false)
 	ctx.redirect('/?msg=you are now logged out')
 })
 
