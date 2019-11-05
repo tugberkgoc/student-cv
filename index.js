@@ -8,6 +8,7 @@
 const Koa = require('koa')
 const Router = require('koa-router')
 const views = require('koa-views')
+const logger = require('koa-logger')
 const staticDir = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
@@ -25,6 +26,7 @@ const router = new Router()
 app.keys = ['darkSecret']
 app.use(session(app))
 app.use(staticDir('public'))
+app.use(logger())
 app.use(bodyParser())
 
 app.use(hbs.middleware({
