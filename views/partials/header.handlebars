@@ -13,10 +13,18 @@
                         </span>
                    </span>
     </li>
-    <span class="login">
-                    Username: <input type="text" name="username">
-                    Password: <input type="password" name="password">
+      
+      {{#if isUserLoggedIn}}
+          <span class="login" ><a href="/logout">log out</a></span>
+      {{else}}
+        <form action="/login" method="post">      
+            <span class="login">
+                    Username: <input type="text" name="user" placeholder="your username" value="{{user}}" autofocus>
+                    Password: <input type="password" name="pass" placeholder="your password" value="{{pass}}">
                     <input type="submit" id="myPass" value="Log in">
-                </span>
+            </span>
+		</form>
+		<p><a href="/register">register</a></p>
+      {{/if}}
   </ul>
 </nav>

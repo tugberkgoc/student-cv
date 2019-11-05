@@ -23,9 +23,9 @@ const router = new Router()
 
 /* CONFIGURING THE MIDDLEWARE */
 app.keys = ['darkSecret']
+app.use(session(app))
 app.use(staticDir('public'))
 app.use(bodyParser())
-app.use(session(app))
 
 app.use(hbs.middleware({
 	extname: '.handlebars',
@@ -33,9 +33,6 @@ app.use(hbs.middleware({
 	layoutsPath: `${__dirname}/views/layouts`,
 	partialsPath: `${__dirname}/views/partials`
 }))
-
-app.use(views(`${__dirname}/views`, {extension: 'handlebars'}))
-// app.use(staticDir(path.join(__dirname, 'public')));
 
 const defaultPort = 8080
 const port = process.env.PORT || defaultPort
@@ -50,10 +47,15 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
-	// if(ctx.session.authorised !== true) return ctx.redirect('/login?msg=you need to log in')
-		const data = {}
-		if (ctx.query.msg) data.msg = ctx.query.msg
-		await ctx.render('Students-CVs')
+        const data = {}
+        if(ctx.cookies.get('authorised')) {
+            if (ctx.query.msg) data.msg = ctx.query.msg
+            data.isUserLoggedIn = true
+            return await ctx.render('index', data)
+        } else {
+            data.isUserLoggedIn = false
+            await ctx.render('index', data)
+        }
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
@@ -96,12 +98,12 @@ router.post('/register', koaBody, async ctx => {
 	}
 })
 
-router.get('/login', async ctx => {
-	const data = {}
-	if (ctx.query.msg) data.msg = ctx.query.msg
-	if (ctx.query.user) data.user = ctx.query.user
-	await ctx.render('login', data)
-})
+//router.get('/login', async ctx => {
+//	const data = {}
+//	if (ctx.query.msg) data.msg = ctx.query.msg
+//	if (ctx.query.user) data.user = ctx.query.user
+//	await ctx.render('login', data)
+//})
 
 router.post('/login', async ctx => {
 	try {
@@ -109,6 +111,7 @@ router.post('/login', async ctx => {
 		const user = await new User(dbName)
 		await user.login(body.user, body.pass)
 		ctx.session.authorised = true
+        ctx.cookies.set('authorised', true)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -117,6 +120,7 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
+    ctx.cookies.set('authorised', false)
 	ctx.redirect('/?msg=you are now logged out')
 })
 
