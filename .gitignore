@@ -6,3 +6,5 @@ coverage/
 screenshots/*
 docs/
 package-lock.json
+.idea/
+.vscode/

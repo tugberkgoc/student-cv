@@ -7,7 +7,7 @@
 /* MODULE IMPORTS */
 const Koa = require('koa')
 const Router = require('koa-router')
-const views = require('koa-views')
+const logger = require('koa-logger')
 const staticDir = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
@@ -25,6 +25,7 @@ const router = new Router()
 app.keys = ['darkSecret']
 app.use(session(app))
 app.use(staticDir('public'))
+app.use(logger())
 app.use(bodyParser())
 
 app.use(hbs.middleware({
@@ -47,15 +48,15 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
-        const data = {}
-        if(ctx.cookies.get('authorised')) {
-            if (ctx.query.msg) data.msg = ctx.query.msg
-            data.isUserLoggedIn = true
-            return await ctx.render('index', data)
-        } else {
-            data.isUserLoggedIn = false
-            await ctx.render('index', data)
-        }
+		const data = {}
+		if(ctx.session.authorised) {
+			if (ctx.query.msg) data.msg = ctx.query.msg
+			data.isUserLoggedIn = true
+			return await ctx.render('index', data)
+		} else {
+			data.isUserLoggedIn = false
+			await ctx.render('index', data)
+		}
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
@@ -111,7 +112,6 @@ router.post('/login', async ctx => {
 		const user = await new User(dbName)
 		await user.login(body.user, body.pass)
 		ctx.session.authorised = true
-        ctx.cookies.set('authorised', true)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -120,7 +120,6 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
-    ctx.cookies.set('authorised', false)
 	ctx.redirect('/?msg=you are now logged out')
 })
 
