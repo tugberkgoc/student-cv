@@ -7,7 +7,6 @@
 /* MODULE IMPORTS */
 const Koa = require('koa')
 const Router = require('koa-router')
-const views = require('koa-views')
 const logger = require('koa-logger')
 const staticDir = require('koa-static')
 const bodyParser = require('koa-bodyparser')
@@ -49,15 +48,15 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
-        const data = {}
-        if(ctx.session.authorised) {
-            if (ctx.query.msg) data.msg = ctx.query.msg
-            data.isUserLoggedIn = true
-            return await ctx.render('index', data)
-        } else {
-            data.isUserLoggedIn = false
-            await ctx.render('index', data)
-        }
+		const data = {}
+		if(ctx.session.authorised) {
+			if (ctx.query.msg) data.msg = ctx.query.msg
+			data.isUserLoggedIn = true
+			return await ctx.render('index', data)
+		} else {
+			data.isUserLoggedIn = false
+			await ctx.render('index', data)
+		}
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}

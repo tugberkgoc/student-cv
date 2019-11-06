@@ -37,7 +37,6 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.1",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.2.1",
     "koa-views-handlebars": "^0.1.1",
     "koahub-handlebars": "^2.0.9",
     "markdown": "^0.5.0",
