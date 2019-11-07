@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/account.css"></main>
 
 {{> header}}
-        <form action="/register" enctype="multipart/form-data" method="post">
+        <form class="signup" action="/register" enctype="multipart/form-data" method="post">
             {{!-- <label> First Name:</label>
             <input type="text">
 
@@ -20,16 +20,16 @@
             <label>Mobile Number:</label>
             <input type="text"> --}}
 
-            <label>Username:</label>
-            <input type="text" name="user" placeholder="your preferred username (no spaces)">
+            <label class='signup'>Username:</label>
+            <input class='signup' type="text" name="user" placeholder="your preferred username (no spaces)">
 
-            <label>Password:</label>
-            <input type="text" name="pass" placeholder="your chosen password">
+            <label class='signup'>Password:</label>
+            <input class='signup' type="text" name="pass" placeholder="your chosen password">
 
             {{!-- <label>Password conformation:</label>
             <input type="text"> --}}
             
-            <input type="submit" value="Create">
+            <input class='signup' type="submit" value="Create">
 
         </form>
 {{> footer}}

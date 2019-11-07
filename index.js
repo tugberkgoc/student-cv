@@ -63,11 +63,6 @@ router.get('/', async ctx => {
 })
 
 
-/**
- *  MIKE
- */
-//router.get('/', async ctx => await ctx.render('index'))
-router.get('/account', async ctx => await ctx.render('account'))
 
 /**
  * The user registration page.
