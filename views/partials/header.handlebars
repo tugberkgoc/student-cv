@@ -1,29 +1,37 @@
 <nav>
   <ul>
-    <li><a href="/index">Home </a></li>
+    <li><a href="/">Home </a></li>
     <li><a href="/contact">Contacts</a></li>
     <li><a href="#">About us</a></li>
     <li><a href="/register">Register</a></li>
     <li><a href="#" class="drop">CV's</a>
+
       <span class="subnav">
-                        <span class="sub-content">
-                            <ul>
-                                <li><a href="#">Detailed CV</a></li>
-                                <li><a href="#">... CV</a></li>
-                            </ul>
-                        </span>
-                   </span>
+        <span class="sub-content">
+          <ul>
+            <li><a href="#">Detailed CV</a></li>
+            <li><a href="#">... CV</a></li>
+          </ul>
+        </span>
+      </span>
     </li>
-      {{#if isUserLoggedIn}}
-          <span class="logout" ><a href="/logout"><input type="button" value="log out"></a></span>
-      {{else}}
-      <span class="login">
-        <form action="/login" method="post">      
-                    Username: <input type="text" name="user" placeholder="your username" value="{{user}}" autofocus>
-                    Password: <input type="password" name="pass" placeholder="your password" value="{{pass}}">
-                    <input type="submit" id="myPass" value="Log in">           
-	    	</form>
-    </span>
+        
+    {{#if isUserLoggedIn}}
+      <li>
+        <a class="login" href="/logout">log out</a>
+      </li>
+    {{else}}
+        <li> 
+          <a href="/register">register</a>
+        </li>
+        <li>
+          <form class="login" action="/login" method="post">      
+            <input type="text" name="user" placeholder="Username" size="11" value="{{user}}" autofocus>
+            <input type="password" name="pass" placeholder="Password" size="11" value="{{pass}}">
+            <input type="submit" id="myPass" value="Log in">
+          </form>
+        </li>
       {{/if}}
+    
   </ul>
 </nav>

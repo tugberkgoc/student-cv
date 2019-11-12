@@ -20,6 +20,7 @@ require("dotenv").config();
 
 /* IMPORT CUSTOM MODULES */
 const User = require('./modules/user')
+const Cv = require('./modules/cv')
 
 const app = new Koa()
 const router = new Router()
@@ -190,6 +191,39 @@ router.post('/login', async ctx => {
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
 	ctx.redirect('/?msg=you are now logged out')
+})
+
+/**
+ * The edit CV page.
+ *
+ * @name Edit Page
+ * @route {GET} /
+ * @authentication This route requires cookie-based authentication.
+ */
+router.get('/cvedit', async ctx => {
+	try {
+		const data = {}
+		if(ctx.session.authorised) {
+			if (ctx.query.msg) data.msg = ctx.query.msg
+			data.isUserLoggedIn = true
+			return await ctx.render('CV_Editor', data)
+		} else {
+			ctx.redirect('/')
+		}
+	} catch (err) {
+		await ctx.render('error', {message: err.message})
+	}
+})
+
+router.post('/edit', koaBody, async ctx => {
+	try {
+		console.log(ctx.request.body)
+		const body = ctx.request.body
+		const cv = await new Cv(dbName)
+		await cv.edit(body.name, body.address, body.summary, body.details)
+	} catch(err) {
+		ctx.body = err.message
+	}
 })
 
 app.use(router.routes())

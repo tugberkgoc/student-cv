@@ -1,6 +1,3 @@
-body {
-
-}
 
 h1 {
   color: white;
@@ -62,17 +59,24 @@ nav a::before {
   transition: all ease-in 200ms;
 }
 
+nav form{
+  align-content: center;
+}
+
 .login {
-  padding: 10 25px;
-  line-height: 30px;
-  padding-left: 65%;
+  padding: 10px 25px;
+  line-height: 50px;
   text-align: right;
-  display: inline-block;
+  display: inline;
 }
 
 li a:hover {
 
   color: black;
+}
+
+li:last-child {
+  float:right;
 }
 
 nav a:hover::before {

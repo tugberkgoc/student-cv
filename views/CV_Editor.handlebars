@@ -1,0 +1,23 @@
+{{!< main }}
+
+{{> header}}
+
+<form class="signup" action="/edit" enctype="multipart/form-data" method="post">
+       
+    <label class='signup'>Name:</label>
+    <input class='signup' type="text" name="name" placeholder="Your fullname">
+
+    <label class='signup'>Address:</label>
+    <input class='signup' type="text" name="address" placeholder="Adress line">
+
+    <label class='signup'>Summary</label>
+    <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
+
+    <label class='signup'>Details:</label>
+    <input class='signup' type="text" name="details" placeholder="The rest of your CV">
+
+    <input class='signup' type="submit" value="Create">
+
+</form>
+
+{{> footer}}
