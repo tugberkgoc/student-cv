@@ -13,6 +13,9 @@ const bodyParser = require('koa-bodyparser')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
 const hbs = require('koahub-handlebars')
+///-----------------------------////////
+const nodemailer = require("nodemailer")
+require("dotenv").config();
 //const jimp = require('jimp')
 
 /* IMPORT CUSTOM MODULES */
@@ -71,6 +74,11 @@ router.get('/', async ctx => {
  * @route {GET} /register
  */
 router.get('/register', async ctx => await ctx.render('register'))
+/**
+ * @name index
+ * @route {GET} /index
+ */
+router.get('/index', async ctx => await ctx.render('index'))
 
 /**
  * The script to process new user registrations.
@@ -92,7 +100,73 @@ router.post('/register', koaBody, async ctx => {
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
-})
+});
+////----------------------------------------///
+router.get('/contact', async ctx => await ctx.render('contact'))
+/**
+ * @name Contact 
+ * @route {post} /send
+ * 
+ */
+router.post('/send', async ctx =>{
+// try with ctx.request.body.example	
+	const output = `
+	<p>You have a new contact request.</p>
+	<h3>Contact Details</h3>
+	<ul>
+		<li>Name: ${ctx.request.body.name}</li>  
+		<li>Company: ${ctx.request.body.company}</li>
+		<li>Email: ${ctx.request.body.email}</li>
+		<li>Phone: ${ctx.request.body.phone}</li>
+	</ul>
+	<h3>Message</h3>
+	<p>${ctx.request.body.message}</p>
+	`;
+
+	const emailFrom = ctx.request.body.email;
+	const emailTo = ctx.request.body.emailTo;
+
+	let transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: process.env.EMAIL,
+			pass: process.env.PASSWORD	
+		}
+    });
+
+  let mailOption = {
+	  from: emailFrom,	
+	  to: emailTo,
+	  subject: 'Student CVs',
+	  text:'stana',
+	  html: output 	 
+  }
+  
+  transporter.sendMail(mailOption, (err,data) =>{
+	  if(err){
+		  console.log("Error has occurs")
+	  }else{
+		  console.log("Email sent")
+		  
+	  }
+	 
+  })
+  await ctx.render('contact',{message: 'Email has been sent!'});
+  
+
+
+});
+	
+
+	/*try{
+		console.log(ctx.request.body)
+	} catch(err){
+		await ctx.render('error', {message: err.message})
+	}*/
+
+
+
+////-------------------------------------//////
 
 //router.get('/login', async ctx => {
 //	const data = {}
@@ -120,3 +194,6 @@ router.get('/logout', async ctx => {
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
+
+
+

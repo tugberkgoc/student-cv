@@ -1,8 +1,9 @@
 <nav>
   <ul>
-    <li><a href="#">Home </a></li>
-    <li><a href="#">Contacts</a></li>
+    <li><a href="/index">Home </a></li>
+    <li><a href="/contact">Contacts</a></li>
     <li><a href="#">About us</a></li>
+    <li><a href="/register">Register</a></li>
     <li><a href="#" class="drop">CV's</a>
       <span class="subnav">
                         <span class="sub-content">
@@ -13,18 +14,16 @@
                         </span>
                    </span>
     </li>
-      
       {{#if isUserLoggedIn}}
-          <span class="login" ><a href="/logout">log out</a></span>
+          <span class="logout" ><a href="/logout"><input type="button" value="log out"></a></span>
       {{else}}
+      <span class="login">
         <form action="/login" method="post">      
-            <span class="login">
                     Username: <input type="text" name="user" placeholder="your username" value="{{user}}" autofocus>
                     Password: <input type="password" name="pass" placeholder="your password" value="{{pass}}">
-                    <input type="submit" id="myPass" value="Log in">
-            </span>
-		</form>
-		<p><a href="/register">register</a></p>
+                    <input type="submit" id="myPass" value="Log in">           
+	    	</form>
+    </span>
       {{/if}}
   </ul>
 </nav>

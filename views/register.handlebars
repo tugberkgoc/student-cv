@@ -22,9 +22,9 @@
 
             <label class='signup'>Username:</label>
             <input class='signup' type="text" name="user" placeholder="your preferred username (no spaces)">
-
-            <label class='signup'>Password:</label>
-            <input class='signup' type="text" name="pass" placeholder="your chosen password">
+            {{!--different class for the password.--}}
+            <label class='pass'>Password:</label>
+            <input class='pass' type="password" name="pass" placeholder="your chosen password"> {{!--type password --}}
 
             {{!-- <label>Password conformation:</label>
             <input type="text"> --}}
@@ -32,4 +32,5 @@
             <input class='signup' type="submit" value="Create">
 
         </form>
+
 {{> footer}}
