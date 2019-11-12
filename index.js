@@ -126,7 +126,7 @@ router.get('/logout', async ctx => {
  * @route {GET} /
  * @authentication This route requires cookie-based authentication.
  */
-router.get('/edit', async ctx => {
+router.get('/cvedit', async ctx => {
 	try {
 		const data = {}
 		if(ctx.session.authorised) {
@@ -134,11 +134,21 @@ router.get('/edit', async ctx => {
 			data.isUserLoggedIn = true
 			return await ctx.render('CV_Editor', data)
 		} else {
-			data.isUserLoggedIn = false
 			ctx.redirect('/')
 		}
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
+	}
+})
+
+router.post('/edit', koaBody, async ctx => {
+	try {
+		console.log(ctx.request.body)
+		const body = ctx.request.body
+		const cv = await new Cv(dbName)
+		await cv.edit(body.name, body.address, body.summary, body.details)
+	} catch(err) {
+		ctx.body = err.message
 	}
 })
 
