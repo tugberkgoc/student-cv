@@ -67,7 +67,6 @@ router.get('/', async ctx => {
 })
 
 
-
 /**
  * The user registration page.
  *
@@ -153,7 +152,6 @@ router.post('/send', async ctx =>{
 	 
   })
   await ctx.render('contact',{message: 'Email has been sent!'});
-  
 
 
 });
@@ -164,7 +162,6 @@ router.post('/send', async ctx =>{
 	} catch(err){
 		await ctx.render('error', {message: err.message})
 	}*/
-
 
 
 ////-------------------------------------//////
@@ -228,6 +225,5 @@ router.post('/edit', koaBody, async ctx => {
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
-
 
 
