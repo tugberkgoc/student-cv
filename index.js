@@ -129,8 +129,8 @@ router.post('/send', async ctx =>{
 	let transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORD	
+			user: 'coventry4c@gmail.com',
+			pass: 'groupCV4'	
 		}
     });
 
