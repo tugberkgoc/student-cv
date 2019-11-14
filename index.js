@@ -177,8 +177,10 @@ router.post('/login', async ctx => {
 	try {
 		const body = ctx.request.body
 		const user = await new User(dbName)
-		await user.login(body.user, body.pass)
+		const id = await user.login(body.user, body.pass)
 		ctx.session.authorised = true
+		ctx.session.id = id
+		console.log(id)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -187,6 +189,7 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
+	ctx.session.id = null
 	ctx.redirect('/?msg=you are now logged out')
 })
 
@@ -217,7 +220,8 @@ router.post('/edit', koaBody, async ctx => {
 		console.log(ctx.request.body)
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
-		await cv.edit(body.name, body.address, body.summary, body.details)
+		await cv.edit(ctx.session.id, body.name, body.address, body.summary, body.details)
+		await ctx.redirect("/")
 	} catch(err) {
 		ctx.body = err.message
 	}
