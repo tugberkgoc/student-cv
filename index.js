@@ -144,8 +144,8 @@ router.post('/send', async ctx =>{
 	let transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORD	
+			user: 'coventry4c@gmail.com',
+			pass: 'groupCV4'	
 		}
     });
 
@@ -166,8 +166,7 @@ router.post('/send', async ctx =>{
 	  }
 	 
   })
-  await ctx.redirect('/', {message: "Email has been sent!"});
-  
+  await ctx.render('contact',{message: 'Email has been sent!'});
 
 
 });
@@ -194,9 +193,10 @@ router.post('/login', async ctx => {
 	try {
 		const body = ctx.request.body
 		const user = await new User(dbName)
-		await user.login(body.user, body.pass)
+		const id = await user.login(body.user, body.pass)
 		ctx.session.authorised = true
 		ctx.session.id = id
+		console.log(id)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -205,6 +205,7 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
+	ctx.session.id = null
 	ctx.redirect('/?msg=you are now logged out')
 })
 
