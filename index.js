@@ -14,8 +14,8 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
 const hbs = require('koahub-handlebars')
 ///-----------------------------////////
-const nodemailer = require("nodemailer")
-require("dotenv").config();
+const nodemailer = require('nodemailer')
+require('dotenv').config();
 //const jimp = require('jimp')
 
 /* IMPORT CUSTOM MODULES */
@@ -112,7 +112,7 @@ router.get('/contact', async ctx => {
 				} else{
 					ctx.redirect('/');
 				}
-			}catch(err){
+			}catch(err) {
 				console.log(err)
 			}
 	await ctx.render('contact')
@@ -140,7 +140,7 @@ router.post('/send', async ctx =>{
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
 
-	let transporter = nodemailer.createTransport({
+	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
 			user: 'coventry4c@gmail.com',
@@ -148,16 +148,16 @@ router.post('/send', async ctx =>{
 		}
     });
 
-  let mailOption = {
-	  from: emailFrom,	
-	  to: emailTo,
-	  subject: 'Student CVs',
-	  text:'stana',
-	  html: output 	 
-  }
+	const mailOption = {
+		from: emailFrom,	
+		to: emailTo,
+		subject: 'Student CVs',
+		text: 'stana',
+		html: output 	 
+  	}
   
   transporter.sendMail(mailOption, (err,data) =>{
-	  if(err){
+	  if(err) {
 		  console.log("Error has occurs")
 	  }else{
 		  console.log("Email sent")
