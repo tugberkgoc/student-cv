@@ -14,8 +14,8 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
 const hbs = require('koahub-handlebars')
 ///-----------------------------////////
-const nodemailer = require("nodemailer")
-require("dotenv").config();
+const nodemailer = require('nodemailer')
+require('dotenv').config();
 //const jimp = require('jimp')
 
 /* IMPORT CUSTOM MODULES */
@@ -67,7 +67,6 @@ router.get('/', async ctx => {
 })
 
 
-
 /**
  * The user registration page.
  *
@@ -107,7 +106,21 @@ router.post('/register', koaBody, async ctx => {
 	}
 });
 ////----------------------------------------///
-router.get('/contact', async ctx => await ctx.render('contact'))
+router.get('/contact', async ctx => { 
+		try{
+				const data = {}
+				if(ctx.session.authorised) {
+					if (ctx.query.msg) data.msg = ctx.query.msg
+					data.isUserLoggedIn = true
+					return await ctx.render('contact', data)
+				} else{
+					ctx.redirect('/');
+				}
+			}catch(err) {
+				console.log(err)
+			}
+	await ctx.render('contact')
+		});	
 /**
  * @name Contact 
  * @route {post} /send
@@ -131,24 +144,24 @@ router.post('/send', async ctx =>{
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
 
-	let transporter = nodemailer.createTransport({
+	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORD	
+			user: 'coventry4c@gmail.com',
+			pass: 'groupCV4'	
 		}
     });
 
-  let mailOption = {
-	  from: emailFrom,	
-	  to: emailTo,
-	  subject: 'Student CVs',
-	  text:'stana',
-	  html: output 	 
-  }
+	const mailOption = {
+		from: emailFrom,	
+		to: emailTo,
+		subject: 'Student CVs',
+		text: 'stana',
+		html: output 	 
+  	}
   
   transporter.sendMail(mailOption, (err,data) =>{
-	  if(err){
+	  if(err) {
 		  console.log("Error has occurs")
 	  }else{
 		  console.log("Email sent")
@@ -157,7 +170,6 @@ router.post('/send', async ctx =>{
 	 
   })
   await ctx.render('contact',{message: 'Email has been sent!'});
-  
 
 
 });
@@ -168,7 +180,6 @@ router.post('/send', async ctx =>{
 	} catch(err){
 		await ctx.render('error', {message: err.message})
 	}*/
-
 
 
 ////-------------------------------------//////
@@ -184,8 +195,10 @@ router.post('/login', async ctx => {
 	try {
 		const body = ctx.request.body
 		const user = await new User(dbName)
-		await user.login(body.user, body.pass)
+		const id = await user.login(body.user, body.pass)
 		ctx.session.authorised = true
+		ctx.session.id = id
+		console.log(id)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -194,6 +207,7 @@ router.post('/login', async ctx => {
 
 router.get('/logout', async ctx => {
 	ctx.session.authorised = null
+	ctx.session.id = null
 	ctx.redirect('/?msg=you are now logged out')
 })
 
@@ -204,6 +218,7 @@ router.get('/logout', async ctx => {
  * @route {GET} /
  * @authentication This route requires cookie-based authentication.
  */
+
 router.get('/cvedit', async ctx => {
 	try {
 		const data = {}
@@ -224,14 +239,15 @@ router.post('/edit', koaBody, async ctx => {
 		console.log(ctx.request.body)
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
-		await cv.edit(body.name, body.address, body.summary, body.details)
+		await cv.edit(ctx.session.id, body.name, body.address, body.summary, body.details)
+		await ctx.redirect("/")
 	} catch(err) {
 		ctx.body = err.message
 	}
-})
+	await ctx.redirect('/cvedit', {message: 'Your CV has been created!'});
+});
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
-
 
 
