@@ -25,6 +25,7 @@ const Cv = require('./modules/cv')
 const app = new Koa()
 const router = new Router()
 
+const sqlite = require('sqlite-async')
 /* CONFIGURING THE MIDDLEWARE */
 app.keys = ['darkSecret']
 app.use(session(app))
@@ -84,7 +85,19 @@ router.get('/index', async ctx => await ctx.render('index'))
  * @name myCV Page
  * @route {GET} /myCV
  */
-router.get('/myCV', async ctx => await ctx.render('myCV'))
+router.get('/myCV', async ctx => {
+	try {
+		console.log(ctx.params.id)
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.session.id}";`
+		const db = await sqlite.open(dbName)
+		const data = await db.get(sql)
+		await db.close()
+		console.log(data)
+		await ctx.render('myCV', data)
+	} catch(err) {
+		ctx.body = err.message
+	}
+})
 /**
  * The script to process new user registrations.
  * @name Register Script
