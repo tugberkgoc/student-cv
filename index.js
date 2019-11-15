@@ -79,11 +79,15 @@ router.get('/register', async ctx => await ctx.render('register'))
  * @name index
  * @route {GET} /index
  */
-router.get('/index', async ctx => await ctx.render('index'))
 
+router.get('/index', async ctx => await ctx.render('index'))
+/** 
+ * @name myCV Page
+ * @route {GET} /myCV
+ */
+router.get('/myCV', async ctx => await ctx.render('myCV'))
 /**
  * The script to process new user registrations.
- *
  * @name Register Script
  * @route {POST} /register
  */
