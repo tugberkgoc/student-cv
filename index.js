@@ -25,6 +25,7 @@ const Cv = require('./modules/cv')
 const app = new Koa()
 const router = new Router()
 
+const sqlite = require('sqlite-async')
 /* CONFIGURING THE MIDDLEWARE */
 app.keys = ['darkSecret']
 app.use(session(app))
@@ -78,11 +79,27 @@ router.get('/register', async ctx => await ctx.render('register'))
  * @name index
  * @route {GET} /index
  */
-router.get('/index', async ctx => await ctx.render('index'))
 
+router.get('/index', async ctx => await ctx.render('index'))
+/** 
+ * @name myCV Page
+ * @route {GET} /myCV
+ */
+router.get('/myCV', async ctx => {
+	try {
+		console.log(ctx.params.id)
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.session.id}";`
+		const db = await sqlite.open(dbName)
+		const data = await db.get(sql)
+		await db.close()
+		console.log(data)
+		await ctx.render('myCV', data)
+	} catch(err) {
+		ctx.body = err.message
+	}
+})
 /**
  * The script to process new user registrations.
- *
  * @name Register Script
  * @route {POST} /register
  */
@@ -93,7 +110,7 @@ router.post('/register', koaBody, async ctx => {
 		console.log(body)
 		// call the functions in the module
 		const user = await new User(dbName)
-		await user.register(body.user, body.pass)
+		await user.register(body.user, body.email, body.pass)
 		// await user.uploadPicture(path, type)
 		// redirect to the home page
 		ctx.redirect(`/?msg=new user "${body.name}" added`)
@@ -143,8 +160,8 @@ router.post('/send', async ctx =>{
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: 'coventry4c@gmail.com',
-			pass: 'groupCV4'	
+			user: process.env.EMAIL,
+			pass: process.env.PASSWORD
 		}
     });
 
