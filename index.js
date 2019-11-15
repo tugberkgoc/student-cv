@@ -14,8 +14,8 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
 const hbs = require('koahub-handlebars')
 ///-----------------------------////////
-const nodemailer = require("nodemailer")
-require("dotenv").config();
+const nodemailer = require('nodemailer')
+require('dotenv').config();
 //const jimp = require('jimp')
 
 /* IMPORT CUSTOM MODULES */
@@ -78,11 +78,15 @@ router.get('/register', async ctx => await ctx.render('register'))
  * @name index
  * @route {GET} /index
  */
-router.get('/index', async ctx => await ctx.render('index'))
 
+router.get('/index', async ctx => await ctx.render('index'))
+/** 
+ * @name myCV Page
+ * @route {GET} /myCV
+ */
+router.get('/myCV', async ctx => await ctx.render('myCV'))
 /**
  * The script to process new user registrations.
- *
  * @name Register Script
  * @route {POST} /register
  */
@@ -112,7 +116,7 @@ router.get('/contact', async ctx => {
 				} else{
 					ctx.redirect('/');
 				}
-			}catch(err){
+			}catch(err) {
 				console.log(err)
 			}
 	await ctx.render('contact')
@@ -140,7 +144,7 @@ router.post('/send', async ctx =>{
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
 
-	let transporter = nodemailer.createTransport({
+	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
 			user: process.env.EMAIL,
@@ -148,16 +152,16 @@ router.post('/send', async ctx =>{
 		}
     });
 
-  let mailOption = {
-	  from: emailFrom,	
-	  to: emailTo,
-	  subject: 'Student CVs',
-	  text:'stana',
-	  html: output 	 
-  }
+	const mailOption = {
+		from: emailFrom,	
+		to: emailTo,
+		subject: 'Student CVs',
+		text: 'stana',
+		html: output 	 
+  	}
   
   transporter.sendMail(mailOption, (err,data) =>{
-	  if(err){
+	  if(err) {
 		  console.log("Error has occurs")
 	  }else{
 		  console.log("Email sent")
