@@ -240,7 +240,6 @@ router.post('/edit', koaBody, async ctx => {
 	} catch(err) {
 		ctx.body = err.message
 	}
-	await ctx.redirect('/cvedit', {message: 'Your CV has been created!'});
 });
 
 app.use(router.routes())
