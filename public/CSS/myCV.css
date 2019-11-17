@@ -1,37 +1,44 @@
-h2 {
-   
+
+
+.cvTitle{
     color: black;
-    text-align: justify;
     text-align: center;
-    margin: 10px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 1px;
+    text-decoration: underline;
     text-transform: uppercase;
-    display: block;
-    font-size: 30px;
-    line-height: 30px;
-    position: relative;
-    z-index: 1;
-   }
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-h3 {
-    color: black;
-    text-align: justify;
-    text-align:right;
-    padding-right: 600px;
+}
+.cvAddress{
 
-
-   } 
-h4 {
-    color: black;
-    text-align: justify;
-    text-align: center;
-    scroll-padding-top: 600px;
-    }
-li a:hover {
-    color:black;
     
+    color: black;
+    text-align: right;
+    padding-right: 300px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+}
 
+.cvDetails{
+    color: black;
+    text-align: center;
+    margin: 45px 220px 40px 220px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.editButton{
+    background-color: rgb(84, 124, 160);
+    border: none;
+    color: white;
+    padding: 20px 25px ;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    margin:45px 220px 400px 560px;
+    border-radius: 8px;
+    
+}
+.editButton:hover{
+    background-color: rgb(70, 102, 129);
 }
