@@ -14,6 +14,9 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
 const hbs = require('koahub-handlebars')
 ///-----------------------------////////
+const path = require("path");
+const mime = require("mime-types")
+////////////////////////
 const nodemailer = require('nodemailer')
 require('dotenv').config();
 //const jimp = require('jimp')
@@ -115,16 +118,21 @@ router.post('/register', koaBody, async ctx => {
 	// extract the data from the request
 		const body = ctx.request.body
 		console.log(body)
+		const {path, type} = ctx.request.files.fileToUpload
+		console.log(path)
+		console.log(type)
 		// call the functions in the module
 		const user = await new User(dbName)
 		await user.register(body.user, body.email, body.pass)
-		// await user.uploadPicture(path, type)
+		await user.uploadPicture(path, type)
 		// redirect to the home page
 		ctx.redirect(`/?msg=new user "${body.name}" added`)
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
 });
+
+
 
 
 
@@ -188,11 +196,8 @@ router.post('/send', async ctx =>{
 	//email.takeParameters(emailFrom,emailTo,output)
  // here was the trasporter ------------------------!
 
-<<<<<<< HEAD
  	
 
-=======
->>>>>>> eb204ce354c9ac9a1064e1d1c3a329880dfb42db
 // here wa the mailoption function ----------------------!
 const mailOption =  {
     from: emailFrom,	

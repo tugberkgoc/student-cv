@@ -6,7 +6,7 @@
 
 {{> header}}
     
-        <form class="signup"action="/register" enctype="multipart/form-data" method="post">
+        <form class="signup"action="/register" action="upload" enctype="multipart/form-data" method="post">
             <h2>Students CVs Registration Form</h2>
 
             <label class='signup'><i class="fa fa-user"></i> Username:</label>
@@ -17,6 +17,11 @@
 
             <label class='signup'><i class="fa fa-lock"></i> Password:</label>
             <input class='signup' type="password" name="pass" placeholder="your chosen password">
+              
+            <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label> 
+            <input type="file" name="fileToUpload" >
+            
+                
             
             <input class='signup' type="submit" value="Create">
 
