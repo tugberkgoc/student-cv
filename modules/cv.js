@@ -17,17 +17,30 @@ module.exports = class Cv {
 		try {
 			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${userID}';`
 			const data = await this.db.get(sql)
-			console.log(data.records)
 			if (data.records !== 0) {
-				console.log('wrong')
 				sql= `UPDATE cv SET name='${name}',address='${address}',summary='${summary}',details='${details}' WHERE userID='${userID}'`
 				await this.db.run(sql)
 				return true
 			} else {
 				sql=`INSERT INTO cv(userID,name,address,summary,details) VALUES('${userID}','${name}','${address}','${summary}','${details}')`
-				console.log('right')
 				await this.db.run(sql)
 				return true
+			}
+		} catch(err) {
+			throw err
+		}
+	}
+	
+	async cvPull(userID) {
+		try {
+			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${userID}';`
+			let data = await this.db.get(sql)
+			if (data.records !== 0) {
+				sql= `SELECT * FROM cv WHERE userID = "${userID}";`
+				data = await this.db.get(sql)
+				return data
+			} else{
+				return false
 			}
 		} catch(err) {
 			throw err

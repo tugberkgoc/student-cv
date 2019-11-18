@@ -58,20 +58,14 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
-		const data = {}
+		const data = ctx.session.authorised
+		//line for if database is deleted
+		const cv=new Cv(dbName)
 		const sql = `SELECT summary, name FROM cv `
 		const db = await sqlite.open(dbName)
-		const dataSummary = await db.all(sql)
+		const Summary = await db.all(sql)
 		await db.close()
-		console.log(dataSummary)
-		if(ctx.session.authorised) {
-			if (ctx.query.msg) data.msg = ctx.query.msg
-			data.isUserLoggedIn = true
-			return await ctx.render('index',{ data, cv: dataSummary})
-		} else {
-			data.isUserLoggedIn = false
-			await ctx.render('index',{ data, cv: dataSummary})
-		}
+		return await ctx.render('index', {data, cv: Summary})
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
@@ -97,13 +91,12 @@ router.get('/index', async ctx => await ctx.render('index'))
  */
 router.get('/myCV', async ctx => {
 	try {
-		console.log(ctx.params.id)
+		const data = ctx.session.authorised
 		const sql = `SELECT * FROM cv WHERE userID = "${ctx.session.id}";`
 		const db = await sqlite.open(dbName)
-		const data = await db.get(sql)
+		const cvData = await db.get(sql)
 		await db.close()
-		console.log(data)
-		await ctx.render('myCV', data)
+		await ctx.render('myCV', {data, cvData})
 	} catch(err) {
 		ctx.body = err.message
 	}
@@ -144,18 +137,16 @@ router.post('/register', koaBody, async ctx => {
  * @route {get}
  */
 router.get('/contact', async ctx => { 
-		try{
-				const data = {}
-				if(ctx.session.authorised) {
-					if (ctx.query.msg) data.msg = ctx.query.msg
-					data.isUserLoggedIn = true
-					return await ctx.render('contact', data)
-				} else{
-					ctx.redirect('/');
-				}
-			}catch(err) {
-				console.log(err)
-			}
+	try {
+		const data = ctx.session.authorised
+		if(data) {
+			return await ctx.render('contact', {data})
+		} else {
+			ctx.redirect('/')
+		}
+	}catch(err) {
+		console.log(err)
+	}
 	await ctx.render('contact')
 		});	
 
@@ -194,7 +185,7 @@ router.post('/send', async ctx =>{
 	const emailTo = ctx.request.body.emailTo;
 	
 	//email.takeParameters(emailFrom,emailTo,output)
- // here was the trasporter ------------------------!
+	// here was the trasporter ------------------------!
 
  	
 
@@ -206,8 +197,9 @@ const mailOption =  {
     text: 'example',
     html: output 	 
   }
+
   
-  email.transporter.sendMail(mailOption, (err) =>{   //err, data
+	email.transporter.sendMail(mailOption, (err) =>{   //err, data
 	  if(err) {
 		  console.log(err.message)
 	  }else{
@@ -215,14 +207,14 @@ const mailOption =  {
 		  
 	  }
 	 
-  })
-  await ctx.render('contact',{message: 'Email has been sent!'});
+	})
+	await ctx.render('contact',{message: 'Email has been sent!'});
 
 
 });
 	
 
-	/*try{
+/*try{
 		console.log(ctx.request.body)
 	} catch(err){
 		await ctx.render('error', {message: err.message})
@@ -245,7 +237,6 @@ router.post('/login', async ctx => {
 		const id = await user.login(body.user, body.pass)
 		ctx.session.authorised = true
 		ctx.session.id = id
-		console.log(id)
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
@@ -268,11 +259,11 @@ router.get('/logout', async ctx => {
 
 router.get('/cvedit', async ctx => {
 	try {
-		const data = {}
-		if(ctx.session.authorised) {
-			if (ctx.query.msg) data.msg = ctx.query.msg
-			data.isUserLoggedIn = true
-			return await ctx.render('CV_Editor', data)
+		const data = ctx.session.authorised
+		if(data) {
+			const cv = await new Cv(dbName)
+			const cvData = await cv.cvPull(ctx.session.id)
+			return await ctx.render('CV_Editor', {data, cvData})
 		} else {
 			ctx.redirect('/')
 		}
