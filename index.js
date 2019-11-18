@@ -56,18 +56,24 @@ const dbName = 'website.db'
 router.get('/', async ctx => {
 	try {
 		const data = {}
+		const sql = `SELECT summary, name FROM cv `
+		const db = await sqlite.open(dbName)
+		const dataSummary = await db.all(sql)
+		await db.close()
+		console.log(dataSummary)
 		if(ctx.session.authorised) {
 			if (ctx.query.msg) data.msg = ctx.query.msg
 			data.isUserLoggedIn = true
-			return await ctx.render('index', data)
+			return await ctx.render('index',{ data, cv: dataSummary})
 		} else {
 			data.isUserLoggedIn = false
-			await ctx.render('index', data)
+			await ctx.render('index',{ data, cv: dataSummary})
 		}
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
 })
+
 
 
 /**
@@ -120,6 +126,11 @@ router.post('/register', koaBody, async ctx => {
 		await ctx.render('error', {message: err.message})
 	}
 });
+
+
+
+
+
 ////----------------------------------------///
 /**
  * @name Contact 
@@ -140,6 +151,16 @@ router.get('/contact', async ctx => {
 			}
 	await ctx.render('contact')
 		});	
+
+
+router.post('/direct', async ctx =>{
+	try{
+		await ctx.render("contact")
+	}catch (err){
+		console.log(err.message)
+	}
+})
+
 /**
  * @name Contact 
  * @route {post} /send
@@ -160,12 +181,15 @@ router.post('/send', async ctx =>{
 	<p>${ctx.request.body.message}</p>
 	`;
 
+	
+
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
 	
 	//email.takeParameters(emailFrom,emailTo,output)
  // here was the trasporter ------------------------!
 
+ 	
 
 // here wa the mailoption function ----------------------!
 const mailOption =  {
