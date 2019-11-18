@@ -5,26 +5,26 @@ require('dotenv').config();
 const transporter =nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD
+        user: "coventry4c@gmail.com",
+        pass: "groupCV4"
     }
 });
 
-/*const takeParameters = (arguments) =>{
+/*const takeParameters = (from,to,output) =>{
        return  mailOption =  {
-        from: arguments[0],	
-        to: arguments[1],
+        from: from,	
+        to: to,
         subject: 'Student CVs',
         text: 'example',
-        html: arguments[2] 	 
+        html: output 	 
       };
 }*/
 
 
 
 module.exports =  {
-        transporter,
-        //takeParameters
+        transporter
+        //takeParameters,
         //mailOption
         
 }

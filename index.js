@@ -75,7 +75,6 @@ router.get('/', async ctx => {
 })
 
 
-
 /**
  * The user registration page.
  *
@@ -189,8 +188,11 @@ router.post('/send', async ctx =>{
 	//email.takeParameters(emailFrom,emailTo,output)
  // here was the trasporter ------------------------!
 
+<<<<<<< HEAD
  	
 
+=======
+>>>>>>> eb204ce354c9ac9a1064e1d1c3a329880dfb42db
 // here wa the mailoption function ----------------------!
 const mailOption =  {
     from: emailFrom,	
