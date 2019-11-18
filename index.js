@@ -21,6 +21,8 @@ require('dotenv').config();
 /* IMPORT CUSTOM MODULES */
 const User = require('./modules/user')
 const Cv = require('./modules/cv')
+//---------//
+const email = require('./modules/email')
 
 const app = new Koa()
 const router = new Router()
@@ -119,6 +121,10 @@ router.post('/register', koaBody, async ctx => {
 	}
 });
 ////----------------------------------------///
+/**
+ * @name Contact 
+ * @route {get}
+ */
 router.get('/contact', async ctx => { 
 		try{
 				const data = {}
@@ -156,26 +162,23 @@ router.post('/send', async ctx =>{
 
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
+	
+	//email.takeParameters(emailFrom,emailTo,output)
+ // here was the trasporter ------------------------!
 
-	const transporter = nodemailer.createTransport({
-		service: 'gmail',
-		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORD
-		}
-    });
 
-	const mailOption = {
-		from: emailFrom,	
-		to: emailTo,
-		subject: 'Student CVs',
-		text: 'stana',
-		html: output 	 
-  	}
+// here wa the mailoption function ----------------------!
+const mailOption =  {
+    from: emailFrom,	
+    to: emailTo,
+    subject: 'Student CVs',
+    text: 'example',
+    html: output 	 
+  }
   
-  transporter.sendMail(mailOption, (err,data) =>{
+  email.transporter.sendMail(mailOption, (err) =>{   //err, data
 	  if(err) {
-		  console.log("Error has occurs")
+		  console.log(err.message)
 	  }else{
 		  console.log("Email sent")
 		  
