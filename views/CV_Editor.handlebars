@@ -1,7 +1,25 @@
 {{!< main }}
 
 {{> header}}
+{{#if cvData}}
+<form class="signup" action="/edit" enctype="multipart/form-data" method="post">
+       
+    <label class='signup'>Name:</label>
+    <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
 
+    <label class='signup'>Address:</label>
+    <input class='signup' type="text" name="address" placeholder="Adress line" value="{{cvData.address}}">
+
+    <label class='signup'>Summary</label>
+    <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+
+    <label class='signup'>Details:</label>
+    <input class='signup' type="text" name="details" placeholder="The rest of your CV" value="{{cvData.details}}">
+
+    <input class='signup' type="submit" value="Create">
+
+</form>
+{{else}}
 <form class="signup" action="/edit" enctype="multipart/form-data" method="post">
        
     <label class='signup'>Name:</label>
@@ -19,5 +37,5 @@
     <input class='signup' type="submit" value="Create">
 
 </form>
-
+{{/if}}
 {{> footer}}

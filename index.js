@@ -252,7 +252,9 @@ router.get('/cvedit', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		if(data) {
-			return await ctx.render('CV_Editor', {data})
+			const cv = await new Cv(dbName)
+			const cvData = await cv.cvPull(ctx.session.id)
+			return await ctx.render('CV_Editor', {data, cvData})
 		} else {
 			ctx.redirect('/')
 		}
