@@ -58,7 +58,7 @@ router.get('/', async ctx => {
 		const data = ctx.session.authorised
 		//line for if database is deleted
 		const cv=new Cv(dbName)
-		const sql = `SELECT summary FROM cv `
+		const sql = `SELECT summary, name FROM cv `
 		const db = await sqlite.open(dbName)
 		const Summary = await db.all(sql)
 		await db.close()
@@ -67,8 +67,6 @@ router.get('/', async ctx => {
 		await ctx.render('error', {message: err.message})
 	}
 })
-
-
 
 
 /**
@@ -120,6 +118,11 @@ router.post('/register', koaBody, async ctx => {
 		await ctx.render('error', {message: err.message})
 	}
 });
+
+
+
+
+
 ////----------------------------------------///
 /**
  * @name Contact 
@@ -137,7 +140,17 @@ router.get('/contact', async ctx => {
 		console.log(err)
 	}
 	await ctx.render('contact')
-});	
+		});	
+
+
+router.post('/direct', async ctx =>{
+	try{
+		await ctx.render("contact")
+	}catch (err){
+		console.log(err.message)
+	}
+})
+
 /**
  * @name Contact 
  * @route {post} /send
@@ -158,20 +171,24 @@ router.post('/send', async ctx =>{
 	<p>${ctx.request.body.message}</p>
 	`;
 
+	
+
 	const emailFrom = ctx.request.body.email;
 	const emailTo = ctx.request.body.emailTo;
 	
 	//email.takeParameters(emailFrom,emailTo,output)
 	// here was the trasporter ------------------------!
 
-	// here wa the mailoption function ----------------------!
-	const mailOption =  {
-		from: emailFrom,	
-		to: emailTo,
-		subject: 'Student CVs',
-		text: 'example',
-		html: output 	 
-	}
+
+// here wa the mailoption function ----------------------!
+const mailOption =  {
+    from: emailFrom,	
+    to: emailTo,
+    subject: 'Student CVs',
+    text: 'example',
+    html: output 	 
+  }
+
   
 	email.transporter.sendMail(mailOption, (err) =>{   //err, data
 	  if(err) {

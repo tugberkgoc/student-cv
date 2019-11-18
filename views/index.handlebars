@@ -2,7 +2,8 @@
 
 {{> header}}
 
-<h1>Welcome to Student CV's </h1>
+<h1>Welcome to Student CV's <br>
+Our CV templates &amp; recruiter-approved examples make it easy.</h1>
 <div class="pre2">
         <pre>
                 At distant inhabit amongst by. Appetite welcomed
@@ -26,7 +27,29 @@
 </div>
 
 {{#each cv}}
-        <p>{{this.summary}}</p>
+ 
+    <table class="summary">
+        <thead>
+                <tr>
+                      <th class="head">{{this.name}}</th>
+                </tr>
+        </thead>
+        <tfoot>
+        <tr>
+        <td></td>
+        </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+             <td>{{this.summary}}..... <a href="#"> Click to see more!</a></td></tr>
+           </tbody>
+        </tr>
+        </table>
+                
 {{/each}}
+
+<form method="POST" action="direct">
+        <input class="signup" type="submit" value="contact">
+</form>        
 
 {{> footer}}
