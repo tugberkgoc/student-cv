@@ -154,7 +154,7 @@ router.get('/contact', async ctx => {
 router.post('/direct', async ctx =>{
 	try{
 		await ctx.render("contact")
-	}catch (err){
+	}catch (err) {
 		console.log(err.message)
 	}
 })
@@ -164,71 +164,19 @@ router.post('/direct', async ctx =>{
  * @route {post} /send
  * 
  */
-router.post('/send', async ctx =>{
-// try with ctx.request.body.example	
-	const output = `
-	<p>You have a new contact request.</p>
-	<h3>Contact Details</h3>
-	<ul>
-		<li>Name: ${ctx.request.body.name}</li>  
-		<li>Company: ${ctx.request.body.company}</li>
-		<li>Email: ${ctx.request.body.email}</li>
-		<li>Phone: ${ctx.request.body.phone}</li>
-	</ul>
-	<h3>Message</h3>
-	<p>${ctx.request.body.message}</p>
-	`;
-
-	
-
-	const emailFrom = ctx.request.body.email;
-	const emailTo = ctx.request.body.emailTo;
-	
-	//email.takeParameters(emailFrom,emailTo,output)
-	// here was the trasporter ------------------------!
-
- 	
-
-// here wa the mailoption function ----------------------!
-const mailOption =  {
-    from: emailFrom,	
-    to: emailTo,
-    subject: 'Student CVs',
-    text: 'example',
-    html: output 	 
-  }
-
-  
+router.post('/send', async ctx => {
+	const data = ctx.request.body
+	const mailOption=email.emailSetup(ctx.request.body.email,ctx.request.body.emailTo,data)
 	email.transporter.sendMail(mailOption, (err) =>{   //err, data
 	  if(err) {
 		  console.log(err.message)
 	  }else{
-		  console.log("Email sent")
-		  
+		  console.log("Email sent")  
 	  }
-	 
 	})
 	await ctx.render('contact',{message: 'Email has been sent!'});
-
-
 });
 	
-
-/*try{
-		console.log(ctx.request.body)
-	} catch(err){
-		await ctx.render('error', {message: err.message})
-	}*/
-
-
-////-------------------------------------//////
-
-//router.get('/login', async ctx => {
-//	const data = {}
-//	if (ctx.query.msg) data.msg = ctx.query.msg
-//	if (ctx.query.user) data.user = ctx.query.user
-//	await ctx.render('login', data)
-//})
 
 router.post('/login', async ctx => {
 	try {
