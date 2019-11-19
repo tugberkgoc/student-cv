@@ -277,7 +277,8 @@ router.post('/edit', koaBody, async ctx => {
 		console.log(ctx.request.body)
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
-		await cv.edit(ctx.session.id, body.name, body.address, body.summary, body.details)
+		const obj =await cv.cvObj(ctx.session.id, body)
+		await cv.edit(obj)
 		await ctx.redirect("/")
 	} catch(err) {
 		ctx.body = err.message
