@@ -45,6 +45,6 @@ module.exports = class Cv {
 		} catch(err) {
 			throw err
 		}
-	}
+	};
 
 }
