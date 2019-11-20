@@ -16,6 +16,7 @@ const hbs = require('koahub-handlebars')
 ///-----------------------------////////
 const path = require("path");
 const mime = require("mime-types")
+
 ////////////////////////
 const nodemailer = require('nodemailer')
 require('dotenv').config();
@@ -67,6 +68,7 @@ router.get('/', async ctx => {
 		await db.close()
 		return await ctx.render('index', {data, cv: Summary})
 	} catch (err) {
+		
 		await ctx.render('error', {message: err.message})
 	}
 })
@@ -153,7 +155,13 @@ router.get('/contact', async ctx => {
 
 router.post('/direct', async ctx =>{
 	try{
-		await ctx.render("contact")
+		ctx.session.authorised = true
+		const data = ctx.session.authorised
+		if(data){
+			return await ctx.render("contact", data)
+		} else {
+			ctx.redirect("/")
+		}
 	}catch (err) {
 		console.log(err.message)
 	}
