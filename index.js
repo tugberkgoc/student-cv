@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-//Routes File
+// Routes File
 
 'use strict'
 
@@ -8,11 +8,10 @@
 const Koa = require('koa')
 const Router = require('koa-router')
 const logger = require('koa-logger')
-const staticDir = require('koa-static')
-const bodyParser = require('koa-bodyparser')
-const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 const session = require('koa-session')
+const staticDir = require('koa-static')
 const hbs = require('koahub-handlebars')
+<<<<<<< HEAD
 ///-----------------------------////////
 const path = require("path");
 const mime = require("mime-types")
@@ -27,11 +26,15 @@ const User = require('./modules/user')
 const Cv = require('./modules/cv')
 //---------//
 const email = require('./modules/email')
+=======
+const bodyParser = require('koa-bodyparser')
+
+require('dotenv').config()
+>>>>>>> 3febb26a6690fb22252341f769946bd3b2de74be
 
 const app = new Koa()
 const router = new Router()
 
-const sqlite = require('sqlite-async')
 /* CONFIGURING THE MIDDLEWARE */
 app.keys = ['darkSecret']
 app.use(session(app))
@@ -48,6 +51,7 @@ app.use(hbs.middleware({
 
 const defaultPort = 8080
 const port = process.env.PORT || defaultPort
+<<<<<<< HEAD
 const dbName = 'website.db'
 
 /**
@@ -240,6 +244,18 @@ router.post('/edit', koaBody, async ctx => {
 		ctx.body = err.message
 	}
 });
+=======
+
+router.use('/', require('./routers/main'))
+
+router.use('/authentication', require('./routers/authentication/login'))
+
+router.use('/register', require('./routers/authentication/signup'))
+
+router.use('/contact', require('./routers/contact'))
+
+router.use('/cv', require('./routers/cv'))
+>>>>>>> 3febb26a6690fb22252341f769946bd3b2de74be
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))

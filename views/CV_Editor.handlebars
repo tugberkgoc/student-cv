@@ -1,9 +1,10 @@
 {{!< main }}
 
 {{> header}}
+
 {{#if cvData}}
-<form class="signup" action="/edit" enctype="multipart/form-data" method="post">
-       
+<form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+
     <label class='signup'>Name:</label>
     <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
 
@@ -20,8 +21,8 @@
 
 </form>
 {{else}}
-<form class="signup" action="/edit" enctype="multipart/form-data" method="post">
-       
+<form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+
     <label class='signup'>Name:</label>
     <input class='signup' type="text" name="name" placeholder="Your fullname">
 
@@ -38,4 +39,5 @@
 
 </form>
 {{/if}}
+
 {{> footer}}
