@@ -1,5 +1,5 @@
 {{!< main }}
-<link rel="stylesheet" type="text/css" href="CSS/myCV.css">
+<link rel="stylesheet" type="text/css" href="../../CSS/myCV.css">
 
 {{> header}}
 
@@ -13,6 +13,8 @@
   {{cvData.details}}
 </h2>
 
+{{#if user}}
 <a class="editButton" href='/cv/edit'>Edit CV</a>
+{{/if}}
 
 {{> footer}}

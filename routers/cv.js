@@ -19,7 +19,27 @@ router.get('/', async ctx => {
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
-		await ctx.render('myCV', {data, cvData})
+		const user = true
+		await ctx.render('myCV', {data, user,cvData})
+	} catch (err) {
+		ctx.body = err.message
+	}
+})
+
+router.get('/view/:id', async ctx => {
+	try {
+		const data = ctx.session.authorised
+		let user = ctx.session.id
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";`
+		const db = await sqLite.open(dbName)
+		const cvData = await db.get(sql)
+		await db.close()
+		if(user===cvData.userID) {
+			user=true
+		} else {
+			user=false
+		}
+		await ctx.render('myCV', {data, user, cvData})
 	} catch (err) {
 		ctx.body = err.message
 	}

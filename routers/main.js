@@ -18,7 +18,7 @@ router.get('/', async ctx => {
 	try {
 		new Cv(dbName)
 		const data = ctx.session.authorised
-		const sql = 'SELECT summary, name FROM cv '
+		const sql = 'SELECT summary, name, userID FROM cv '
 		const db = await sqLite.open(dbName)
 		const Summary = await db.all(sql)
 		await db.close()
