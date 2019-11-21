@@ -9,18 +9,16 @@
     <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
 
     <label class='signup'>Address:</label>
-    <input class='signup' type="text" name="address" placeholder="Address line" value="{{cvData.address}}">
+    <input class='signup' type="text" name="address" placeholder="Address line" value="{{cvData.addressLine1}}">
 
     <label class='signup'>Summary</label>
     <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
-
-    <label class='signup'>Details:</label>
-    <input class='signup' type="text" name="details" placeholder="The rest of your CV" value="{{cvData.details}}">
 
     <input class='signup' type="submit" value="Create">
 
 </form>
 {{else}}
+
 <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
 
     <label class='signup'>Name:</label>
@@ -32,8 +30,8 @@
     <label class='signup'>Summary</label>
     <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
 
-    <label class='signup'>Details:</label>
-    <input class='signup' type="text" name="details" placeholder="The rest of your CV">
+    <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label> 
+    <input type="file" name="fileToUpload" >
 
     <input class='signup' type="submit" value="Create">
 

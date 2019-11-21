@@ -5,6 +5,7 @@ const Router = require('koa-router')
 const sqLite = require('sqlite-async')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 
+
 const router = new Router()
 const dbName = 'website.db'
 
@@ -19,7 +20,27 @@ router.get('/', async ctx => {
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
-		await ctx.render('myCV', {data, cvData})
+		const user = true
+		await ctx.render('myCV', {data, user,cvData})
+	} catch (err) {
+		ctx.body = err.message
+	}
+})
+
+router.get('/view/:id', async ctx => {
+	try {
+		const data = ctx.session.authorised
+		let user = ctx.session.id
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";`
+		const db = await sqLite.open(dbName)
+		const cvData = await db.get(sql)
+		await db.close()
+		if(user===cvData.userID) {
+			user=true
+		} else {
+			user=false
+		}
+		await ctx.render('myCV', {data, user, cvData})
 	} catch (err) {
 		ctx.body = err.message
 	}
@@ -59,7 +80,9 @@ router.post('/edit', koaBody, async ctx => {
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
 		const obj = await cv.cvObj(ctx.session.id, body)
+		const {path,name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
+		await cv.uploadPicture(ctx.session.id, path, name,type)
 		await ctx.redirect('/')
 	} catch (err) {
 		ctx.body = err.message
