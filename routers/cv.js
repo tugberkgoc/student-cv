@@ -5,6 +5,7 @@ const Router = require('koa-router')
 const sqLite = require('sqlite-async')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 
+
 const router = new Router()
 const dbName = 'website.db'
 
@@ -79,7 +80,9 @@ router.post('/edit', koaBody, async ctx => {
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
 		const obj = await cv.cvObj(ctx.session.id, body)
+		const {path,name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
+		await cv.uploadPicture(ctx.session.id, path, name,type)
 		await ctx.redirect('/')
 	} catch (err) {
 		ctx.body = err.message

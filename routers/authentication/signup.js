@@ -25,13 +25,10 @@ router.post('/', koaBody, async ctx => {
 		// extract the data from the request
 		const body = ctx.request.body
 		console.log(body)
-		const {path,name, type} = ctx.request.files.fileToUpload
-		console.log(path)
-		console.log(type)
+
 		// call the functions in the module
 		const user = await new User(dbName)
 		await user.register(body.user, body.email, body.pass)
-		await user.uploadPicture(path, name,type)
 		// redirect to the home page
 		ctx.redirect(`/?msg=new user "${body.name}" added`)
 	} catch (err) {
