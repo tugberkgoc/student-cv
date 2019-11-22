@@ -1,21 +1,16 @@
-
-
 .cvTitle{
     color: black;
     text-align: center;
     text-decoration: underline;
     text-transform: uppercase;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
-.cvAddress{
 
-    
+.cvAddress{
     color: black;
     text-align: right;
     padding-right: 300px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
 
 .cvDetails{
@@ -23,22 +18,21 @@
     text-align: center;
     margin: 45px 220px 40px 220px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
 }
+
 .editButton{
     background-color: rgb(84, 124, 160);
     border: none;
     color: white;
     padding: 20px 25px ;
-    padding-bottom: 20px;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
     margin:45px 220px 400px 560px;
     border-radius: 8px;
-    
 }
+
 .editButton:hover{
     background-color: rgb(70, 102, 129);
 }
