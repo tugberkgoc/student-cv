@@ -23,7 +23,8 @@ module.exports = class User {
 		try {
 			if(user.length === 0) throw new Error('missing username')
 			if(email.length === 0) throw new Error('missing email')
-			if(pass.length === 0) throw new Error('missing password')
+			if(pass.length === 0) throw new Error('The password is missing.')
+			if(pass.length < 6) throw new Error('The password has to be at least 6 characters.Try with another one.')
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
 			if(data.records !== 0) throw new Error(`username "${user}" already in use`)

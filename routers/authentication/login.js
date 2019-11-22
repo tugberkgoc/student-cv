@@ -22,7 +22,7 @@ router.post('/login', async ctx => {
 		ctx.session.id = id
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
-		await ctx.render('error', {message: err.message})
+		await ctx.render('index', {mesage: err.message})
 	}
 })
 

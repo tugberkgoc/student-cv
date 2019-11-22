@@ -8,15 +8,18 @@
     
         <form class="signup"action="/register" action="upload" enctype="multipart/form-data" method="post">
             <h2>Students CVs Registration Form</h2>
-
-            <label class='signup'><i class="fa fa-user"></i> Username:</label>
+            <span class="error" >
+            <span role="alertdialog" class="message"><p>{{message}}</p></span>
+            </span>
+            <label class='signup'><i class="fa fa-user"></i> Username:</label> 
             <input class='signup' type="text" name="user" placeholder="you prefered username(no spaces)">
             
             <label class='signup'><i class="fa fa-envelope"></i> Email:</label>
-           <input class='signup' type="text" name="email" placeholder="your email address">
-
+           <input class='signup' type="email" name="email" placeholder="your email address">
+        
             <label class='signup'><i class="fa fa-lock"></i> Password:</label>
             <input class='signup' type="password" name="pass" placeholder="your chosen password">
+       
             
             <input class='signup' type="submit" value="Create">
 

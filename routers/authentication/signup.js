@@ -32,7 +32,7 @@ router.post('/', koaBody, async ctx => {
 		// redirect to the home page
 		ctx.redirect(`/?msg=new user "${body.name}" added`)
 	} catch (err) {
-		await ctx.render('error', {message: err.message})
+		await ctx.render('register', {message: err.message })
 	}
 })
 
