@@ -42,16 +42,24 @@ describe('register()', () => {
 		expect.assertions(1)
 		const account = await new Accounts()
 		await expect( account.register('doej','email@email.com', '') )
-			.rejects.toEqual( Error('missing password') )
+			.rejects.toEqual( Error('The password is missing.') )
+		done()
+	})
+
+	test('error if password is too short', async done=>{
+		expect.assertions(1)
+		const account = await new Accounts()
+		await expect( account.register('doej','email@email.com','pas') )
+			.rejects.toEqual( Error('password is too short') )
 		done()
 	})
 
 })
 
-describe('uploadPicture()', () => {
+//describe('uploadPicture()', () => {
 	// this would have to be done by mocking the file system
 	// perhaps using mock-fs?
-})
+//})
 
 describe('login()', () => {
 	test('log in with valid credentials', async done => {
@@ -68,7 +76,7 @@ describe('login()', () => {
 		const account = await new Accounts()
 		await account.register('doej','email@email.com', 'password')
 		await expect( account.login('roej', 'password') )
-			.rejects.toEqual( Error('username "roej" not found') )
+			.rejects.toEqual( Error('Username "roej" not found') )
 		done()
 	})
 
@@ -77,7 +85,7 @@ describe('login()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', 'password')
 		await expect( account.login('doej', 'bad') )
-			.rejects.toEqual( Error('invalid password for account "doej"') )
+			.rejects.toEqual( Error('Invalid password for account "doej"') )
 		done()
 	})
 

@@ -1,4 +1,5 @@
 *.jfif
+public/avatars
 .env
 .DS_Store
 node_modules/
@@ -9,3 +10,6 @@ docs/
 package-lock.json
 .idea/
 .vscode/
+
+
+
