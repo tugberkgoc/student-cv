@@ -4,12 +4,10 @@
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/email.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/email.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/CV_Editor.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/CV_Editor.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/contact.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/contact.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/myCV.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/myCV.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/header.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.handlebars" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

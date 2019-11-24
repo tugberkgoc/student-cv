@@ -1,61 +1,49 @@
 {{!< main }}
 
 {{> header}}
+<span class="index-content">
 
 <h1>Welcome to Student CV's <br>
-Our CV templates &amp; recruiter-approved examples make it easy.</h1>
+  Our CV templates &amp; recruiter-approved examples make it easy.</h1>
 
-{{#if data}}
-{{#each cv}}
+<span style="grid-template-columns: auto auto auto; grid-template-rows: auto; display: grid; grid-column-gap: 10px; grid-row-gap: 15px; margin: 50px; justify-items: center; align-items: center;">
+
+  {{#if data}}
+    {{#each cv}}
+
+      <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160); justify-items: center;">
+      <span>
+        <img class="avatar" src="avatars/{{this.avatarName}}">
+      </span>
+      <span>
+        <label>{{this.name}}</label>
+      </span>
+      <span>
+        <label>This is short summary.</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+      </span>
+    </span>
 
 
-        <table class="summary">
-                <thead>
-                        <tr>
-                            <th><img class="avatar" src="avatars/{{this.avatarName}}"></th>
-                        </tr>
-                        <tr>
-                                <th class="head">{{this.name}}</th>
-                        </tr>
-                </thead>
-                <tfoot>
-                        <tr>
-                                <td></td>
-                        </tr>
-                </tfoot>
-                <tbody>
-                        <tr>
-                                <td> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                <a href="/cv/view/{{this.userID}}"> Click to see more!</a>
-                                </td>
-                        </tr>
-                </tbody>
-                </tr>
-        </table>
+    {{/each}}
+  {{else}}
+    {{#each cv}}
 
-{{/each}}
-{{else}}
-{{#each cv}}
+      <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160);">
+      <span>
+        <img class="avatar" src="avatars/{{this.avatarName}}">
+      </span>
+      <span>
+        <label>{{this.name}}</label>
+      </span>
+      <span>
+        <label>This is short summary.</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+      </span>
+    </span>
 
-        <table class="summary">
-                <thead>
-                        <tr>
-                                <th class="head">{{this.name}}</th>
-                        </tr>
-                </thead>
-                <tfoot>
-                        <tr>
-                                <td></td>
-                        </tr>
-                </tfoot>
-                <tbody>
-                        <tr>
-                                <td>{{this.summary}}</td>
-                        </tr>
-                </tbody>
-                </tr>
-        </table>
+    {{/each}}
+  {{/if}}
 
-{{/each}}
-{{/if}}
+</span>
+
+</span>
 {{> footer}}
