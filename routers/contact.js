@@ -34,6 +34,7 @@ router.get('/', async ctx => {
  */
 router.post('/send-email', async ctx => {
 	const data = ctx.request.body
+	// eslint-disable-next-line max-len
 	const mailOption = email.emailSetup(ctx.request.body.email ,ctx.request.body.emailTo, data) // ctx.request.body.email
 	email.transporter.sendMail(mailOption, err => {
 		if (err) {
