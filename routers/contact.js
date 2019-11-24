@@ -2,10 +2,7 @@
 
 const Router = require('koa-router')
 const email = require('../modules/email')
-const sqLite = require('sqlite-async')
-const User =require('../modules/user')
-const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
-
+const sqlite = require('sqlite-async')
 
 const router = new Router()
 const dbName = 'website.db'
@@ -32,9 +29,19 @@ router.get('/', async ctx => {
  * @name Contact
  * @route {post} /contact/send-email
  */
+		
+
+
+
+
 router.post('/send-email', async ctx => {
-	const data = ctx.request.body
-	const mailOption = email.emailSetup(ctx.request.body.email ,ctx.request.body.emailTo, data) // ctx.request.body.email
+	const body = ctx.request.body
+	const sql = `SELECT email FROM users WHERE id ="${ctx.session.id}"`
+	const db = await sqlite.open(dbName)
+	const emailData = await db.get(sql)
+	await db.close()
+	console.log(emailData)
+	const mailOption = email.emailSetup(emailData,body.emailTo, body) // ctx.request.body.email
 	email.transporter.sendMail(mailOption, err => {
 		if (err) {
 			console.log(err.message)

@@ -24,7 +24,7 @@ module.exports = class User {
 			if(user.length === 0) throw new Error('missing username')
 			if(email.length === 0) throw new Error('missing email')
 			if(pass.length === 0) throw new Error('The password is missing.')
-			if(pass.length < 6) throw new Error('The password has to be at least 6 characters.Try with another one.')
+			if(pass.length < 6) throw new Error('password is too short')
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
 			if(data.records !== 0) throw new Error(`username "${user}" already in use`)
@@ -49,11 +49,11 @@ module.exports = class User {
 			
 			let sql = `SELECT count(id) AS count FROM users WHERE user="${username}";`
 			const records = await this.db.get(sql)
-			if(!records.count) throw new Error(`username "${username}" not found`)
+			if(!records.count) throw new Error(`Username "${username}" not found`)
 			sql = `SELECT id, pass FROM users WHERE user = "${username}";`
 			const record = await this.db.get(sql)
 			const valid = await bcrypt.compare(password, record.pass)
-			if(valid === false) throw new Error(`invalid password for account "${username}"`)
+			if(valid === false) throw new Error(`Invalid password for account "${username}"`)
 			return record.id
 		} catch(err) {
 			throw err

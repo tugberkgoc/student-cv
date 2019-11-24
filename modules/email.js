@@ -1,6 +1,5 @@
 'use strict'
 
-
 const nodemailer = require('nodemailer')
 require('dotenv').config()
 
@@ -13,7 +12,7 @@ const transporter = nodemailer.createTransport({
 })
 
 // eslint-disable-next-line max-lines-per-function
-const emailSetup = (emailFrom, emailTo, data) => {
+const emailSetup = (emailData, emailTo, data) => {
 
 
 	const output = `
@@ -22,14 +21,14 @@ const emailSetup = (emailFrom, emailTo, data) => {
 	<ul>
 		<li>Name: ${data.name}</li>  
 		<li>Company: ${data.company}</li>
-		<li>Email: ${emailFrom}</li>
+		<li>Email: ${emailData}</li>
 		<li>Phone: ${data.phone}</li>
 	</ul>
 	<h3>Message</h3>
 	<p>${data.message}</p>
 `
 	return {
-		from: emailFrom,
+		from: emailData,
 		to: emailTo,
 		subject: 'Student CVs',
 		text: 'example',

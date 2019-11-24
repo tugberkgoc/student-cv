@@ -27,11 +27,12 @@ router.get('/', async ctx => {
 	}
 })
 
+
 router.get('/view/:id', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		let user = ctx.session.id
-		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";`
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";` 
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
@@ -45,6 +46,8 @@ router.get('/view/:id', async ctx => {
 		ctx.body = err.message
 	}
 })
+
+
 
 /**
  * The edit CV page.

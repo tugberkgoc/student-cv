@@ -4,6 +4,7 @@ const fs = require('fs-extra')
 const mime = require('mime-types')
 const sqlite = require('sqlite-async')
 
+
 module.exports = class Cv {
 
 	constructor(dbName = ':memory:') {
@@ -53,17 +54,17 @@ module.exports = class Cv {
 		const extension = mime.extension(mimeType)
 		console.log(`path: ${path}`)
 		console.log(`extension: ${extension}`)
-		let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${ID}';`
-			const data = await this.db.get(sql)
+		await fs.copy(path, `public/avatars/${name}`)
+		let sql = `SELECT cvId FROM cv WHERE userID='${ID}';`
+		const data = await this.db.get(sql)
 			if (data.records !== 0) {
-				sql= `UPDATE cv SET avatarName='${name}'`
+				sql= `UPDATE cv SET avatarName='${name}' WHERE cvId ='${data.cvId}'`
 				await this.db.run(sql)
 				return true
 			} else {
 				sql=`INSERT INTO cv(avatarName) VALUES('${name}')`
 				await this.db.run(sql)
 			}
-		await fs.copy(path, `public/avatars/${name}`)
 	}
 	
 	async cvPull(userID) {
@@ -82,4 +83,7 @@ module.exports = class Cv {
 		}
 	};
 
-}
+
+
+	}
+
