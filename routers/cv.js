@@ -21,7 +21,7 @@ router.get('/', async ctx => {
 		const cvData = await db.get(sql)
 		await db.close()
 		const user = true
-		await ctx.render('myCV', {data, user,cvData})
+		await ctx.render('myCV', {data, user, cvData})
 	} catch (err) {
 		ctx.body = err.message
 	}
@@ -36,11 +36,7 @@ router.get('/view/:id', async ctx => {
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
-		if(user===cvData.userID) {
-			user=true
-		} else {
-			user=false
-		}
+		user = user === cvData.userID;
 		await ctx.render('myCV', {data, user, cvData})
 	} catch (err) {
 		ctx.body = err.message
@@ -83,9 +79,9 @@ router.post('/edit', koaBody, async ctx => {
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
 		const obj = await cv.cvObj(ctx.session.id, body)
-		const {path,name, type} = ctx.request.files.fileToUpload
+		const {path, name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
-		await cv.uploadPicture(ctx.session.id, path, name,type)
+		await cv.uploadPicture(ctx.session.id, path, name, type)
 		await ctx.redirect('/')
 	} catch (err) {
 		ctx.body = err.message

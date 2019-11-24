@@ -11,21 +11,9 @@ const logger = require('koa-logger')
 const session = require('koa-session')
 const staticDir = require('koa-static')
 const hbs = require('koahub-handlebars')
-const bodyParser = require('koa-bodyparser');
-///-----------------------------////////
-const path = require("path");
-const mime = require("mime-types")
+const bodyParser = require('koa-bodyparser')
 
-////////////////////////
-const nodemailer = require('nodemailer')
-require('dotenv').config();
-//const jimp = require('jimp')
-
-/* IMPORT CUSTOM MODULES */
-const User = require('./modules/user')
-const Cv = require('./modules/cv')
-//---------//
-const email = require('./modules/email')
+require('dotenv').config()
 
 const app = new Koa()
 const router = new Router()
@@ -59,5 +47,3 @@ router.use('/cv', require('./routers/cv'))
 
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
-
-
