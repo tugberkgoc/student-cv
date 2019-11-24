@@ -3,21 +3,24 @@
 
 {{> header}}
 
-<h2 class="cvTitle">
-  {{cvData.name}}
-</h2>
-<h2 class="cvAddress">
-  {{cvData.address}}
-</h2>
-<h2 class="cvDetails">
-  {{cvData.details}}
-</h2>
+<div style="padding-top: 100px;">
 
-{{#if user}}
-<a class="editButton" href='/cv/edit'>Edit CV</a>
-{{else}}
-      <a  class="editButton" href="/contact">Contact</a>
-{{/if}}
+  <h2 class="cvTitle">
+    {{cvData.name}}
+  </h2>
+  <h2 class="cvAddress">
+    {{cvData.address}}
+  </h2>
+  <h2 class="cvDetails">
+    {{cvData.details}}
+  </h2>
 
+  {{#if user}}
+    <a class="editButton" href='/cv/edit'>Edit CV</a>
+  {{else}}
+    <a class="editButton" href="/contact">Contact</a>
+  {{/if}}
+
+</div>
 
 {{> footer}}
