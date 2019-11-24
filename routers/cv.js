@@ -5,7 +5,6 @@ const Router = require('koa-router')
 const sqLite = require('sqlite-async')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 
-
 const router = new Router()
 const dbName = 'website.db'
 
@@ -35,8 +34,8 @@ router.get('/view/:id', async ctx => {
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
-		user = user === cvData.userID;
-		await ctx.render('myCV', {data, user, cvData})
+		user = user === cvData.userID
+		await ctx.render('myCV', {data, user, cvData, toId: cvData.userID})
 	} catch (err) {
 		ctx.body = err.message
 	}

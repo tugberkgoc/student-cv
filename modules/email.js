@@ -14,8 +14,6 @@ const transporter = nodemailer.createTransport({
 
 // eslint-disable-next-line max-lines-per-function
 const emailSetup = (emailFrom, emailTo, data) => {
-
-
 	const output = `
 <p>You have a new contact request.</p>
 	<h3>Contact Details</h3>

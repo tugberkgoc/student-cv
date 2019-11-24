@@ -18,15 +18,13 @@ module.exports = class Cv {
 	}
 
 	async cvObj(id, body) {
-
 		try {
-			const cvData = {
+			return {
 				userID: id,
 				name: body.name,
 				addressLine1: body.address,
 				summary: body.summary
 			}
-			return cvData
 		} catch (err) {
 			throw err
 		}
