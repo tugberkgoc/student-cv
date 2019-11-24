@@ -12,7 +12,7 @@ module.exports = class Cv {
 			this.db = await sqlite.open(dbName)
 			// we need this table to store cv details whilst relating to user
 			// eslint-disable-next-line max-len
-			const sql = 'CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, name TEXT, addressLine1 TEXT, addressLine2 TEXT,postcode TEXT, county TEXT,country TEXT, summary TEXT, skills TEXT, refrences TEXT,usersWords TEXT, avatarName  TEXT, FOREIGN KEY(userID) REFERENCES users(id));'
+			const sql = 'CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, name TEXT, addressLine1 TEXT, addressLine2 TEXT,postcode TEXT, country TEXT, summary TEXT, skills TEXT, refrences TEXT,usersWords TEXT, avatarName  TEXT, FOREIGN KEY(userID) REFERENCES users(id));'
 			await this.db.run(sql)
 			return this
 		})()

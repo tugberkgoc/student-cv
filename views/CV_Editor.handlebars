@@ -2,45 +2,68 @@
 
 {{> header}}
 
+
 <div style="padding-top: 100px;">
 
   {{#if cvData}}
-    <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+    <form class="editor" action="/cv/edit" enctype="multipart/form-data" method="post">
 
-      <label class='signup'>Name:</label>
-      <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
+      <h2 class="editH">Build your personal CV.</h2>
 
-      <label class='signup'>Address:</label>
-      <input class='signup' type="text" name="address" placeholder="Address line" value="{{cvData.addressLine1}}">
+      <label class='editor'>Name:</label>
+      <input class='editor' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
+
+      <label class='editor'>Address:</label>
+      <input class='editor' type="text" name="address" placeholder="Address line" value="{{cvData.addressLine1}}">
+      
+      <label class='postt'>Post Code:</label>
+      <input class="post" type="text" name='post code' placeholder="Your post code" value="{{cvData.postcode}}" >
+
+      <label class='editor'>Country:</label>
+      <input class="editor" type="text" name='country' placeholder="Your country" value="{{cvData.country}}" >
+
+      <label class='editor'>Skills:</label>
+      <input class="editor" type="text" name='country' placeholder="Your skills" value="{{cvData.skills}}" >
+      
+
 
       <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+      <input class='editor' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+      
+      
 
-      <input class='signup' type="submit" value="Create">
+      <input class='editor' type="submit" value="Create">
 
     </form>
   {{else}}
 
-    <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+      <form class="editor" action="/cv/edit" enctype="multipart/form-data" method="post">
 
-      <label class='signup'>Name:</label>
-      <input class='signup' type="text" name="name" placeholder="Your fullname">
+      <h2 class="editH">Build your personal CV.</h2>
 
-      <label class='signup'>Address:</label>
-      <input class='signup' type="text" name="address" placeholder="Address line">
+      <label class='editor'>Name:</label>
+      <input class='editor' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
+
+      <label class='editor'>Address:</label>
+      <input class='editor' type="text" name="address" placeholder="Address line" value="{{cvData.addressLine1}}">
+      
+      <label class='postt'>Post Code:</label>
+      <input class="post" type="text" name='post code' placeholder="Your post code" value="{{cvData.postcode}}" >
+
+      <label class='editor'>Country:</label>
+      <input class="editor" type="text" name='country' placeholder="Your country" value="{{cvData.country}}" >
+
+      <label class='editor'>Skills:</label>
+      <input class="editor" type="text" name='country' placeholder="Your skills" value="{{cvData.skills}}" >
+      
+
 
       <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
+      <input class='editor' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+      
+      
 
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
-
-      <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
-      <input type="file" name="fileToUpload">
-
-      <input class='signup' type="submit" value="Create">
+      <input class='editor' type="submit" value="Create">
 
     </form>
   {{/if}}
