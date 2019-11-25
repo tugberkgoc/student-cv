@@ -2,49 +2,71 @@
 
 {{> header}}
 
-<div style="padding-top: 100px;">
+{{#if cvData}}
+<form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
 
-  {{#if cvData}}
-    <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+    <label class='signup'>Name:</label><br>
+    <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}"><br>
+    
+    <label class='signup'>Address Line 1:</label><br>
+    <input class='signup' type="text" name="addressLine1" placeholder="Address line" value="{{cvData.addressLine1}}"><br>
 
-      <label class='signup'>Name:</label>
-      <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}">
+    <label class='signup'>Address Line 2:</label><br>
+    <input class='signup' type="text" name="addressLine2" placeholder="Address line" value="{{cvData.addressLine2}}"><br>
 
-      <label class='signup'>Address:</label>
-      <input class='signup' type="text" name="address" placeholder="Address line" value="{{cvData.addressLine1}}">
+    <label class='signup'>Postcode:</label><br>
+    <input class='signup' type="text" name="postcode" placeholder="Address line" value="{{cvData.postcode}}"><br>
+    
+    <label class='signup'>Country:</label><br>
+    <input class='signup' type="text" name="country" placeholder="Address line" value="{{cvData.country}}"><br>
 
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+    <label class='signup'>Skills:</label><br>
+    <input class='signup' type="text" name="skills" placeholder="Address line" value="{{cvData.skills}}"><br>
 
-      <input class='signup' type="submit" value="Create">
+    <label class='signup'>Skills:</label><br>
+    <input class='signup' type="text" name="skills" placeholder="Address line" value="{{cvData.skills}}"><br>
+    
+    <label class='signup'>References:</label><br>
+    <input class='signup' type="text" name="references" placeholder="Address line" value="{{cvData.references}}"><br>
 
-    </form>
-  {{else}}
+    <input class='signup' type="submit" value="Create">
 
-    <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
+</form>
+{{else}}
 
-      <label class='signup'>Name:</label>
-      <input class='signup' type="text" name="name" placeholder="Your fullname">
+<form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
 
-      <label class='signup'>Address:</label>
-      <input class='signup' type="text" name="address" placeholder="Address line">
+    <label class='signup'>Name:</label>
+    <input class='signup' type="text" name="name" placeholder="Your fullname">
 
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
+    <label class='signup'>Address Line 1:</label><br>
+    <input class='signup' type="text" name="addressLine1" placeholder="Address line" value="{{cvData.addressLine1}}"><br>
 
-      <label class='summary'>Summary</label>
-      <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
+    <label class='signup'>Address Line 2:</label><br>
+    <input class='signup' type="text" name="addressLine2" placeholder="Address line" value="{{cvData.addressLine2}}"><br>
 
-      <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
-      <input type="file" name="fileToUpload">
+    <label class='signup'>Postcode:</label><br>
+    <input class='signup' type="text" name="postcode" placeholder="Address line" value="{{cvData.postcode}}"><br>
+    
+    <label class='signup'>County:</label><br>
+    <input class='signup' type="text" name="county" placeholder="Address line" value="{{cvData.county}}"><br>
 
-      <input class='signup' type="submit" value="Create">
+    <label class='signup'>References:</label><br>
+    <input class='signup' type="text" name="references" placeholder="Address line" value="{{cvData.references}}"><br>
 
-    </form>
-  {{/if}}
+    <label class='signup'>Skills:</label><br>
+    <input class='signup' type="text" name="skills" placeholder="Address line" value="{{cvData.skills}}">
 
-</div>
+    <label class='signup'>Summary</label>
+    <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
+
+    <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label> 
+    <input type="file" name="fileToUpload" >
+
+    <input class='signup' type="submit" value="Create">
+
+</form>
+{{/if}}
 
 {{> footer}}
+
