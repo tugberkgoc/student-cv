@@ -11,7 +11,7 @@ module.exports = class Cv {
 			this.db = await sqLite.open(dbName)
 			// we need this table to store cv details whilst relating to user
 			// eslint-disable-next-line max-len
-			const sql = 'CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, name TEXT, addressLine1 TEXT, addressLine2 TEXT,postcode TEXT,country TEXT, summary TEXT, skills TEXT, refrences TEXT, usersWords TEXT, avatarName TEXT, FOREIGN KEY(userID) REFERENCES users(id));'
+			const sql = 'CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, name TEXT, addressLine1 TEXT, addressLine2 TEXT,postcode TEXT,country TEXT, summary TEXT, skills TEXT, ref TEXT, usersWords TEXT, avatarName TEXT, FOREIGN KEY(userID) REFERENCES users(id));'
 			await this.db.run(sql)
 			return this
 		})()
@@ -25,7 +25,7 @@ module.exports = class Cv {
 				addressLine1: body.addressLine1,
 				addressLine2: body.addressLine2,
 				postcode: body.postcode,
-				references: body.references,
+				ref: body.references,
 				usersWords: body.usersWords,
 				country: body.country,
 				skills: body.skills,
@@ -42,12 +42,12 @@ module.exports = class Cv {
 			const data = await this.db.get(sql)
 			if (data.records !== 0) {
 				// eslint-disable-next-line max-len
-				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}',references='${cvData.references}',summary='${cvData.summary}' WHERE userID='${cvData.userID}'`
+				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}', skills='${cvData}', ref='${cvData.ref}',summary='${cvData.summary}' WHERE userID='${cvData.userID}'`
 				await this.db.run(sql)
 				return true
 			} else {
 				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, references, usersWords, summary) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.references}','${cvData.summary}')`
+				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, skills, ref, summary) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.skills}','${cvData.ref}','${cvData.summary}')`
 				await this.db.run(sql)
 				return true
 			}

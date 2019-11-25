@@ -13,13 +13,13 @@
 
       <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160); justify-items: center;">
       <span>
-        <img class="avatar" src="avatars/{{this.avatarName}}">
+        <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
       </span>
       <span>
         <label>{{this.name}}</label>
       </span>
       <span>
-        <label>This is short summary.</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+        <label>{{this.summary}}</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
       </span>
     </span>
 
@@ -30,13 +30,13 @@
 
       <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160);">
       <span>
-        <img class="avatar" src="avatars/{{this.avatarName}}">
+        <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
       </span>
       <span>
         <label>{{this.name}}</label>
       </span>
       <span>
-        <label>This is short summary.</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+        <label>{{this.summary}}</label>
       </span>
     </span>
 
