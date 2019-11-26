@@ -19,17 +19,19 @@ module.exports = class User {
 		})()
 	}
 
-	async register(user, email, pass) {
+	async register(user, email, phoneNumber, pass) {
 		try {
 			if (user.length === 0) throw new Error('missing username')
 			if (email.length === 0) throw new Error('missing email')
 			if (pass.length === 0) throw new Error('The password is missing.')
+			if (phoneNumber.length === 0) throw new Error('Missing Phone Number')
+			if (phoneNumber.length < 11 || phoneNumber.length >11 ) throw new Error('Phone Number Invalid (length 11)')
 			if (pass.length < 6) throw new Error('password is too short')
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
 			if (data.records !== 0) throw new Error(`username "${user}" already in use`)
 			pass = await bcrypt.hash(pass, saltRounds)
-			sql = `INSERT INTO users(user, email, pass) VALUES("${user}","${email}","${pass}")`
+			sql = `INSERT INTO users(user, email, phoneNumber, pass) VALUES("${user}","${email}","${phoneNumber}","${pass}")`
 			await this.db.run(sql)
 			return true
 		} catch (err) {

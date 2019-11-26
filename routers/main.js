@@ -1,6 +1,7 @@
 'use strict'
 
 const Cv = require('../modules/cv')
+const User = require('../modules/user')
 const Router = require('koa-router')
 const sqLite = require('sqlite-async')
 
@@ -16,6 +17,7 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
+		new User(dbName)
 		new Cv(dbName)
 		const data = ctx.session.authorised
 		const sql = 'SELECT summary, name, userID, avatarName FROM cv '
