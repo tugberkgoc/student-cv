@@ -19,7 +19,10 @@
         <label>{{this.name}}</label>
       </span>
       <span class="block-element">
-        <label>{{this.summary}}</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+        <form  action="/cv/view/{{this.userID}}" enctype="multipart/form-data" method="POST">
+        <label>{{this.summary}}</label>
+        <a href="/cv/view/{{this.userID}}"> <input type="submit" value="Click to see more!"> </a>
+        </form>
       </span>
     </span>
 

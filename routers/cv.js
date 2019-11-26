@@ -26,11 +26,11 @@ router.get('/', async ctx => {
 })
 
 
-router.get('/view/:id', async ctx => { // /view/:id
+router.post('/view/:id', async ctx => { // /view/:id
 	try {
 			const cv = await new Cv()
 			const users = await new User()
-			const seen = await new SeenBy() //dbName
+			const seen = await new SeenBy(dbName) //dbName
 			let user = ctx.session.id
 			const data = ctx.session.authorised
 			const cvData = await cv.getDataUsingParamsID(ctx.params.id)
