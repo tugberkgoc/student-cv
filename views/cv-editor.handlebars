@@ -1,5 +1,7 @@
 {{!< main }}
 
+<link rel="stylesheet" type="text/css" href="../CSS/cvEditor.css">
+
 {{> header}}
 
 {{#if cvData}}
@@ -7,7 +9,7 @@
 
     <label class='signup'>Name:</label><br>
     <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}"><br>
-    
+
     <label class='signup'>Address Line 1:</label><br>
     <input class='signup' type="text" name="addressLine1" placeholder="Address line 1" value="{{cvData.addressLine1}}"><br>
 
@@ -16,7 +18,7 @@
 
     <label class='signup'>Postcode:</label><br>
     <input class='signup' type="text" name="postcode" placeholder="Postcode" value="{{cvData.postcode}}"><br>
-    
+
     <label class='signup'>Country:</label><br>
     <input class='signup' type="text" name="country" placeholder="Country" value="{{cvData.country}}"><br>
 
@@ -47,7 +49,7 @@
 
     <label class='signup'>Postcode:</label><br>
     <input class='signup' type="text" name="postcode" placeholder="Postcode" ><br>
-    
+
     <label class='signup'>Country:</label><br>
     <input class='signup' type="text" name="country" placeholder="Country"><br>
 
@@ -60,7 +62,7 @@
     <label class='signup'>Summary</label>
     <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
 
-    <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label> 
+    <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
 
     <input class='signup' type="submit" value="Create">

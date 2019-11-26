@@ -26,7 +26,7 @@ router.get('/', async ctx => {
 })
 
 
-router.post('/view/:id', async ctx => { // /view/:id
+router.get('/view/:id', async ctx => { // /view/:id
 	try {
 			const cv = await new Cv()
 			const users = await new User()
@@ -38,8 +38,8 @@ router.post('/view/:id', async ctx => { // /view/:id
 			await seen.seenPullData( cvData.cvId, userData.user)
 			user = user === cvData
 			await ctx.render('my-cv', {data, user, cvData, toId: cvData.userID})
-			
-		
+
+
 	} catch (err) {
 		console.log(err.message)
 		//ctx.body = err.message

@@ -2,7 +2,7 @@
 
 const fs = require('fs-extra')
 const mime = require('mime-types')
-const sqlite = require('sqlite-async')
+const sqLite = require('sqlite-async')
 
 const dbName = 'website.db'
 
@@ -88,24 +88,24 @@ module.exports = class Cv {
 		}
 	};
 
-	async getDataUsingUserID(id) { 
+	async getDataUsingUserID(id) {
 
 		const sql = `SELECT * FROM cv WHERE userID = "${id}";`
-		const db = await sqlite.open(dbName)
+		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
 		return cvData
 	}
 
 	async getDataUsingParamsID(paramsID){
-		let db = await sqlite.open(dbName)
-		const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";` 
+		let db = await sqLite.open(dbName)
+		const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";`
 		let cvData = await db.get(sql)
 		await db.close()
 		return cvData
 
 	}
 
- 
+
 	}
 

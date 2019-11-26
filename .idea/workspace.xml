@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cv-editor.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/cv-editor.handlebars" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/myCV.handlebars" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +179,7 @@
       <workItem from="1574172376536" duration="2102000" />
       <workItem from="1574260483501" duration="13443000" />
       <workItem from="1574640778146" duration="1067000" />
-      <workItem from="1574771102004" duration="2530000" />
+      <workItem from="1574771102004" duration="5963000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>
@@ -197,6 +200,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
