@@ -18,8 +18,11 @@
       <span>
         <label>{{this.name}}</label>
       </span>
-      <span>
-        <label>This is short summary.</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
+      <span > 
+        <form action="/cv/view/{{this.userID}}" enctype="multipart/form-data"  method="POST">
+             <label>This is short summary.</label>
+             <a href="/cv/view/{{this.userID}}"><input type="submit" value="Click to see more!" ></a>
+        </form>
       </span>
     </span>
 

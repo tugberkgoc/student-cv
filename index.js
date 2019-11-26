@@ -45,5 +45,7 @@ router.use('/contact', require('./routers/contact'))
 
 router.use('/cv', require('./routers/cv'))
 
+router.use('/seenBy', require('./routers/seenBy'))
+
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))

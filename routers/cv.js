@@ -1,6 +1,8 @@
 'use strict'
 
 const Cv = require('../modules/cv')
+const User = require('../modules/user')
+const SeenBy = require('../modules/seenBy')
 const Router = require('koa-router')
 const sqLite = require('sqlite-async')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
@@ -14,32 +16,35 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
+		const cv = await new Cv()
 		const data = ctx.session.authorised
-		const sql = `SELECT * FROM cv WHERE userID = "${ctx.session.id}";`
-		const db = await sqLite.open(dbName)
-		const cvData = await db.get(sql)
-		await db.close()
 		const user = true
-		await ctx.render('myCV', {data, user, cvData})
+		await ctx.render('myCV', {data, user, cvData: await cv.getDataUsingUserID(ctx.session.id)})
 	} catch (err) {
 		ctx.body = err.message
 	}
 })
 
 
-router.get('/view/:id', async ctx => {
+router.post('/view/:id', async ctx => { // /view/:id
 	try {
-		const data = ctx.session.authorised
-		let user = ctx.session.id
-		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";` 
-		const db = await sqLite.open(dbName)
-		const cvData = await db.get(sql)
-		await db.close()
-		user = user === cvData.userID
-		await ctx.render('myCV', {data, user, cvData, toId: cvData.userID})
+			const cv = await new Cv()
+			const users = await new User()
+			const seen = await new SeenBy() //dbName
+			let user = ctx.session.id
+			const data = ctx.session.authorised
+			const cvData = await cv.getDataUsingParamsID(ctx.params.id)
+			const userData = await users.getDataUsersUsingID(user)
+			await seen.seenPullData( cvData.cvId, userData.user)
+			user = user === cvData
+			await ctx.render('myCV', {data, user, cvData, toId: cvData.userID})
+			
+		
 	} catch (err) {
-		ctx.body = err.message
+		console.log(err.message)
+		//ctx.body = err.message
 	}
+
 })
 
 

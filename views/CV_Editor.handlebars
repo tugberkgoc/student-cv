@@ -25,14 +25,14 @@
       <label class='editor'>Skills:</label>
       <input class="editor" type="text" name='country' placeholder="Your skills" value="{{cvData.skills}}" >
       
-
-
       <label class='summary'>Summary</label>
       <input class='editor' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+
+  
       
       
 
-      <input class='editor' type="submit" value="Create">
+      <input class='editor' type="submit" value="edit">
 
     </form>
   {{else}}
@@ -56,10 +56,11 @@
       <label class='editor'>Skills:</label>
       <input class="editor" type="text" name='country' placeholder="Your skills" value="{{cvData.skills}}" >
       
-
-
       <label class='summary'>Summary</label>
       <input class='editor' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value="{{cvData.summary}}">
+
+      <label class='upload'> Upload Picture:</label>
+      <input class="editor" type="file" name="fileToUpload">
       
       
 

@@ -6,6 +6,7 @@ const mime = require('mime-types')
 const sqlite = require('sqlite-async')
 const saltRounds = 10
 
+const dbName = 'website.db'
 module.exports = class User {
 
 	constructor(dbName = ':memory:') {
@@ -58,4 +59,12 @@ module.exports = class User {
 		}
 	};
 
+
+	async getDataUsersUsingID(id){
+		let db = await sqlite.open(dbName)
+		const sql = `SELECT * FROM users WHERE id ="${id}";`
+		const userData = await db.get(sql)
+		await db.close()
+		return userData
+	}
 }
