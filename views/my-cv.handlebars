@@ -12,7 +12,7 @@
     {{cvData.addressLine1}}<br>
     {{cvData.addressLine2}}<br>
     {{cvData.postcode}}<br>
-    
+
     {{cvData.country}}
 
   </h2>
@@ -21,7 +21,11 @@
   </h2>
 
   {{#if user}}
-    <a class="editButton" href='/cv/edit'>Edit CV</a>
+    {{#if cvData}}
+      <a class="editButton" href='/cv/edit'>Edit CV</a>
+    {{else}}
+      <a class="editButton" href='/cv/edit'>Create CV</a>
+    {{/if}}
   {{else}}
     <a class="editButton" href="/contact?toId={{toId}}">Contact</a>
   {{/if}}

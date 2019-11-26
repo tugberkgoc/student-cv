@@ -20,7 +20,7 @@ router.get('/', async ctx => {
 		const cvData = await db.get(sql)
 		await db.close()
 		const user = true
-		await ctx.render('myCV', {data, user, cvData})
+		await ctx.render('my-cv', {data, user, cvData})
 	} catch (err) {
 		ctx.body = err.message
 	}
@@ -31,17 +31,16 @@ router.get('/view/:id', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		let user = ctx.session.id
-		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";` 
+		const sql = `SELECT * FROM cv WHERE userID = "${ctx.params.id}";`
 		const db = await sqLite.open(dbName)
 		const cvData = await db.get(sql)
 		await db.close()
 		user = user === cvData.userID
-		await ctx.render('myCV', {data, user, cvData, toId: cvData.userID})
+		await ctx.render('my-cv', {data, user, cvData, toId: cvData.userID})
 	} catch (err) {
 		ctx.body = err.message
 	}
 })
-
 
 
 /**
@@ -57,7 +56,7 @@ router.get('/edit', async ctx => {
 		if (data) {
 			const cv = await new Cv(dbName)
 			const cvData = await cv.cvPull(ctx.session.id)
-			return await ctx.render('CV_Editor', {data, cvData})
+			return await ctx.render('cv-editor', {data, cvData})
 		} else {
 			ctx.redirect('/')
 		}
@@ -65,6 +64,7 @@ router.get('/edit', async ctx => {
 		await ctx.render('error', {message: err.message})
 	}
 })
+
 
 /**
  * The edit CV page.

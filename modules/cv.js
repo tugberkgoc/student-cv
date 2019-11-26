@@ -56,7 +56,6 @@ module.exports = class Cv {
 		}
 	}
 
-
 	async uploadPicture(ID, path, name, mimeType) {
 		const extension = mime.extension(mimeType)
 		console.log(`path: ${path}`)
