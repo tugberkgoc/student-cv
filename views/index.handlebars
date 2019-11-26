@@ -6,19 +6,19 @@
 <h1>Welcome to Student CV's <br>
   Our CV templates &amp; recruiter-approved examples make it easy.</h1>
 
-<span style="grid-template-columns: auto auto auto; grid-template-rows: auto; display: grid; grid-column-gap: 10px; grid-row-gap: 15px; margin: 50px; justify-items: center; align-items: center;">
+<span id="index-cv-template">
 
   {{#if data}}
     {{#each cv}}
 
-      <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160); justify-items: center;">
-      <span>
+      <span class="each-cv">
+      <span class="block-element">
         <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
       </span>
-      <span>
+      <span class="block-element">
         <label>{{this.name}}</label>
       </span>
-      <span>
+      <span class="block-element">
         <label>{{this.summary}}</label><a href="/cv/view/{{this.userID}}"> Click to see more!</a>
       </span>
     </span>
@@ -28,14 +28,14 @@
   {{else}}
     {{#each cv}}
 
-      <span style="display: grid; grid-template-columns: auto; grid-template-rows: 20px 20px 40px; grid-row-gap: 5px; grid-column-gap: 5px; border: 3px solid rgb(84, 124, 160);">
-      <span>
+      <span class="each-cv">
+      <span class="block-element">
         <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
       </span>
-      <span>
+      <span class="block-element">
         <label>{{this.name}}</label>
       </span>
-      <span>
+      <span class="block-element">
         <label>{{this.summary}}</label>
       </span>
     </span>
