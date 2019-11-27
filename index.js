@@ -45,6 +45,8 @@ router.use('/contact', require('./routers/contact'))
 
 router.use('/cv', require('./routers/cv'))
 
+router.use('/about', require('./routers/about'))
+
 router.use('/seenBy', require('./routers/seenBy'))
 
 app.use(router.routes())
