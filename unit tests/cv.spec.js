@@ -240,3 +240,30 @@ describe('getDataUsingParamsID', () => {
 
 })
 
+
+describe('getDataFromCv()', () =>{
+
+	test('valid data get', async done =>{ // need to be fixed 
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		const valid = await cv.getDataFromCv()
+		expect(valid.summary).toBe(undefined)
+		done()
+	})
+})
+
