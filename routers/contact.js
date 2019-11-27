@@ -1,8 +1,7 @@
 'use strict'
 
 const Router = require('koa-router')
-const Email = require('../modules/email')
-
+const User = require('../modules/user')
 
 const router = new Router()
 const dbName = 'website.db'
@@ -31,19 +30,15 @@ router.get('/', async ctx => {
  */
 // eslint-disable-next-line max-lines-per-function
 router.post('/send-email', async ctx => {
-	const email = await new Email()
-
-	const fromData = await email.getDataForSender(ctx.session.id)
-	const toData = await email.getDataForReciever(ctx.query.toId)
-	const transporter = await email.transporter()
-
-
-	const data = ctx.request.body
-	const mailOption = email.emailSetup(fromData.email, toData.email, data)
-	await transporter.sendMail(mailOption, err => {
-		err ? console.log(err.message) : console.log('Email sent')
-	})
-	await ctx.redirect('/', {message: 'Email has been sent!'})
+	const user = await new User(dbName)
+	const toData = await user.getUserEmailWithUsingId(ctx.query.toId)
+	const fromData = await user.getUserEmailWithUsingId(ctx.session.id)
+	const isMessageSent = await user.sendEmail(fromData.email, toData.email, ctx.request.body)
+	if (isMessageSent) {
+		await ctx.redirect('/', {message: 'Email has been sent!'})
+	} else {
+		await ctx.redirect('/?msg=email hasn\'t been sent!')
+	}
 })
 
 module.exports = router.routes()

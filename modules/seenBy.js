@@ -1,14 +1,12 @@
 'use strict'
 
-const sqlite = require('sqlite-async')
-const dbName = 'website.db'
+const sqLite = require('sqlite-async')
 
+module.exports = class SeenBy {
 
-module.exports = class SeenBy{
-
-    constructor(dbName = ':memory:') {
+	constructor() {
 		return (async() => {
-			this.db = await sqlite.open(dbName)
+			this.db = await sqLite.open('website.db')
 			// eslint-disable-next-line max-len
 			const sql = 'CREATE TABLE IF NOT EXISTS seen (seenID INTEGER PRIMARY KEY AUTOINCREMENT, cvID INTEGER, userSeen TEXT);'
 			await this.db.run(sql)
@@ -16,14 +14,9 @@ module.exports = class SeenBy{
 		})()
 	}
 
-    async seenPullData(cvID,userSeen){
-        try {
-			let sql = `SELECT COUNT(seenID) as records FROM seen WHERE userSeen="${userSeen}";`
-			const data = await this.db.get(sql)
-			if (data.records !== 0){
-                sql = `UPDATE seen SET userSeen = "${userSeen}"`
-            }// throw new Error(`username "${userSeen}" already in use`)
-            sql = `INSERT INTO seen(cvID, userSeen) VALUES("${cvID}","${userSeen}")`
+	async postSeenUsingCvIdAndUsername(cvId, username) {
+		try {
+			const sql = `INSERT INTO seen(cvID, userSeen) VALUES("${cvId}","${username}")`
 			await this.db.run(sql)
 			return true
 		} catch (err) {
@@ -31,13 +24,13 @@ module.exports = class SeenBy{
 		}
 	}
 
-
-	async getSeensUsingID(id){
-	 	const db = await sqlite.open(dbName)
-		const sql = `SELECT * FROM seen WHERE cvID = "${id}";`
-		const seenData = await db.all(sql)
-		await db.close()
-		return seenData
+	async getSeenUsingID(cvId) {
+		try {
+			const sql = `SELECT DISTINCT userSeen FROM seen WHERE cvID = ${cvId};`
+			return await this.db.all(sql)
+		} catch (err) {
+			throw new Error('Can not get seen data with using user id.')
+		}
 	}
 }
 

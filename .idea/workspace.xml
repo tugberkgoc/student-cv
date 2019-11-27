@@ -4,10 +4,15 @@
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/email.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/seenBy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/contact.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/cv-editor.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/cv-editor.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/myCV.handlebars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/seenBy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/contact.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/my-cv.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/my-cv.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/seenBy.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/seenBy.handlebars" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +46,13 @@
         <item name="SQLite - website.db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="SQLite - website.db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+        <item name="seen: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -155,6 +167,21 @@
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@313c542" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@42e2e9b3" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@313c542" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@426fc38d" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@313c542" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6bd42ce8" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@313c542" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1c5954f4" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
@@ -179,7 +206,7 @@
       <workItem from="1574172376536" duration="2102000" />
       <workItem from="1574260483501" duration="13443000" />
       <workItem from="1574640778146" duration="1067000" />
-      <workItem from="1574771102004" duration="5963000" />
+      <workItem from="1574771102004" duration="15988000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>
@@ -195,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574451454243</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix Import And CSS Files">
+      <created>1574783324431</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574783324431</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +260,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New CSS Style" />
-    <option name="LAST_COMMIT_MESSAGE" value="New CSS Style" />
+    <MESSAGE value="Fix Import And CSS Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Import And CSS Files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/modules/seenBy.js</url>
+          <line>28</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
