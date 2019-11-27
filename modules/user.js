@@ -61,19 +61,13 @@ module.exports = class User {
 		}
 	}
 
-	async uploadPicture(path, name, mimeType) {
-		const extension = mime.extension(mimeType)
-		console.log(`path: ${path}`)
-		console.log(`extension: ${extension}`)
-		await fs.copy(path, `public/avatars/${name}`)
-	}
-
 	async getUserUsingID(id) {
 		try {
+			if(id.length === 0) throw new Error('missing parametere')
 			const sql = `SELECT * FROM users WHERE id ="${id}";`
 			return await this.db.get(sql)
 		} catch (err) {
-			throw new Error('Can not user email with using user id.')
+			throw err
 		}
 	}
 

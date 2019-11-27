@@ -115,6 +115,29 @@ describe('cvPull()', () => {
 		done()
 	})
 
+	test('pull cv data', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		// eslint-disable-next-line max-len
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		await expect(cv.cvPull('')).rejects.toEqual(Error('the param is missing'))
+		done()
+	})
+
 })
 
 
@@ -235,6 +258,58 @@ describe('getDataUsingParamsID', () => {
 		await cv.edit(cvData)
 		const valid = await cv.getDataUsingParamsID(0)
 		expect(valid).toBe(false)
+		done()
+	})
+
+	test('missing parameter', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		await expect(cv.getDataUsingParamsID(''))
+		.rejects.toEqual(Error('Can not get data from cv.'))
+		done()
+		
+	})
+
+})
+
+
+describe('getDataFromCv()', () =>{
+
+	test('valid data get', async done =>{ // need to be fixed 
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		const valid = await cv.getDataFromCv()
+		expect(valid.userID).toBe(undefined)
 		done()
 	})
 

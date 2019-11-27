@@ -86,6 +86,7 @@ module.exports = class Cv {
 
 	async cvPull(userID) {
 		try {
+			if(userID.length === 0) throw Error('the param is missing')
 			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${userID}';`
 			let data = await this.db.get(sql)
 			if (data.records !== 0) {
@@ -96,7 +97,7 @@ module.exports = class Cv {
 				return false
 			}
 		} catch (err) {
-			throw new Error('There is no user id provided.')
+			throw err
 		}
 	}
 
@@ -115,6 +116,7 @@ module.exports = class Cv {
 
 	async getDataUsingParamsID(paramsID) {
 		try {
+			if (paramsID.length === 0) throw new Error('Can not get data from cv.')
 			if (paramsID !== 0) {
 				const db = await sqLite.open(dbName)
 				const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";`
@@ -125,7 +127,7 @@ module.exports = class Cv {
 				return false
 			}
 		} catch (err) {
-			throw new Error('Can not get data from cv.')
+			throw err
 		}
 	}
 

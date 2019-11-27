@@ -17,6 +17,8 @@ module.exports = class SeenBy {
 
 	async postSeenUsingCvIdAndUsername(cvId, username) {
 		try {
+			if (cvId.length === 0) throw new Error('missing parameter cvId')
+			if (username.length === 0) throw new Error('missing parameter username')
 			const sql = `INSERT INTO seen(cvID, userSeen) VALUES("${cvId}","${username}")`
 			await this.db.run(sql)
 			return true
@@ -28,7 +30,8 @@ module.exports = class SeenBy {
 	async getSeenUsingID(cvId) {
 		try {
 			const sql = `SELECT DISTINCT userSeen FROM seen WHERE cvID = ${cvId};`
-			return await this.db.all(sql)
+			const getViewer = await this.db.all(sql)
+			return getViewer
 		} catch (err) {
 			throw new Error('Can not get seen data with using user id.')
 		}
