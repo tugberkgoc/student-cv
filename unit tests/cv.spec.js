@@ -280,17 +280,16 @@ describe('getDataUsingParamsID', () => {
 		}
 		await cv.edit(cvData)
 		await expect(cv.getDataUsingParamsID(''))
-		.rejects.toEqual(Error('Can not get data from cv.'))
+			.rejects.toEqual(Error('Can not get data from cv.'))
 		done()
-		
 	})
 
 })
 
 
-describe('getDataFromCv()', () =>{
+describe('getDataFromCv()', () => {
 
-	test('valid data get', async done =>{ // need to be fixed 
+	test('valid data get', async done => { // need to be fixed
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()

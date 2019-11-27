@@ -2,8 +2,6 @@
 'use strict'
 
 const saltRounds = 10
-const fs = require('fs-extra')
-const mime = require('mime-types')
 const sqLite = require('sqlite-async')
 const bcrypt = require('bcrypt-promise')
 const nodeMailer = require('nodemailer')
