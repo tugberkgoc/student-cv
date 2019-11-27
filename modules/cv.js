@@ -34,7 +34,7 @@ module.exports = class Cv {
 				summary: body.summary
 			}
 		} catch (err) {
-			throw err
+			throw new Error('There is no id and body.')
 		}
 	}
 
@@ -54,7 +54,7 @@ module.exports = class Cv {
 				return true
 			}
 		} catch (err) {
-			throw err
+			throw new Error('There is no cv data for editing.')
 		}
 	}
 
@@ -84,7 +84,7 @@ module.exports = class Cv {
 				return false
 			}
 		} catch (err) {
-			throw err
+			throw new Error('There is no user id provided.')
 		}
 	}
 

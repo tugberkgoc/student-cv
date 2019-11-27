@@ -27,6 +27,15 @@ describe('cvObj()', () => {
 		done()
 	})
 
+	test('when creating an object, error is occurred', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		await expect(cv.cvObj()).rejects.toEqual(Error('There is no id and body.'))
+		done()
+	})
+
 })
 
 describe('edit()', () => {
@@ -54,6 +63,15 @@ describe('edit()', () => {
 		const updatedCvObject = await cv.edit(cvData)
 		expect(cvObject).toBe(true)
 		expect(updatedCvObject).toBe(true)
+		done()
+	})
+
+	test('when editing cv, error is occurred', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		await expect(cv.edit()).rejects.toEqual(Error('There is no cv data for editing.'))
 		done()
 	})
 
