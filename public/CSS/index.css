@@ -332,3 +332,18 @@ input.editor[type=submit] {
 .block-element {
   display: block;
 }
+
+#about-page-span {
+  display: inline-block;
+  margin-top: 80px;
+}
+
+#about-page-main-content {
+  display: grid;
+  justify-items: center;
+}
+
+#about-text{
+  width: 50%; 
+  text-align: center;
+}
