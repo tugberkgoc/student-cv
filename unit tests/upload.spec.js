@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict'
 
 const UploadFile = require('../modules/cv')

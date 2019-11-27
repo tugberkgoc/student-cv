@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict'
 
 const Router = require('koa-router')
@@ -28,7 +29,6 @@ router.get('/', async ctx => {
  * @name Contact
  * @route {post} /contact/send-email
  */
-// eslint-disable-next-line max-lines-per-function
 router.post('/send-email', async ctx => {
 	const user = await new User(dbName)
 	const toData = await user.getUserEmailWithUsingId(ctx.query.toId)

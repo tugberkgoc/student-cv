@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict'
 
 const saltRounds = 10
@@ -102,7 +103,7 @@ module.exports = class User {
 		}
 	}
 
-	// eslint-disable-next-line max-lines-per-function
+
 	emailSetup(emailFrom, emailTo, data) {
 		const output = `
 	<p>You have a new contact request.</p>
@@ -114,8 +115,8 @@ module.exports = class User {
 			<li>Phone: ${data.phone}</li>
 		</ul>
 		<h3>Message</h3>
-		<p>${data.message}</p>
-	`
+		<p>${data.message}</p>`
+
 		return {
 			from: emailFrom,
 			to: emailTo,

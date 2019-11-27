@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict'
 
 const Accounts = require('../modules/user.js')

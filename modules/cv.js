@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict'
 
 const fs = require('fs-extra')
@@ -12,8 +13,19 @@ module.exports = class Cv {
 		return (async() => {
 			this.db = await sqLite.open(dbName)
 			// we need this table to store cv details whilst relating to user
-			// eslint-disable-next-line max-len
-			const sql = 'CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, name TEXT, addressLine1 TEXT, addressLine2 TEXT,postcode TEXT,country TEXT, summary TEXT, skills TEXT, ref TEXT, usersWords TEXT, avatarName TEXT, FOREIGN KEY(userID) REFERENCES users(id));'
+			const sql = `CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT,
+						userID INTEGER,
+						name TEXT,
+						addressLine1 TEXT,
+						addressLine2 TEXT,
+						postcode TEXT,
+						country TEXT,
+						summary TEXT,
+						skills TEXT,
+						ref TEXT,
+						usersWords TEXT,
+						avatarName TEXT,
+						FOREIGN KEY(userID) REFERENCES users(id));`
 			await this.db.run(sql)
 			return this
 		})()
