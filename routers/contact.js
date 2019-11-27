@@ -1,8 +1,8 @@
 'use strict'
 
 const Router = require('koa-router')
-const sqLite = require('sqlite-async')
-const email = require('../modules/email')
+const Email = require('../modules/email')
+
 
 const router = new Router()
 const dbName = 'website.db'
@@ -31,16 +31,16 @@ router.get('/', async ctx => {
  */
 // eslint-disable-next-line max-lines-per-function
 router.post('/send-email', async ctx => {
-	const db = await sqLite.open(dbName)
-	const sql1 = `SELECT email FROM users WHERE id=${ctx.session.id};`
-	const fromData = await db.get(sql1)
-	const sql2 = `SELECT email FROM users WHERE id=${ctx.query.toId};`
-	const toData = await db.get(sql2)
-	await db.close()
+	const email = await new Email()
+
+	const fromData = await email.getDataForSender(ctx.session.id)
+	const toData = await email.getDataForReciever(ctx.query.toId)
+	const transporter = await email.transporter()
+
 
 	const data = ctx.request.body
 	const mailOption = email.emailSetup(fromData.email, toData.email, data)
-	await email.transporter.sendMail(mailOption, err => {
+	await transporter.sendMail(mailOption, err => {
 		err ? console.log(err.message) : console.log('Email sent')
 	})
 	await ctx.redirect('/', {message: 'Email has been sent!'})
