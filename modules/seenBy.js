@@ -32,7 +32,6 @@ module.exports = class SeenBy {
 			const sql = `SELECT DISTINCT userSeen FROM seen WHERE cvID = ${cvId};`
 			const getViewer = await this.db.all(sql)
 			return getViewer
-
 		} catch (err) {
 			throw new Error('Can not get seen data with using user id.')
 		}
