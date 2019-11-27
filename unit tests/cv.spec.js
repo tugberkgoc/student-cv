@@ -68,3 +68,75 @@ describe('cvPull()', () => {
 
 })
 
+
+describe('getCVUsingUserID()', () =>{
+
+	test('passing valid id', async done =>{
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		await cv.edit(cvData)
+		const getCVID = await cv.getCVUsingUserID(1)
+		expect(getCVID.name).toBe('doej')
+		done()
+	})
+
+	test('when is not valid', async done =>{ 
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		await cv.edit(cvData)
+		await expect(cv.getCVUsingUserID())
+	
+		.rejects.toEqual(Error('Can not get cv data.'))
+		done()
+	})
+
+	test('missing parameter', async done =>{
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		await cv.edit(cvData)
+		const valid = await cv.getCVUsingUserID(0)
+		expect(valid).toBe(false)
+
+		done()
+	})	
+})
+
+
+describe('getDataUsingParamsID', () =>{
+
+	test('passing valid param id', async done =>{
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		await cv.edit(cvData)
+		const ParamsData = await cv.getDataUsingParamsID(1)
+		expect(ParamsData.userID).toBe(1)
+		done()
+	})
+
+	test('missing parameter', async done =>{
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		await cv.edit(cvData)
+		const valid = await cv.getDataUsingParamsID(0)
+		expect(valid).toBe(false)
+
+		done()
+	})
+
+})
+
