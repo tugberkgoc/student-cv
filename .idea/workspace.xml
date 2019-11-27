@@ -3,22 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/email.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/seenBy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/seenBy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/contact.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/my-cv.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/my-cv.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/seenBy.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/seenBy.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/upload.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/upload.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/user.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/user.spec.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="152" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -46,13 +42,6 @@
         <item name="SQLite - website.db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="SQLite - website.db" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="seen: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -84,6 +73,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -113,15 +103,38 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.index.js">
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/index.js" working-dir="$PROJECT_DIR$">
+  <component name="RunManager" selected="npm.linter">
+    <configuration name="sendEmail()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/unit tests/user.spec.js" />
+      <test-names>
+        <test-name value="sendEmail()" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="jsdoc" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="uploadPicture" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/unit tests/upload.spec.js" />
+      <test-names>
+        <test-name value="uploadPicture" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="linter" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="jsdoc" />
+        <script value="linter" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -142,6 +155,16 @@
       <command value="run" />
       <scripts>
         <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="unit" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="unit" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -149,9 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.index.js" />
+        <item itemvalue="npm.linter" />
+        <item itemvalue="npm.unit" />
         <item itemvalue="npm.test" />
-        <item itemvalue="npm.jsdoc" />
+        <item itemvalue="Jest.uploadPicture" />
+        <item itemvalue="Jest.sendEmail()" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +231,8 @@
       <workItem from="1574172376536" duration="2102000" />
       <workItem from="1574260483501" duration="13443000" />
       <workItem from="1574640778146" duration="1067000" />
-      <workItem from="1574771102004" duration="15988000" />
+      <workItem from="1574771102004" duration="17376000" />
+      <workItem from="1574861998061" duration="1470000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>
@@ -263,16 +289,11 @@
     <MESSAGE value="Fix Import And CSS Files" />
     <option name="LAST_COMMIT_MESSAGE" value="Fix Import And CSS Files" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/modules/seenBy.js</url>
-          <line>28</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/student_cv$getUserUsingID__.info" NAME="getUserUsingID() Coverage Results" MODIFIED="1574862825814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$login__.info" NAME="login() Coverage Results" MODIFIED="1574862327412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$register__.info" NAME="register() Coverage Results" MODIFIED="1574862296195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$sendEmail__.info" NAME="sendEmail() Coverage Results" MODIFIED="1574863024902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$uploadPicture.info" NAME="uploadPicture Coverage Results" MODIFIED="1574863194030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -9,8 +9,6 @@ const nodeMailer = require('nodemailer')
 
 require('dotenv').config()
 
-const dbName = 'website.db'
-
 module.exports = class User {
 
 	constructor(dbName = ':memory:') {
@@ -38,14 +36,16 @@ module.exports = class User {
 		}
 	}
 
-	// eslint-disable-next-line complexity
+	// eslint-disable-next-line complexity,max-lines-per-function
 	async register(user, email, phoneNumber, pass) {
 		try {
 			if (user.length === 0) throw new Error('missing username')
 			if (email.length === 0) throw new Error('missing email')
 			if (pass.length === 0) throw new Error('The password is missing.')
 			if (phoneNumber.length === 0) throw new Error('Missing Phone Number')
+			// eslint-disable-next-line no-magic-numbers
 			if (phoneNumber.length < 11 || phoneNumber.length > 11) throw new Error('Phone Number Invalid (length 11)')
+			// eslint-disable-next-line no-magic-numbers
 			if (pass.length < 6) throw new Error('password is too short')
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
