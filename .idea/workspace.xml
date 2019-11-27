@@ -4,6 +4,8 @@
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/about.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/cv.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/cv.spec.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,21 +103,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.cvPull().pull not exist cv data">
-    <configuration name="cvObj().create a cv object" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
-      <test-names>
-        <test-name value="cvObj()" />
-        <test-name value="create a cv object" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.linter">
     <configuration name="cvPull()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -171,6 +159,16 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="linter" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="linter" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -183,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.linter" />
         <item itemvalue="Jest.cvPull().pull not exist cv data" />
         <item itemvalue="Jest.cvPull()" />
         <item itemvalue="Jest.cvPull().pull cv data" />
         <item itemvalue="Jest.edit().edit cv data" />
-        <item itemvalue="Jest.cvObj().create a cv object" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +241,7 @@
       <workItem from="1574260483501" duration="13443000" />
       <workItem from="1574640778146" duration="1067000" />
       <workItem from="1574771102004" duration="17376000" />
-      <workItem from="1574861998061" duration="2950000" />
+      <workItem from="1574861998061" duration="6414000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>

@@ -10,8 +10,17 @@ describe('cvObj()', () => {
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		// eslint-disable-next-line max-len
-		const body = {name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const body = {
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		const cvObject = await cv.cvObj(1, body)
 		expect(cvObject.userID).toBe(1)
 		expect(cvObject.name).toBe('doej')
@@ -27,8 +36,18 @@ describe('edit()', () => {
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		// eslint-disable-next-line max-len
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		const cvObject = await cv.edit(cvData)
 		cvData.name = 'jack'
 		cvData.postcode = 'CV11AF'
@@ -48,7 +67,18 @@ describe('cvPull()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
 		// eslint-disable-next-line max-len
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
 		const cvObject = await cv.cvPull(1)
 		expect(cvObject.name).toBe('doej')
@@ -69,72 +99,123 @@ describe('cvPull()', () => {
 })
 
 
-describe('getCVUsingUserID()', () =>{
+describe('getCVUsingUserID()', () => {
 
-	test('passing valid id', async done =>{
+	test('passing valid id', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
 		const getCVID = await cv.getCVUsingUserID(1)
 		expect(getCVID.name).toBe('doej')
 		done()
 	})
 
-	test('when is not valid', async done =>{ 
+	test('when is not valid', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
-		await expect(cv.getCVUsingUserID())
-	
-		.rejects.toEqual(Error('Can not get cv data.'))
+		await expect(cv.getCVUsingUserID()).rejects.toEqual(Error('Can not get cv data.'))
 		done()
 	})
 
-	test('missing parameter', async done =>{
+	test('missing parameter', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
 		const valid = await cv.getCVUsingUserID(0)
 		expect(valid).toBe(false)
-
 		done()
-	})	
+	})
 })
 
 
-describe('getDataUsingParamsID', () =>{
+describe('getDataUsingParamsID', () => {
 
-	test('passing valid param id', async done =>{
+	test('passing valid param id', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
 		const ParamsData = await cv.getDataUsingParamsID(1)
 		expect(ParamsData.userID).toBe(1)
 		done()
 	})
 
-	test('missing parameter', async done =>{
+	test('missing parameter', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
-		const cvData = {userID: 1, name: 'doej', addressLine1: 'Oxford Street', addressLine2: 'Aldbourne Road', postcode: 'CV14EQ', ref: 'Reference', usersWords: 'Some words', Country: 'UK', skills: 'JAVA, PHP and JavaScript', summary: 'A short summary'}
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
 		await cv.edit(cvData)
 		const valid = await cv.getDataUsingParamsID(0)
 		expect(valid).toBe(false)
-
 		done()
 	})
 

@@ -90,11 +90,10 @@ module.exports = class Cv {
 
 	async getCVUsingUserID(id) {
 		try {
-			if(id !== 0){
-			const sql = `SELECT * FROM cv WHERE userID = ${id};`
-			const data = await this.db.get(sql)
-			return data
-			}else{
+			if (id !== 0) {
+				const sql = `SELECT * FROM cv WHERE userID = ${id};`
+				return await this.db.get(sql)
+			} else {
 				return false
 			}
 		} catch (err) {
@@ -103,20 +102,19 @@ module.exports = class Cv {
 	}
 
 	async getDataUsingParamsID(paramsID) {
-		try{
-			if(paramsID !== 0){
-			const db = await sqLite.open(dbName)
-			const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";`
-			const cvData = await db.get(sql)
-			await db.close()
-			return cvData
-			}else{
+		try {
+			if (paramsID !== 0) {
+				const db = await sqLite.open(dbName)
+				const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";`
+				const cvData = await db.get(sql)
+				await db.close()
+				return cvData
+			} else {
 				return false
 			}
-		}catch(err){
+		} catch (err) {
 			throw new Error('Can not get data from cv.')
 		}
-
 	}
 }
 
