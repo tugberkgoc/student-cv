@@ -128,5 +128,19 @@ module.exports = class Cv {
 			throw new Error('Can not get data from cv.')
 		}
 	}
+
+	async getDataFromCv(){
+		try{
+			const sql = 'SELECT summary, name, userID, avatarName FROM cv '
+			const db = await sqLite.open(dbName)
+			const summary = await db.all(sql)
+			await db.close()
+			return summary
+		}catch(err){
+			throw new Error('Cannot get data from cv.')
+		}
+	}
+
+
 }
 

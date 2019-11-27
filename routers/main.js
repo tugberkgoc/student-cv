@@ -19,13 +19,10 @@ const dbName = 'website.db'
 router.get('/', async ctx => {
 	try {
 		new User(dbName)
-		new Cv(dbName)
+		const cv = await new Cv(dbName)
 		const data = ctx.session.authorised
-		const sql = 'SELECT summary, name, userID, avatarName FROM cv '
-		const db = await sqLite.open(dbName)
-		const Summary = await db.all(sql)
-		await db.close()
-		return await ctx.render('index', {data, cv: Summary})
+		const summaryData = await cv.getDataFromCv()
+		return await ctx.render('index', {data, cv: summaryData})
 	} catch (err) {
 		await ctx.render('error', {message: err.message})
 	}
