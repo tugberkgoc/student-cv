@@ -109,10 +109,11 @@ router.post('/edit', koaBody, async ctx => {
 		const obj = await cv.cvObj(ctx.session.id, body)
 		const {path, name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
-		if (type !== 'bin') {
+		console.log(type)
+		if (type === 'tif' || type === 'jpeg' || type === 'png') {
 			await cv.uploadPicture(ctx.session.id, path, name)
 		}
-		await ctx.redirect('/')
+		await ctx.redirect('/cv/edit2')
 	} catch (err) {
 		ctx.body = err.message
 	}

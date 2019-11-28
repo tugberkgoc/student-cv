@@ -31,7 +31,10 @@
     <label class='signup'>Summary</label>
     <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value= "{{cvData.summary}}">
 
-    <a class="editButton" type='submit' href='/cv/edit2'>Edit CV</a>
+    <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
+    <input type="file" name="fileToUpload" >
+
+    <input class='signup' type="submit" value="Create">
 
 </form>
 {{else}}
@@ -66,7 +69,7 @@
     <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
     
-    <a class="editButton" type='submit' href='/cv/edit2'>Edit CV</a>
+    <input class='signup' type="submit" value="Create">
 
 </form>
 {{/if}}
