@@ -13,6 +13,7 @@ module.exports = class User {
 	constructor(dbName = ':memory:') {
 		return (async() => {
 			this.db = await sqLite.open(dbName)
+			// eslint-disable-next-line max-len
 			const sql = 'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, email TEXT, pass TEXT, phoneNumber TEXT);'
 			await this.db.run(sql)
 			return this
