@@ -143,6 +143,20 @@ module.exports = class Cv {
 		}
 	}
 
+	async search(cvName){
+		try{
+		//	if(cvName.length === 0 ) throw new Error('Cannot get results.')
+			const sql = `SELECT name, summary FROM cv WHERE upper(name)
+			LIKE "%${cvName}%" OR upper(summary) LIKE upper ("%${cvName}%");`
+			const db = await sqLite.open(dbName)
+			const searchData = await db.all(sql)
+			await db.close()
+			return searchData
+		}catch(err){
+			throw err
+		}
+	}
+
 
 }
 

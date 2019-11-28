@@ -1,0 +1,24 @@
+'use strict'
+
+const Cv = require('../modules/cv')
+const Router = require('koa-router')
+
+const router = new Router()
+const dbName = 'website.db'
+
+router.post('/', async ctx =>{
+    try{
+        console.log('test')
+        const cvName = ctx.query.q
+        console.log(ctx.query.q)
+        const cv = await new Cv(dbName)
+        const searchData = await cv.search(cvName)
+        console.log(searchData)
+        return await ctx.render('result', {result: searchData, query: cvName})
+    }catch(err){
+        console.log(err.message)
+    }
+})
+
+
+module.exports = router.routes()

@@ -1,0 +1,20 @@
+{{!< main }}
+
+{{> header}}
+
+
+
+{{#if query}}
+<p id="msg">Results for "{{query}}"</p>
+{{/if}}
+    {{#if result}}
+            {{#each result}}
+                <h1 name="getCv"><a href="/my-cv?name{{this.name}}">{{this.name}}</a></h1>
+                <p>{{this.summary}}</p>
+                {{/each}}
+                {{else}}
+                <p>no results found.</p>
+    {{/if}}
+
+
+{{> footer}}

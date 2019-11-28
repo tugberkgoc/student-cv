@@ -49,5 +49,7 @@ router.use('/about', require('./routers/about'))
 
 router.use('/seenBy', require('./routers/seenBy'))
 
+router.use('/result', require('./routers/search'))
+
 app.use(router.routes())
 module.exports = app.listen(port, async() => console.log(`listening on port ${port}`))
