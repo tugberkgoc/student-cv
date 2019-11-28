@@ -6,7 +6,7 @@ const Router = require('koa-router')
 const router = new Router()
 const dbName = 'website.db'
 
-router.post('/', async ctx => {
+router.post('/result', async ctx => {
 	try {
 		console.log('test')
 		const cvName = ctx.request.body.q
