@@ -7,7 +7,7 @@ const Router = require('koa-router')
 const router = new Router()
 const dbName = 'website.db'
 
-router.post('/', async ctx => {
+router.post('/result', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		console.log('test')

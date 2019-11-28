@@ -58,7 +58,27 @@ module.exports = class Cv {
 				return true
 			} else {
 				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, skills, ref, summary) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.skills}','${cvData.ref}','${cvData.summary}')`
+				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, skills, ref, usersWords, summary) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.skills}','${cvData.ref}','${cvData.summary}')`
+				await this.db.run(sql)
+				return true
+			}
+		} catch (err) {
+			throw new Error('There is no cv data for editing.')
+		}
+	}
+
+	async edit2(cvData) {
+		try {
+			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${cvData.userID}';`
+			const data = await this.db.get(sql)
+			if (data.records !== 0) {
+				// eslint-disable-next-line max-len
+				sql = `UPDATE cv SET usersWords='${cvData.usersWords}' WHERE userID='${cvData.userID}'`
+				await this.db.run(sql)
+				return true
+			} else {
+				// eslint-disable-next-line max-len
+				sql = `INSERT INTO cv(userID, usersWords) VALUES('${cvData.userID}','${cvData.usersWords}')`
 				await this.db.run(sql)
 				return true
 			}
@@ -138,5 +158,5 @@ module.exports = class Cv {
 		} catch (err) {
 			throw err
 		}
-	}
+	};
 }

@@ -23,6 +23,33 @@ router.get('/', async ctx => {
 	}
 })
 
+router.post('/edit2', async ctx => {
+	try {
+		console.log(ctx.request.body)
+		const body = ctx.request.body
+		const cv = await new Cv(dbName)
+		const obj = await cv.cvObj(ctx.session.id, body)
+		await cv.edit2(obj)
+		await ctx.redirect('/')
+	} catch (err) {
+		ctx.body = err.message
+	}
+})
+
+router.get('/edit2', async ctx => {
+	try {
+		const data = ctx.session.authorised
+		if (data) {
+			const cv = await new Cv(dbName)
+			const cvData = await cv.cvPull(ctx.session.id)
+			return await ctx.render('cv-editorPage2', {data, cvData})
+		} else {
+			ctx.redirect('/')
+		}
+	} catch (err) {
+		await ctx.render('error', {message: err.message})
+	}
+})
 
 /**
  * The view specific CV page.
