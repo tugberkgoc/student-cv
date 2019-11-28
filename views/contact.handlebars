@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div class="contact">
-      <h3>Email Us</h3>
+      <h3>Email {{name}}</h3>
       {{message}}
       <form method="POST" action="contact/send-email?toId={{toId}}">
       <p>
@@ -24,10 +24,6 @@
       <p>
         <label>Company</label>
         <input type="text" name="company">
-      </p>
-      <p>
-        <label>Phone Number</label>
-        <input type="text" name="phone">
       </p>
       <p class="full">
         <label>Message</label>

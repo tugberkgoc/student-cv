@@ -35,16 +35,14 @@ module.exports = class User {
 		}
 	}
 
-	// eslint-disable-next-line complexity,max-lines-per-function
+	// eslint-disable-next-line complexity
 	async register(user, email, phoneNumber, pass) {
 		try {
 			if (user.length === 0) throw new Error('missing username')
 			if (email.length === 0) throw new Error('missing email')
 			if (pass.length === 0) throw new Error('The password is missing.')
 			if (phoneNumber.length === 0) throw new Error('Missing Phone Number')
-			// eslint-disable-next-line no-magic-numbers
 			if (phoneNumber.length < 11 || phoneNumber.length > 11) throw new Error('Phone Number Invalid (length 11)')
-			// eslint-disable-next-line no-magic-numbers
 			if (pass.length < 6) throw new Error('password is too short')
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
@@ -71,16 +69,16 @@ module.exports = class User {
 
 	async getUserEmailWithUsingId(id) {
 		try {
-			const sql = `SELECT email FROM users WHERE id=${id};`
+			const sql = `SELECT email, phoneNumber FROM users WHERE id=${id};`
 			return await this.db.get(sql)
 		} catch (err) {
 			throw new Error('Can not user email with using user id.')
 		}
 	}
 
-	async sendEmail(fromEmail, toEmail, body) {
+	async sendEmail(from, toEmail, body) {
 		try {
-			const mailOption = this.emailSetup(fromEmail, toEmail, body)
+			const mailOption = this.emailSetup(from.email, toEmail, body, from.phoneNumber)
 			const transporter = nodeMailer.createTransport({
 				service: 'gmail',
 				auth: {
@@ -96,7 +94,7 @@ module.exports = class User {
 	}
 
 
-	emailSetup(emailFrom, emailTo, data) {
+	emailSetup(emailFrom, emailTo, data, phoneNumber) {
 		const output = `
 	<p>You have a new contact request.</p>
 		<h3>Contact Details</h3>
@@ -104,7 +102,7 @@ module.exports = class User {
 			<li>Name: ${data.name}</li>  
 			<li>Company: ${data.company}</li>
 			<li>Email: ${emailFrom}</li>
-			<li>Phone: ${data.phone}</li>
+			<li>Phone: ${phoneNumber}</li>
 		</ul>
 		<h3>Message</h3>
 		<p>${data.message}</p>`
