@@ -4,11 +4,7 @@
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/seenBy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/cv.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/cv.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/upload.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/search.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +198,7 @@
       <workItem from="1574640778146" duration="1067000" />
       <workItem from="1574771102004" duration="17376000" />
       <workItem from="1574861998061" duration="7995000" />
-      <workItem from="1574894397273" duration="4334000" />
+      <workItem from="1574894397273" duration="4986000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>

@@ -4,7 +4,6 @@
 const fs = require('fs-extra')
 const sqLite = require('sqlite-async')
 
-//const dbName = 'wbesite.db'
 module.exports = class Cv {
 
 	constructor(dbName = ':memory:') {
@@ -130,17 +129,14 @@ module.exports = class Cv {
 		return await this.db.all(sql)
 	}
 
-	async search(cvName){
-		try{
-		//	if(cvName.length === 0 ) throw new Error('Cannot get results.')
+	async search(cvName) {
+		try {
+			//	if(cvName.length === 0 ) throw new Error('Cannot get results.')
 			const sql = `SELECT name, summary FROM cv WHERE upper(name)
 			LIKE "%${cvName}%" OR upper(summary) LIKE upper ("%${cvName}%");`
-			const searchData = await this.db.all(sql)
-			return searchData
-		}catch(err){
+			return await this.db.all(sql)
+		} catch (err) {
 			throw err
 		}
-	};
-
-
+	}
 }
