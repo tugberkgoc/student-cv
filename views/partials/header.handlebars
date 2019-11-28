@@ -1,28 +1,22 @@
 <nav>
   <ul>
     <li><a href="/">Home </a></li>
-    {{#if data}}
-    <li><a href="/contact">Contacts</a></li>
-    {{/if}}
     <li><a href="/about">About us</a></li>
 
     {{#if data}}
 
       <li>
-        <a class="myCV"  href="/cv">My CV</a>
+        <a class="myCV" href="/cv">My CV</a>
       </li>
-
 
       <li>
-           <section class="search-box">
-            <form action="/result" method="POST">
-            <input class="search-box" type="text" name="q" placeholder="search..." >
+        <section class="search-box">
+          <form action="/result" method="POST">
+            <input class="search-box" type="text" name="q" placeholder="search...">
             <input class="submit" type="submit" value="search">
-            </form>
-          </section>
+          </form>
+        </section>
       </li>
-
-
 
       <li>
         <a class="login" href="/authentication/logout">log out</a>
@@ -30,30 +24,28 @@
 
     {{else}}
 
-        <li>
-          <a href="/register">register</a>
-        </li>
-
-        <li>
-           <section class="search-box">
-            <form action="/result" method="POST">
-            <input class="search-box" type="text" name="q" placeholder="search..." >
-            <input class="submit" type="submit" value="search">
-            </form>
-          </section>
+      <li>
+        <a href="/register">register</a>
       </li>
 
-        <li>
-
-          <form class="login" action="/authentication/login" method="post">
-
-             <i class="fa fa-user" ></i>  <input type="text" name="user" placeholder="Username" size="11" value="{{user}}" autofocus>
-            <i class="fa fa-lock"></i>  <input type="password" name="pass" placeholder="Password" size="11" value="{{pass}}">
-            <input type="submit" id="myPass" value="Log in">
+      <li>
+        <section class="search-box">
+          <form action="/result" method="POST">
+            <input class="search-box" type="text" name="q" placeholder="search...">
+            <input class="submit" type="submit" value="search">
           </form>
-        </li>
+        </section>
+      </li>
 
-      {{/if}}
+      <li>
+        <form class="login" action="/authentication/login" method="post">
+          <i class="fa fa-user"></i> <input type="text" name="user" placeholder="Username" size="11" value="{{user}}" autofocus>
+          <i class="fa fa-lock"></i> <input type="password" name="pass" placeholder="Password" size="11" value="{{pass}}">
+          <input type="submit" id="myPass" value="Log in">
+        </form>
+      </li>
+
+    {{/if}}
   </ul>
 </nav>
 

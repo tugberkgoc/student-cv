@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 'use strict'
 
 const Router = require('koa-router')
@@ -23,7 +22,7 @@ router.post('/login', async ctx => {
 		ctx.session.id = id
 		return ctx.redirect('/?msg=you are now logged in...')
 	} catch (err) {
-		await ctx.render('index', {mesage: err.message})
+		await ctx.render('index', {message: err.message})
 	}
 })
 

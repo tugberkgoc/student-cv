@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 'use strict'
 
 const Router = require('koa-router')
@@ -23,15 +22,10 @@ router.get('/', async ctx => await ctx.render('register'))
  */
 router.post('/', koaBody, async ctx => {
 	try {
-		// extract the data from the request
 		const body = ctx.request.body
-		console.log(body)
-
-		// call the functions in the module
 		const user = await new User(dbName)
 		await user.register(body.user, body.email,body.phoneNumber, body.pass)
-		// redirect to the home page
-		ctx.redirect(`/?msg=new user "${body.name}" added`)
+		ctx.redirect(`/?msg=new user "${body.user}" added`)
 	} catch (err) {
 		await ctx.render('register', {message: err.message })
 	}

@@ -42,7 +42,6 @@
     "no-extra-parens": "error",
     "no-func-assign": "error",
     "no-irregular-whitespace": "error",
-    "no-magic-numbers": ["warn", {"ignore": [-1, 0, 1]}],
     "no-multi-spaces": "warn",
     "no-multi-str": "off",
     "no-unexpected-multiline": "error",

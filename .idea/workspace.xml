@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/about.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/authentication/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/authentication/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/authentication/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/seenBy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/header.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.handlebars" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -199,6 +207,7 @@
       <workItem from="1574771102004" duration="17376000" />
       <workItem from="1574861998061" duration="7995000" />
       <workItem from="1574894397273" duration="4986000" />
+      <workItem from="1574983460711" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>
@@ -268,8 +277,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routers/cv.js</url>
-          <line>90</line>
-          <properties lambdaOrdinal="-1" />
+          <line>89</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
