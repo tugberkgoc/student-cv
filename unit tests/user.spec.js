@@ -54,7 +54,6 @@ describe('register()', () => {
 		done()
 	})
 
-	
 	test('error if phone number is missing', async done => {
 		expect.assertions(1)
 		const account = await new Accounts()
@@ -124,13 +123,10 @@ describe('getUserUsingID()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
 		await expect(account.getUserUsingID(''))
-		.rejects.toEqual(Error('missing parametere'))
-		
+			.rejects.toEqual(Error('missing parametere'))
 		done()
 	})
 })
-
-
 
 
 describe('getUserEmailWithUsingId()', () => {
@@ -148,8 +144,8 @@ describe('getUserEmailWithUsingId()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
 		await expect(account.getUserEmailWithUsingId(''))
-		.rejects.toEqual(Error('Can not user email with using user id.'))
-		
+			.rejects.toEqual(Error('Can not user email with using user id.'))
+
 		done()
 	})
 
@@ -172,7 +168,7 @@ describe('sendEmail()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
 		await expect(account.sendEmail('email@email.com', '',))
-		.rejects.toEqual(Error('There is an error occurred, when send an email.'))
+			.rejects.toEqual(Error('There is an error occurred, when send an email.'))
 		done()
 	})
 

@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 'use strict'
 
+const mockFs = require('mock-fs')
 const Cvs = require('../modules/cv.js')
 const Accounts = require('../modules/user.js')
 
@@ -280,17 +281,15 @@ describe('getDataUsingParamsID', () => {
 		}
 		await cv.edit(cvData)
 		await expect(cv.getDataUsingParamsID(''))
-		.rejects.toEqual(Error('Can not get data from cv.'))
+			.rejects.toEqual(Error('Can not get data from cv.'))
 		done()
-		
 	})
-
 })
 
 
-describe('getDataFromCv()', () =>{
+describe('getDataFromCv()', () => {
 
-	test('valid data get', async done =>{ // need to be fixed 
+	test('valid data get', async done => {
 		expect.assertions(1)
 		const cv = await new Cvs()
 		const account = await new Accounts()
@@ -315,3 +314,64 @@ describe('getDataFromCv()', () =>{
 
 })
 
+describe('uploadPicture()', () => {
+
+	beforeEach(() => {
+		mockFs({
+			'path/to/some.png': Buffer.from([8, 6, 7, 5, 3, 0, 9])
+		}, {createCwd: true, createTmp: true})
+	})
+
+	afterEach(() => {
+		mockFs.restore()
+	})
+
+	test('save picture to the server', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		const path = 'path/to/some.png'
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		const isSaved = await cv.uploadPicture(1, path, 'some.png')
+		expect(isSaved).toBe(true)
+		done()
+	})
+
+	test('try to save picture with wrong user id to the server', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		const path = 'path/to/some.png'
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			Country: 'UK',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		await expect(cv.uploadPicture(2, path, 'some.png'))
+			.rejects.toEqual(Error('There is no cv record for given user id'))
+		done()
+	})
+
+})

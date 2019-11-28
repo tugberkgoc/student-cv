@@ -2,10 +2,7 @@
 'use strict'
 
 const fs = require('fs-extra')
-const mime = require('mime-types')
 const sqLite = require('sqlite-async')
-
-const dbName = 'website.db'
 
 module.exports = class Cv {
 
@@ -70,23 +67,22 @@ module.exports = class Cv {
 		}
 	}
 
-	async uploadPicture(ID, path, name, mimeType) {
-		const extension = mime.extension(mimeType)
-		console.log(`path: ${path}`)
-		console.log(`extension: ${extension}`)
+	async uploadPicture(ID, path, name) {
 		await fs.copy(path, `public/avatars/${name}`)
 		let sql = `SELECT cvId FROM cv WHERE userID='${ID}';`
 		const data = await this.db.get(sql)
-		if (data.records !== 0) {
+		if (data) {
 			sql = `UPDATE cv SET avatarName='${name}' WHERE cvId ='${data.cvId}'`
 			await this.db.run(sql)
 			return true
+		} else {
+			throw new Error('There is no cv record for given user id')
 		}
 	}
 
 	async cvPull(userID) {
 		try {
-			if(userID.length === 0) throw Error('the param is missing')
+			if (userID.length === 0) throw Error('the param is missing')
 			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${userID}';`
 			let data = await this.db.get(sql)
 			if (data.records !== 0) {
@@ -118,11 +114,8 @@ module.exports = class Cv {
 		try {
 			if (paramsID.length === 0) throw new Error('Can not get data from cv.')
 			if (paramsID !== 0) {
-				const db = await sqLite.open(dbName)
 				const sql = `SELECT * FROM cv WHERE userID = "${paramsID}";`
-				const cvData = await db.get(sql)
-				await db.close()
-				return cvData
+				return await this.db.get(sql)
 			} else {
 				return false
 			}
@@ -131,16 +124,9 @@ module.exports = class Cv {
 		}
 	}
 
-	async getDataFromCv(){
-		try{
-			const sql = 'SELECT summary, name, userID, avatarName FROM cv '
-			const db = await sqLite.open(dbName)
-			const summary = await db.all(sql)
-			await db.close()
-			return summary
-		}catch(err){
-			throw new Error('Cannot get data from cv.')
-		}
+	async getDataFromCv() {
+		const sql = 'SELECT summary, name, userID, avatarName FROM cv '
+		return await this.db.all(sql)
 	}
 
 	async search(cvName){
@@ -159,4 +145,3 @@ module.exports = class Cv {
 
 
 }
-

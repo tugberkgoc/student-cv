@@ -4,7 +4,6 @@
 const Cv = require('../modules/cv')
 const User = require('../modules/user')
 const Router = require('koa-router')
-const sqLite = require('sqlite-async')
 
 const router = new Router()
 const dbName = 'website.db'
