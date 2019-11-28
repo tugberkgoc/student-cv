@@ -3,13 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.puppeteer.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.puppeteer.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/seenBy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unit tests/cv.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/cv.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/seenBy.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/seenBy.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/user.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/user.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/upload.spec.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="151" />
+    <option name="myElementSize" value="433" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -108,7 +107,17 @@
     </option>
   </component>
   <component name="RunManager" selected="npm.linter">
-    <configuration name="cvPull()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="seenBy.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/unit tests/seenBy.spec.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="uploadPicture()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -117,11 +126,11 @@
       <scope-kind value="SUITE" />
       <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
       <test-names>
-        <test-name value="cvPull()" />
+        <test-name value="uploadPicture()" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="cvPull().when pulling cv, error is occurred" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="uploadPicture().try to save picture with wrong user id to the server" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -130,35 +139,19 @@
       <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
       <test-names>
-        <test-name value="cvPull()" />
-        <test-name value="when pulling cv, error is occurred" />
+        <test-name value="uploadPicture()" />
+        <test-name value="try to save picture with wrong user id to the server" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="getCVUsingUserID()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="user.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
-      <test-names>
-        <test-name value="getCVUsingUserID()" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="getDataUsingParamsID" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
-      <test-names>
-        <test-name value="getDataUsingParamsID" />
-      </test-names>
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/unit tests/user.spec.js" />
       <method v="2" />
     </configuration>
     <configuration name="linter" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -174,10 +167,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.linter" />
-        <item itemvalue="Jest.getCVUsingUserID()" />
-        <item itemvalue="Jest.getDataUsingParamsID" />
-        <item itemvalue="Jest.cvPull().when pulling cv, error is occurred" />
-        <item itemvalue="Jest.cvPull()" />
+        <item itemvalue="Jest.uploadPicture().try to save picture with wrong user id to the server" />
+        <item itemvalue="Jest.uploadPicture()" />
+        <item itemvalue="Jest.user.spec.js" />
+        <item itemvalue="Jest.seenBy.spec.js" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +202,7 @@
       <workItem from="1574640778146" duration="1067000" />
       <workItem from="1574771102004" duration="17376000" />
       <workItem from="1574861998061" duration="7995000" />
-      <workItem from="1574894397273" duration="201000" />
+      <workItem from="1574894397273" duration="4334000" />
     </task>
     <task id="LOCAL-00001" summary="New CSS Style">
       <created>1574451444328</created>
@@ -232,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574783324431</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Code Formatted with using ESLint Settings">
+      <created>1574894632369</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574894632369</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +264,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New CSS Style" />
     <MESSAGE value="Fix Import And CSS Files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Import And CSS Files" />
+    <MESSAGE value="Code Formatted with using ESLint Settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Formatted with using ESLint Settings" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routers/cv.js</url>
+          <line>90</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/student_cv$getUserUsingID__.info" NAME="getUserUsingID() Coverage Results" MODIFIED="1574862825814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -274,15 +287,20 @@
     <SUITE FILE_PATH="coverage/student_cv$edit__.info" NAME="edit() Coverage Results" MODIFIED="1574875725980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvPull___pull_cv_data.info" NAME="cvPull().pull cv data Coverage Results" MODIFIED="1574864875679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$sendEmail__.info" NAME="sendEmail() Coverage Results" MODIFIED="1574863024902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$user_spec_js.info" NAME="user.spec.js Coverage Results" MODIFIED="1574902940856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$edit___when_editing_cv__error_is_occurred.info" NAME="edit().when editing cv, error is occurred Coverage Results" MODIFIED="1574875662443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvObj__.info" NAME="cvObj() Coverage Results" MODIFIED="1574875304144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvPull__.info" NAME="cvPull() Coverage Results" MODIFIED="1574875749221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$seenBy_spec_js.info" NAME="seenBy.spec.js Coverage Results" MODIFIED="1574902920583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvPull___when_pulling_cv__error_is_occurred.info" NAME="cvPull().when pulling cv, error is occurred Coverage Results" MODIFIED="1574876088142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$register__.info" NAME="register() Coverage Results" MODIFIED="1574862296195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvPull___pull_not_exist_cv_data.info" NAME="cvPull().pull not exist cv data Coverage Results" MODIFIED="1574864964717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$cv_spec_js.info" NAME="cv.spec.js Coverage Results" MODIFIED="1574902907725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$uploadPicture__.info" NAME="uploadPicture() Coverage Results" MODIFIED="1574903449527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$getDataUsingParamsID.info" NAME="getDataUsingParamsID Coverage Results" MODIFIED="1574876538460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$uploadPicture.info" NAME="uploadPicture Coverage Results" MODIFIED="1574863194030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvObj___create_a_cv_object.info" NAME="cvObj().create a cv object Coverage Results" MODIFIED="1574864187166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$uploadPicture___test.info" NAME="uploadPicture().test Coverage Results" MODIFIED="1574902863743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$edit___edit_cv_data.info" NAME="edit().edit cv data Coverage Results" MODIFIED="1574864743293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

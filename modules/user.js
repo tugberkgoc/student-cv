@@ -61,7 +61,7 @@ module.exports = class User {
 
 	async getUserUsingID(id) {
 		try {
-			if(id.length === 0) throw new Error('missing parametere')
+			if (id.length === 0) throw new Error('missing parametere')
 			const sql = `SELECT * FROM users WHERE id ="${id}";`
 			return await this.db.get(sql)
 		} catch (err) {
@@ -88,7 +88,7 @@ module.exports = class User {
 					pass: process.env.PASSWORD
 				}
 			})
-			await transporter.sendMail(mailOption, err => err ? console.log(err.message) : console.log('Email sent'))
+			await transporter.sendMail(mailOption)
 			return true
 		} catch (err) {
 			throw new Error('There is an error occurred, when send an email.')
