@@ -69,19 +69,9 @@ module.exports = class Cv {
 
 	async edit2(cvData) {
 		try {
-			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${cvData.userID}';`
-			const data = await this.db.get(sql)
-			if (data.records !== 0) {
-				// eslint-disable-next-line max-len
-				sql = `UPDATE cv SET usersWords='${cvData.usersWords}' WHERE userID='${cvData.userID}'`
-				await this.db.run(sql)
-				return true
-			} else {
-				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID, usersWords) VALUES('${cvData.userID}','${cvData.usersWords}')`
-				await this.db.run(sql)
-				return true
-			}
+			const sql = `UPDATE cv SET usersWords='${cvData.usersWords}' WHERE userID='${cvData.userID}'`
+			await this.db.run(sql)
+			return true
 		} catch (err) {
 			throw new Error('There is no cv data for editing.')
 		}

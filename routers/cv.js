@@ -23,7 +23,7 @@ router.get('/', async ctx => {
 	}
 })
 
-router.post('/edit2', async ctx => {
+router.post('/edit2', koaBody, async ctx => {
 	try {
 		console.log(ctx.request.body)
 		const body = ctx.request.body
@@ -109,7 +109,6 @@ router.post('/edit', koaBody, async ctx => {
 		const obj = await cv.cvObj(ctx.session.id, body)
 		const {path, name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
-		console.log(type)
 		if (type === 'tif' || type === 'jpeg' || type === 'png') {
 			await cv.uploadPicture(ctx.session.id, path, name)
 		}
