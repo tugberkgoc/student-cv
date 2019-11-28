@@ -9,7 +9,7 @@ const dbName = 'website.db'
 router.post('/', async ctx =>{
     try{
         console.log('test')
-        const cvName = ctx.query.q
+        const cvName = ctx.request.body.q
         console.log(ctx.query.q)
         const cv = await new Cv(dbName)
         const searchData = await cv.search(cvName)
