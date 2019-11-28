@@ -1,0 +1,23 @@
+{{!< main }}
+
+<link rel="stylesheet" type="text/css" href="../CSS/cvEditor.css"></main>
+
+{{> header}}
+
+<form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">
+
+    {{#if cvData}}
+        <label class='signup'>Users Words:</label><br>
+        <input class='signup' type='text' name="usersWords" placeholder="Users Words..." value="{{cvData.usersWords}}"><br>
+    {{else}}
+        <label class='signup'>Users Words:</label><br>
+        <input class='signup' type='text' name="usersWords" placeholder="Users Words..."><br>
+    {{/if}}
+
+    <input class='signup' type="submit" value="Create">
+
+</form>
+
+
+
+{{> footer}}

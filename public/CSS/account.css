@@ -53,17 +53,6 @@ input.signup[type=submit] {
   float: right;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-top: 35px;
-    height: 100px;
-    text-align: center;
-    background-color: rgb(84, 124, 160);
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
 .error .message p {
     background-color: #be4b49;
     margin: auto;

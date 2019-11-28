@@ -2,8 +2,6 @@
 'use strict'
 
 const Cv = require('../modules/cv')
-const User = require('../modules/user')
-const SeenBy = require('../modules/seenBy')
 const Router = require('koa-router')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 
@@ -25,6 +23,33 @@ router.get('/', async ctx => {
 	}
 })
 
+router.post('/edit2', koaBody, async ctx => {
+	try {
+		console.log(ctx.request.body)
+		const body = ctx.request.body
+		const cv = await new Cv(dbName)
+		const obj = await cv.cvObj(ctx.session.id, body)
+		await cv.edit2(obj)
+		await ctx.redirect('/')
+	} catch (err) {
+		ctx.body = err.message
+	}
+})
+
+router.get('/edit2', async ctx => {
+	try {
+		const data = ctx.session.authorised
+		if (data) {
+			const cv = await new Cv(dbName)
+			const cvData = await cv.cvPull(ctx.session.id)
+			return await ctx.render('cv-editorPage2', {data, cvData})
+		} else {
+			ctx.redirect('/')
+		}
+	} catch (err) {
+		await ctx.render('error', {message: err.message})
+	}
+})
 
 /**
  * The view specific CV page.
@@ -37,13 +62,9 @@ router.get('/', async ctx => {
 router.post('/view/:id', async ctx => {
 	try {
 		const cv = await new Cv(dbName)
-		const user = await new User(dbName)
-		const seen = await new SeenBy(dbName)
 		const sessionUserId = ctx.session.id
 		const data = ctx.session.authorised
 		const cvData = await cv.getDataUsingParamsID(ctx.params.id)
-		const userData = await user.getUserUsingID(sessionUserId)
-		await seen.postSeenUsingCvIdAndUsername(cvData.cvId, userData.user)
 		await ctx.render('my-cv', {data, user: sessionUserId === cvData.userID, cvData, toId: cvData.userID})
 	} catch (err) {
 		throw new Error(err)
@@ -88,10 +109,10 @@ router.post('/edit', koaBody, async ctx => {
 		const obj = await cv.cvObj(ctx.session.id, body)
 		const {path, name, type} = ctx.request.files.fileToUpload
 		await cv.edit(obj)
-		if (type !== 'bin') {
+		if (type === 'tif' || type === 'jpeg' || type === 'png') {
 			await cv.uploadPicture(ctx.session.id, path, name)
 		}
-		await ctx.redirect('/')
+		await ctx.redirect('/cv/edit2')
 	} catch (err) {
 		ctx.body = err.message
 	}
