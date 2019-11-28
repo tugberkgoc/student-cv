@@ -68,16 +68,16 @@ module.exports = class User {
 
 	async getUserEmailWithUsingId(id) {
 		try {
-			const sql = `SELECT email FROM users WHERE id=${id};`
+			const sql = `SELECT email, phoneNumber FROM users WHERE id=${id};`
 			return await this.db.get(sql)
 		} catch (err) {
 			throw new Error('Can not user email with using user id.')
 		}
 	}
 
-	async sendEmail(fromEmail, toEmail, body) {
+	async sendEmail(from, toEmail, body) {
 		try {
-			const mailOption = this.emailSetup(fromEmail, toEmail, body)
+			const mailOption = this.emailSetup(from.email, toEmail, body, from.phoneNumber)
 			const transporter = nodeMailer.createTransport({
 				service: 'gmail',
 				auth: {
@@ -93,7 +93,7 @@ module.exports = class User {
 	}
 
 
-	emailSetup(emailFrom, emailTo, data) {
+	emailSetup(emailFrom, emailTo, data, phoneNumber) {
 		const output = `
 	<p>You have a new contact request.</p>
 		<h3>Contact Details</h3>
@@ -101,7 +101,7 @@ module.exports = class User {
 			<li>Name: ${data.name}</li>  
 			<li>Company: ${data.company}</li>
 			<li>Email: ${emailFrom}</li>
-			<li>Phone: ${data.phone}</li>
+			<li>Phone: ${phoneNumber}</li>
 		</ul>
 		<h3>Message</h3>
 		<p>${data.message}</p>`

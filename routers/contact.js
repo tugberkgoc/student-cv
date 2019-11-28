@@ -15,7 +15,7 @@ router.get('/', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		if (data) {
-			return await ctx.render('contact', {data, toId: ctx.query.toId})
+			return await ctx.render('contact', {data, toId: ctx.query.toId, name: ctx.query.name})
 		} else {
 			ctx.redirect('/')
 		}
@@ -33,7 +33,7 @@ router.post('/send-email', async ctx => {
 	const user = await new User(dbName)
 	const toData = await user.getUserEmailWithUsingId(ctx.query.toId)
 	const fromData = await user.getUserEmailWithUsingId(ctx.session.id)
-	const isMessageSent = await user.sendEmail(fromData.email, toData.email, ctx.request.body)
+	const isMessageSent = await user.sendEmail(fromData, toData.email, ctx.request.body)
 	if (isMessageSent) {
 		await ctx.redirect('/', {message: 'Email has been sent!'})
 	} else {

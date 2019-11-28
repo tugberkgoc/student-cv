@@ -157,7 +157,8 @@ describe('sendEmail()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
 		await account.register('jack', 'jack@gmail.com', '07900322323', 'jack1997')
-		const valid = await account.sendEmail('email@email.com', 'jack@gmail.com', {})
+		const valid = await account.sendEmail({email: 'email@email.com',
+			phoneNumber: '07900568473'}, 'jack@gmail.com', {})
 		expect(valid).toBe(true)
 		done()
 	})
@@ -167,7 +168,8 @@ describe('sendEmail()', () => {
 		expect.assertions(1)
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
-		await expect(account.sendEmail('email@email.com', '',))
+		await expect(account.sendEmail({email: 'email@email.com',
+			phoneNumber: '07900568473'}, '',))
 			.rejects.toEqual(Error('There is an error occurred, when send an email.'))
 		done()
 	})
