@@ -132,7 +132,7 @@ module.exports = class Cv {
 	async search(cvName) {
 		try {
 			//	if(cvName.length === 0 ) throw new Error('Cannot get results.')
-			const sql = `SELECT name, summary FROM cv WHERE upper(name)
+			const sql = `SELECT name, summary, userID FROM cv WHERE upper(name)
 			LIKE "%${cvName}%" OR upper(summary) LIKE upper ("%${cvName}%");`
 			return await this.db.all(sql)
 		} catch (err) {
