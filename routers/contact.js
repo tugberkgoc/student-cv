@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 'use strict'
 
+const Cv = require('../modules/cv')
 const Router = require('koa-router')
 const User = require('../modules/user')
+const SeenBy = require('../modules/seenBy')
 
 const router = new Router()
 const dbName = 'website.db'
@@ -15,6 +17,12 @@ router.get('/', async ctx => {
 	try {
 		const data = ctx.session.authorised
 		if (data) {
+			const cv = await new Cv(dbName)
+			const user = await new User(dbName)
+			const seen = await new SeenBy(dbName)
+			const cvData = await cv.getDataUsingParamsID(ctx.query.toId)
+			const userData = await user.getUserUsingID(ctx.session.id)
+			await seen.postSeenUsingCvIdAndUsername(cvData.cvId, userData.user)
 			return await ctx.render('contact', {data, toId: ctx.query.toId, name: ctx.query.name})
 		} else {
 			ctx.redirect('/')

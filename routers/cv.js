@@ -2,8 +2,6 @@
 'use strict'
 
 const Cv = require('../modules/cv')
-const User = require('../modules/user')
-const SeenBy = require('../modules/seenBy')
 const Router = require('koa-router')
 const koaBody = require('koa-body')({multipart: true, uploadDir: '.'})
 
@@ -37,13 +35,9 @@ router.get('/', async ctx => {
 router.post('/view/:id', async ctx => {
 	try {
 		const cv = await new Cv(dbName)
-		const user = await new User(dbName)
-		const seen = await new SeenBy(dbName)
 		const sessionUserId = ctx.session.id
 		const data = ctx.session.authorised
 		const cvData = await cv.getDataUsingParamsID(ctx.params.id)
-		const userData = await user.getUserUsingID(sessionUserId)
-		await seen.postSeenUsingCvIdAndUsername(cvData.cvId, userData.user)
 		await ctx.render('my-cv', {data, user: sessionUserId === cvData.userID, cvData, toId: cvData.userID})
 	} catch (err) {
 		throw new Error(err)
