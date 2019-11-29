@@ -17,6 +17,7 @@ module.exports = class Cv {
 						addressLine2 TEXT,
 						postcode TEXT,
 						country TEXT,
+						phoneNumber TEXT,
 						summary TEXT,
 						ref TEXT,
 						careerObj TEXT,
@@ -41,6 +42,7 @@ module.exports = class Cv {
 				postcode: body.postcode,
 				ref: body.references,
 				country: body.country,
+				phoneNumber: body.phoneNumber,
 				summary: body.summary,
 				careerObj: body.careerObj,
 				careerSum: body.careerSum,
@@ -59,12 +61,12 @@ module.exports = class Cv {
 			const data = await this.db.get(sql)
 			if (data.records !== 0) {
 				// eslint-disable-next-line max-len
-				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}' WHERE userID='${cvData.userID}'`
+				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}',phoneNumber='${cvData.phoneNumber}' WHERE userID='${cvData.userID}'`
 				await this.db.run(sql)
 				return true
 			} else {
 				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}')`
+				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, phoneNumber) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.phoneNumber}')`
 				await this.db.run(sql)
 				return true
 			}
