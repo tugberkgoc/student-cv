@@ -123,7 +123,7 @@ describe('getUserUsingID()', () => {
 		const account = await new Accounts()
 		await account.register('doej', 'email@email.com', '07900568473', 'password')
 		await expect(account.getUserUsingID(''))
-			.rejects.toEqual(Error('missing parametere'))
+			.rejects.toEqual(Error('missing parameter'))
 		done()
 	})
 })
