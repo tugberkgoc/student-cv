@@ -181,6 +181,7 @@ nav a:hover::before {
   bottom: 0px;
   left: 0px;
   padding-top: 20px;
+  background-color: rgb(84, 124, 160);
 }
 
 .footer-content ol {
