@@ -4,17 +4,62 @@
 
 {{> header}}
 
-<form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">
+
 
     {{#if cvData}}
-        <label class='signup'>Users Words:</label><br>
-        <input class='signup' type='text' name="usersWords" placeholder="Users Words..." value="{{cvData.usersWords}}"><br>
+        
+    <form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">   
+        
+        <label class='signup'>Career Objective:</label><br>
+        <input class='signup' type="text" name="careerObj" placeholder="Please enter what your potential employer would like to here about you" value="{{cvData.careerObj}}"><br>
+
+        <label class='signup'>Career Summary:</label><br>
+        <input class='signup' type="text" name="careerSum" placeholder="This is an indroduction to who you are, also add skills that you have that relate to the job" value="{{cvData.careerSum}}"><br>
+
+        <label class='signup'>Work Experience:</label>
+        <input class='signup' type="text" name="workExperience" placeholder="Please enter any Work Experince you might have had (Optional)" value= "{{cvData.workExperience}}">
+
+        <label class='signup'>Personal Skills:</label><br>
+        <input class='signup' type='text' name="personalSkills" placeholder="Please enter your personal skills" value="{{cvData.personalSkills}}"><br>
+        
+        <label class='signup'>Education:</label><br>
+        <input class='signup' type='text' name="education" placeholder="Please enter all of your qualifications" value="{{cvData.education}}"><br>
+
+        <label class='signup'>References:</label><br>
+        <input class='signup' type='text' name="ref" placeholder="Please enter any references you have" value="{{cvData.references}}"><br>
+
+        <input class='signup' type="submit" value="Create">
+
+    </form>
     {{else}}
-        <label class='signup'>Users Words:</label><br>
-        <input class='signup' type='text' name="usersWords" placeholder="Users Words..."><br>
+
+    <form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">    
+        
+        <label class='signup'>Career Objective:</label><br>
+        <input class='signup' type="text" name="careerObj" placeholder="Please enter what your potential employer would like to here about you"><br>
+
+        <label class='signup'>Career Summary:</label><br>
+        <input class='signup' type="text" name="careerSum" placeholder="This is an indroduction to who you are, also add skills that you have that relate to the job" ><br>
+
+        <label class='signup'>Work Experience:</label>
+        <input class='signup' type="text" name="workExperience" placeholder="Please enter any Work Experince you might have had (Optional)" value= ><br>
+
+        <label class='signup'>Personal Skills:</label><br>
+        <input class='signup' type='text' name="personalSkills" placeholder="Please enter your personal skills" ><br>
+        
+        <label class='signup'>Education:</label><br>
+        <input class='signup' type='text' name="education" placeholder="Please enter all of your qualifications" ><br>
+
+        <label class='signup'>References:</label><br>
+        <input class='signup' type='text' name="ref" placeholder="Please enter any references you have" ><br>
+    
+        <input class='signup' type="submit" value="Create">
+
+    
+    </form>
     {{/if}}
 
-    <input class='signup' type="submit" value="Create">
+    
 
 </form>
 

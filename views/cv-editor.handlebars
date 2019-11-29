@@ -22,19 +22,10 @@
     <label class='signup'>Country:</label><br>
     <input class='signup' type="text" name="country" placeholder="Country" value="{{cvData.country}}"><br>
 
-    <label class='signup'>References:</label><br>
-    <input class='signup' type="text" name="references" placeholder="References" value="{{cvData.ref}}"><br>
-
-    <label class='signup'>Skills:</label><br>
-    <input class='signup' type="text" name="skills" placeholder="Skills" value="{{cvData.skills}}"><br>
-
-    <label class='signup'>Summary</label>
-    <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page" value= "{{cvData.summary}}">
-
     <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
 
-    <input class='signup' type="submit" value="Create">
+    <input class='signup' type="submit" value="Next">
 
 </form>
 {{else}}
@@ -56,20 +47,10 @@
     <label class='signup'>Country:</label><br>
     <input class='signup' type="text" name="country" placeholder="Country"><br>
 
-    <label class='signup'>References:</label><br>
-    <input class='signup' type="text" name="references" placeholder="References"><br>
-
-    <label class='signup'>Skills:</label><br>
-    <input class='signup' type="text" name="skills" placeholder="Skills" >
-
-    
-    <label class='signup'>Summary</label>
-    <input class='signup' type="text" name="summary" placeholder="A short summary of your CV displayed on the home page">
-
     <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
     
-    <input class='signup' type="submit" value="Create">
+    <input class='signup' type="submit" value="Next">
 
 </form>
 {{/if}}
