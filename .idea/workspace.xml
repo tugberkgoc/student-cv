@@ -4,15 +4,14 @@
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/about.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/authentication/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/authentication/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/authentication/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queries/cv.sql" beforeDir="false" afterPath="$PROJECT_DIR$/queries/cv.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queries/seenBy.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/queries/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/queries/user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/seenBy.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/seenBy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/header.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit tests/cv.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/cv.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,27 +109,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.linter">
-    <configuration name="seenBy.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.search().search with null throws exception">
+    <configuration name="search().search name and summary in cvs" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/unit tests/seenBy.spec.js" />
-      <method v="2" />
-    </configuration>
-    <configuration name="uploadPicture()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
+      <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
       <test-names>
-        <test-name value="uploadPicture()" />
+        <test-name value="search()" />
+        <test-name value="search name and summary in cvs" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="search().search smt" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
+      <test-names>
+        <test-name value="search()" />
+        <test-name value="search smt" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="search().search with null throws exception" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
+      <test-names>
+        <test-name value="search()" />
+        <test-name value="search with null throws exception" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -148,16 +166,6 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="user.spec.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/unit tests/user.spec.js" />
-      <method v="2" />
-    </configuration>
     <configuration name="linter" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -170,11 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.search().search with null throws exception" />
+        <item itemvalue="Jest.search().search name and summary in cvs" />
+        <item itemvalue="Jest.search().search smt" />
         <item itemvalue="npm.linter" />
         <item itemvalue="Jest.uploadPicture().try to save picture with wrong user id to the server" />
-        <item itemvalue="Jest.uploadPicture()" />
-        <item itemvalue="Jest.user.spec.js" />
-        <item itemvalue="Jest.seenBy.spec.js" />
       </list>
     </recent_temporary>
   </component>
@@ -182,7 +190,22 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@41056177" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@41056177" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2630f556" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@41056177" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@614411db" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -270,14 +293,15 @@
     <MESSAGE value="New CSS Style" />
     <MESSAGE value="Fix Import And CSS Files" />
     <MESSAGE value="Code Formatted with using ESLint Settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code Formatted with using ESLint Settings" />
+    <MESSAGE value="Some CSS Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some CSS Work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routers/cv.js</url>
-          <line>89</line>
+          <line>88</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

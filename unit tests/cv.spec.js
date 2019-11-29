@@ -19,7 +19,8 @@ describe('cvObj()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -55,7 +56,8 @@ describe('edit()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -79,6 +81,52 @@ describe('edit()', () => {
 
 })
 
+describe('edit2()', () => {
+
+	test('edit cv other data with using edit2 function', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			country: 'UK',
+			phoneNumber: '079007654372',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		const cvData2 = {
+			userID: 1,
+			careerObj: 'Something career obj',
+			careerSum: 'Dummy Career Sum',
+			workExperience: 'Dummy Work Experience',
+			personalSkills: 'Dummy Personal Skills',
+			education: 'Dummy Education',
+			ref: 'Dummy reference',
+		}
+		const isUpdated = await cv.edit2(cvData2)
+		expect(isUpdated).toBe(true)
+		done()
+	})
+
+	test('when editing cv other data \'edit2()\', error is occurred', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		await expect(cv.edit2()).rejects.toEqual(Error('There is no cv data for editing.'))
+		done()
+	})
+
+})
+
 describe('cvPull()', () => {
 
 	test('pull cv data', async done => {
@@ -95,7 +143,8 @@ describe('cvPull()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -130,7 +179,8 @@ describe('cvPull()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -157,7 +207,8 @@ describe('getCVUsingUserID()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -180,7 +231,8 @@ describe('getCVUsingUserID()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -202,7 +254,8 @@ describe('getCVUsingUserID()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -229,7 +282,8 @@ describe('getDataUsingParamsID', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -252,7 +306,8 @@ describe('getDataUsingParamsID', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -275,7 +330,8 @@ describe('getDataUsingParamsID', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -302,7 +358,8 @@ describe('getDataFromCv()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -340,7 +397,8 @@ describe('uploadPicture()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
@@ -364,13 +422,42 @@ describe('uploadPicture()', () => {
 			postcode: 'CV14EQ',
 			ref: 'Reference',
 			usersWords: 'Some words',
-			Country: 'UK',
+			country: 'UK',
+			phoneNumber: '079007654372',
 			skills: 'JAVA, PHP and JavaScript',
 			summary: 'A short summary'
 		}
 		await cv.edit(cvData)
 		await expect(cv.uploadPicture(2, path, 'some.png'))
 			.rejects.toEqual(Error('There is no cv record for given user id'))
+		done()
+	})
+
+})
+
+describe('search()', () => {
+
+	test('search name and summary in cvs', async done => {
+		expect.assertions(1)
+		const cv = await new Cvs()
+		const account = await new Accounts()
+		await account.register('doej', 'email@email.com', '07900568473', 'password1453')
+		const cvData = {
+			userID: 1,
+			name: 'doej',
+			addressLine1: 'Oxford Street',
+			addressLine2: 'Aldbourne Road',
+			postcode: 'CV14EQ',
+			ref: 'Reference',
+			usersWords: 'Some words',
+			country: 'UK',
+			phoneNumber: '079007654372',
+			skills: 'JAVA, PHP and JavaScript',
+			summary: 'A short summary'
+		}
+		await cv.edit(cvData)
+		const object = await cv.search('do')
+		expect(object[0].name).toBe(cvData.name)
 		done()
 	})
 

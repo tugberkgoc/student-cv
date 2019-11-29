@@ -24,7 +24,6 @@ router.get('/', async ctx => {
 
 router.post('/edit2', koaBody, async ctx => {
 	try {
-		
 		const body = ctx.request.body
 		const cv = await new Cv(dbName)
 		const obj = await cv.cvObj(ctx.session.id, body)

@@ -9,7 +9,6 @@ module.exports = class Cv {
 	constructor(dbName = ':memory:') {
 		return (async() => {
 			this.db = await sqLite.open(dbName)
-			// we need this table to store cv details whilst relating to user
 			const sql = `CREATE TABLE IF NOT EXISTS cv (cvId INTEGER PRIMARY KEY AUTOINCREMENT,
 						userID INTEGER,
 						name TEXT,
@@ -60,13 +59,19 @@ module.exports = class Cv {
 			let sql = `SELECT COUNT(userID) as records FROM cv WHERE userID='${cvData.userID}';`
 			const data = await this.db.get(sql)
 			if (data.records !== 0) {
-				// eslint-disable-next-line max-len
-				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}',phoneNumber='${cvData.phoneNumber}' WHERE userID='${cvData.userID}'`
+				sql = `UPDATE cv SET 
+              				name='${cvData.name}', addressLine1='${cvData.addressLine1}',
+					       	addressLine2='${cvData.addressLine2}', postcode='${cvData.postcode}',
+					       	country='${cvData.country}', phoneNumber='${cvData.phoneNumber}' 
+					   WHERE userID='${cvData.userID}'`
 				await this.db.run(sql)
 				return true
 			} else {
-				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, phoneNumber) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.phoneNumber}')`
+				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, phoneNumber) 
+					   VALUES('${cvData.userID}','${cvData.name}',
+					          '${cvData.addressLine1}','${cvData.addressLine2}',
+					          '${cvData.postcode}','${cvData.country}',
+					          '${cvData.phoneNumber}')`
 				await this.db.run(sql)
 				return true
 			}
@@ -77,7 +82,13 @@ module.exports = class Cv {
 
 	async edit2(cvData) {
 		try {
-			const sql = `UPDATE cv SET careerOBj= '${cvData.careerObj}',careerSum= '${cvData.careerSum}', workExperience='${cvData.workExperience}',personalSkills='${cvData.personalSkills}',education='${cvData.education}',ref='${cvData.references}'WHERE userID='${cvData.userID}'`
+			const sql = `UPDATE cv SET 
+              				    careerOBj= '${cvData.careerObj}',
+              					careerSum= '${cvData.careerSum}', 
+              					workExperience='${cvData.workExperience}',
+              					personalSkills='${cvData.personalSkills}',
+              					education='${cvData.education}',ref='${cvData.references}'
+						 WHERE userID='${cvData.userID}'`
 			await this.db.run(sql)
 			return true
 		} catch (err) {
@@ -143,18 +154,26 @@ module.exports = class Cv {
 	}
 
 	async getDataFromCv() {
-		const sql = 'SELECT summary, name, userID, avatarName FROM cv '
+		const sql = `SELECT 
+       					summary, name, userID, avatarName 
+					 FROM 
+					    cv;`
 		return await this.db.all(sql)
 	}
 
 	async search(cvName) {
-		try {
-			//	if(cvName.length === 0 ) throw new Error('Cannot get results.')
-			const sql = `SELECT name, summary, userID FROM cv WHERE upper(name)
-			LIKE "%${cvName}%" OR upper(summary) LIKE upper ("%${cvName}%");`
-			return await this.db.all(sql)
-		} catch (err) {
-			throw err
-		}
-	};
+		const sql = `SELECT 
+       					name, summary, userID 
+					 FROM 
+						cv 
+				     WHERE 
+						upper(name)
+					 LIKE 
+						"%${cvName}%" 
+					 OR 
+						upper(summary) 
+					 LIKE 
+						upper ("%${cvName}%");`
+		return await this.db.all(sql)
+	}
 }
