@@ -5,9 +5,9 @@ const sqLite = require('sqlite-async')
 
 module.exports = class SeenBy {
 
-	constructor() {
+	constructor(dbName = ':memory:') {
 		return (async() => {
-			this.db = await sqLite.open('website.db')
+			this.db = await sqLite.open(dbName)
 			// eslint-disable-next-line max-len
 			const sql = 'CREATE TABLE IF NOT EXISTS seen (seenID INTEGER PRIMARY KEY AUTOINCREMENT, cvID INTEGER, userSeen TEXT);'
 			await this.db.run(sql)

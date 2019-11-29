@@ -4,32 +4,48 @@
 {{> header}}
 
 <div style="padding-top: 100px;">
-
-  <h2 class="cvTitle">
-    {{cvData.name}}
-  </h2>
-  <section class="cvAddress">
-    {{cvData.addressLine1}}<br>
-    {{cvData.addressLine2}}<br>
-    {{cvData.postcode}}<br>
-    {{cvData.country}}<br>
-    {{cvData.phoneNumber}}
-  </section>
-  <section >
-    {{careerObj}}
-    {{carerrSum}}
-  </section>
-
-  {{#if user}}
-    {{#if cvData}}
-      <a class="editButton" href='/cv/edit'>Edit CV</a>
-      <a class="editButton" href="/seenBy">seen</a>
+<section class='cv'>
+  
+    <h2 class="cvTitle">
+      {{cvData.name}}
+    </h2>
+    <section class="cvAddress">
+      <p>{{cvData.addressLine1}}</p>
+      <p>{{cvData.addressLine2}}</p>
+      <p>{{cvData.postcode}}</p>
+      <p>{{cvData.country}}</p>
+      <p>{{cvData.phoneNumber}}</p>
+    </section>
+    <section class="cvDetails">
+  
+      <h3>Personal profile</h3>
+      <p>{{cvData.careerObj}}</p>
+      <p>{{cvData.careerSum}}</p>
+      <br/>
+      <h3>Skills</h3>
+      <p>{{cvData.personalSkills}}</p>
+      <br/>
+      <h3>Work experience</h3>
+      <p>{{cvData.workExperience}}</p>
+      <br/>
+      <h3>Education</h3>
+      <p>{{cvData.education}}</p>
+      <br/>
+      <h3>References</h3>
+      <p>{{cvData.ref}}</p>
+    </section>
+  
+    {{#if user}}
+      {{#if cvData}}
+        <a class="editButton" href='/cv/edit'>Edit CV</a>
+        <a class="editButton" href="/seenBy">Contacted by</a>
+      {{else}}
+        <a class="editButton" href='/cv/edit'>Create CV</a>
+      {{/if}}
     {{else}}
-      <a class="editButton" href='/cv/edit'>Create CV</a>
+      <a class="editButton" href="/contact?toId={{toId}}&name={{cvData.name}}">Contact</a>
     {{/if}}
-  {{else}}
-    <a class="editButton" href="/contact?toId={{toId}}&name={{cvData.name}}">Contact</a>
-  {{/if}}
+</section>
 
 </div>
 

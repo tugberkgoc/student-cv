@@ -10,6 +10,9 @@
         
     <form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">   
         
+        <label class='signup'>Summary</label><br>
+        <input class='signup' type="text" name="summary" placeholder="This is a short summary of your CV that shows up on the homepage" value="{{cvData.summary}}"><br>
+        
         <label class='signup'>Career Objective:</label><br>
         <input class='signup' type="text" name="careerObj" placeholder="Please enter what your potential employer would like to here about you" value="{{cvData.careerObj}}"><br>
 
@@ -26,7 +29,7 @@
         <input class='signup' type='text' name="education" placeholder="Please enter all of your qualifications" value="{{cvData.education}}"><br>
 
         <label class='signup'>References:</label><br>
-        <input class='signup' type='text' name="ref" placeholder="Please enter any references you have" value="{{cvData.references}}"><br>
+        <input class='signup' type='text' name="references" placeholder="Please enter any references you have" value="{{cvData.ref}}"><br>
 
         <input class='signup' type="submit" value="Create">
 
@@ -35,6 +38,9 @@
 
     <form class="signup" action="/cv/edit2" enctype="multipart/form-data" method="post">    
         
+        <label class='signup'>Summary</label><br>
+        <input class='signup' type="text" name="summary" placeholder="This is a short summary of your CV that shows up on the homepage"><br>
+
         <label class='signup'>Career Objective:</label><br>
         <input class='signup' type="text" name="careerObj" placeholder="Please enter what your potential employer would like to here about you"><br>
 
