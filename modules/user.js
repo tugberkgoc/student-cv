@@ -59,7 +59,7 @@ module.exports = class User {
 
 	async getUserUsingID(id) {
 		try {
-			if (id.length === 0) throw new Error('missing parametere')
+			if (id.length === 0) throw new Error('missing parameter')
 			const sql = `SELECT * FROM users WHERE id ="${id}";`
 			return await this.db.get(sql)
 		} catch (err) {
