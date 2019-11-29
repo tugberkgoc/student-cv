@@ -381,11 +381,8 @@ input.editor[type=submit] {
   text-align: center;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 .rainbow {
+  box-sizing: border-box;
   position: relative;
   z-index: 0;
   width: 400px;
