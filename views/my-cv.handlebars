@@ -8,16 +8,17 @@
   <h2 class="cvTitle">
     {{cvData.name}}
   </h2>
-  <h2 class="cvAddress">
+  <section class="cvAddress">
     {{cvData.addressLine1}}<br>
     {{cvData.addressLine2}}<br>
     {{cvData.postcode}}<br>
-    {{cvData.country}}
-
-  </h2>
-  <h2 class="cvDetails">
-    {{cvData.usersWords}}
-  </h2>
+    {{cvData.country}}<br>
+    {{cvData.phoneNumber}}
+  </section>
+  <section >
+    {{careerObj}}
+    {{carerrSum}}
+  </section>
 
   {{#if user}}
     {{#if cvData}}

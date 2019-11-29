@@ -17,10 +17,14 @@ module.exports = class Cv {
 						addressLine2 TEXT,
 						postcode TEXT,
 						country TEXT,
+						phoneNumber TEXT,
 						summary TEXT,
-						skills TEXT,
 						ref TEXT,
-						usersWords TEXT,
+						careerObj TEXT,
+						careerSum TEXT,
+						workExperience TEXT,
+						personalSkills TEXT,
+						education TEXT,
 						avatarName TEXT,
 						FOREIGN KEY(userID) REFERENCES users(id));`
 			await this.db.run(sql)
@@ -37,10 +41,14 @@ module.exports = class Cv {
 				addressLine2: body.addressLine2,
 				postcode: body.postcode,
 				ref: body.references,
-				usersWords: body.usersWords,
 				country: body.country,
-				skills: body.skills,
-				summary: body.summary
+				phoneNumber: body.phoneNumber,
+				summary: body.summary,
+				careerObj: body.careerObj,
+				careerSum: body.careerSum,
+				workExperience: body.workExperience ,
+				personalSkills: body.personalSkills,
+				education: body.education,
 			}
 		} catch (err) {
 			throw new Error('There is no id and body.')
@@ -53,12 +61,12 @@ module.exports = class Cv {
 			const data = await this.db.get(sql)
 			if (data.records !== 0) {
 				// eslint-disable-next-line max-len
-				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}', skills='${cvData.skills}', ref='${cvData.ref}',summary='${cvData.summary}' WHERE userID='${cvData.userID}'`
+				sql = `UPDATE cv SET name='${cvData.name}',addressLine1='${cvData.addressLine1}',addressLine2='${cvData.addressLine2}',postcode='${cvData.postcode}',country='${cvData.country}',phoneNumber='${cvData.phoneNumber}' WHERE userID='${cvData.userID}'`
 				await this.db.run(sql)
 				return true
 			} else {
 				// eslint-disable-next-line max-len
-				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, skills, ref , summary) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.skills}','${cvData.ref}','${cvData.summary}')`
+				sql = `INSERT INTO cv(userID,name,addressLine1, addressLine2, postcode, country, phoneNumber) VALUES('${cvData.userID}','${cvData.name}','${cvData.addressLine1}','${cvData.addressLine2}','${cvData.postcode}','${cvData.country}','${cvData.phoneNumber}')`
 				await this.db.run(sql)
 				return true
 			}
@@ -69,7 +77,7 @@ module.exports = class Cv {
 
 	async edit2(cvData) {
 		try {
-			const sql = `UPDATE cv SET usersWords='${cvData.usersWords}' WHERE userID='${cvData.userID}'`
+			const sql = `UPDATE cv SET careerOBj= '${cvData.careerObj}',careerSum= '${cvData.careerSum}', workExperience='${cvData.workExperience}',personalSkills='${cvData.personalSkills}',education='${cvData.education}',ref='${cvData.references}'WHERE userID='${cvData.userID}'`
 			await this.db.run(sql)
 			return true
 		} catch (err) {
