@@ -83,11 +83,13 @@ module.exports = class Cv {
 	async edit2(cvData) {
 		try {
 			const sql = `UPDATE cv SET 
+								summary= '${cvData.summary}',
               				    careerOBj= '${cvData.careerObj}',
               					careerSum= '${cvData.careerSum}', 
               					workExperience='${cvData.workExperience}',
               					personalSkills='${cvData.personalSkills}',
-              					education='${cvData.education}',ref='${cvData.references}'
+								education='${cvData.education}',
+								ref='${cvData.ref}'
 						 WHERE userID='${cvData.userID}'`
 			await this.db.run(sql)
 			return true
