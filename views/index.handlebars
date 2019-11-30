@@ -3,8 +3,7 @@
 {{> header}}
 <span class="index-content">
 
-<h1>Welcome to Student CV's <br/>
-  Our CV templates &amp; recruiter-approved examples make it easy.</h1>
+<h1>Welcome to Student CV's , Our CV templates &amp; recruiter-approved examples make it easy.</h1>
 
 <p style="display: none;">test</p>
 
@@ -12,7 +11,7 @@
 
   {{#if data}}
     {{#each cv}}
-
+      
       <span class="each-cv rainbow">
       <span class="block-element">
         <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
@@ -20,7 +19,7 @@
       <span class="block-element">
         <label>{{this.name}}</label>
       </span>
-      <span class="block-element">
+      <span class="block-element1">
         <form  action="/cv/view/{{this.userID}}" enctype="multipart/form-data" method="POST">
         <label>{{this.summary}}</label>
         <a href="/cv/view/{{this.userID}}"> <input type="submit" value="Click to see more!"> </a>
@@ -33,14 +32,14 @@
   {{else}}
     {{#each cv}}
 
-      <span class="each-cv">
+      <span class="each-cv rainbow">
       <span class="block-element">
         <img class="avatar" src="avatars/{{this.avatarName}}" onerror="this.src='avatars/avatar.png'">
       </span>
       <span class="block-element">
         <label>{{this.name}}</label>
       </span>
-      <span class="block-element">
+      <span class="block-element1">
         <label>{{this.summary}}</label>
       </span>
     </span>

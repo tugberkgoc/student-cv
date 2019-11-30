@@ -11,7 +11,7 @@
     "acceptance": "sh acceptanceTests/scripts/test.sh",
     "jsdoc": "node_modules/.bin/jsdoc -c jsdoc.conf",
     "linter": "node_modules/.bin/eslint .",
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --detectOpenHandles unitTests/*",
     "unit": "node_modules/.bin/jest --coverage --runInBand tests/unit/"
   },
   "author": "",

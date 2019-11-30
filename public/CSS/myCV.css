@@ -8,11 +8,11 @@
 
 .cvAddress{
     color: black;
-    text-align: right;
-    float: right;
+    text-align: left;
+    float: left;
     padding-right: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 80px;
+    margin-left: 200px;
     margin-bottom: 22px;
 }
 
@@ -25,9 +25,13 @@
     color: black;
     text-align: justify;
     padding-top: 20px;
-    margin: 45px 250px 40px 500px;
+    margin: 90px 200px 40px 200px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     word-wrap: break-word;
+    margin-top: 110px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 170px;
 }
 
 .editButton{
@@ -44,9 +48,161 @@
 }
 
 .cv{
-    overflow: scroll;
+    overflow-y: scroll;
+
 }
 
 .editButton:hover{
     background-color: rgb(70, 102, 129);
 }
+
+/*///////////////////////////////*/
+
+#nav2 {
+    margin-top: 81px;
+    height: 518px;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+#nav2 a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    display: block;
+  }
+
+
+#nav2 #A{
+    margin-right: 20px;
+    width: 100px;
+    margin-left: 25px;
+    padding-right: 0px;
+    right: 32px;
+} 
+
+#nav2 #B{
+    width: 120px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 20px;
+}
+  
+#nav2 a:hover {
+    color: black;
+  }
+  
+  .main {
+   /* Same as the width of the sidenav */
+ /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+
+/*
+#nav2{
+    position: fixed;
+    margin-left: 0px;
+    top: auto;
+    bottom: 22px;
+    background-color: rgb(84, 124, 160);
+    background-position: center center;
+    background-size: cover;    
+}
+
+
+
+#nav2 ul {
+    background-color: #f1f1f1;
+    list-style-type: none;  
+    float: left;
+    margin-top: 0px;   
+    width: 150px;
+    height: 123px;
+    padding-left: 0px;  
+    margin-left: 0px;
+  }
+  
+
+
+#nav2 li a#A{
+
+    text-align: center;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 120px;
+    padding-top: 16px;
+    padding-bottom: 14px;
+}  
+
+
+#nav2 li a#B{
+    margin-top: 0px;
+    text-align: center;
+    display: block;
+    color: #000;    
+    text-decoration: none;
+    width: 120px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    padding-left: 20px;
+    border-right-width: 10px;
+    padding-right: 10px;
+    margin-right: 0px;
+}
+
+#nav2 li a:hover {
+    background-color: rgb(84, 124, 160);
+    color: white;
+  }
+
+
+ #nav2 a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 0;
+    transition: all ease-in 200ms;
+  }
+*/
+
+#PP{
+    background-color: #f1f1f1;
+}
+
+#Sk{
+    background-color: #f1f1f1;
+}
+#Ed{
+    background-color:  #f1f1f1;
+}
+
+#Ref{
+    background-color:  #f1f1f1;
+}
+
+#WE{
+    background-color:  #f1f1f1;
+}
+

@@ -1,4 +1,5 @@
 {{!< main }}
+<link rel="stylesheet" type="text/css" href="../../CSS/result.css">
 
 {{> header}}
 
@@ -8,14 +9,16 @@
 {{#if result}}
   {{#each result}}
 
-    <form action="/cv/view/{{this.userID}}" method="POST">
-      <input class="submit" type="submit" value="{{this.name}}">
-    </form>
-    <p>{{this.summary}}</p>
+  <section class="results">
+    <form id='r1' action="/cv/view/{{this.userID}}" method="POST">
+      <input class="submitt" type="submit" value="{{this.name}}">
+    </form>  
+    <p id="summary">{{this.summary}}</p>
+  </section>  
   {{/each}}
 
 {{else}}
-  <p>no results found.</p>
+  <p id="msg">404</p>
 {{/if}}
 
 
