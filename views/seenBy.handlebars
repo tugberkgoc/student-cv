@@ -1,12 +1,16 @@
 {{!< main }}
+<link rel="stylesheet" type="text/css" href="../../CSS/seenBy.css">
+
 {{> header}}
 
+
+<h2 id="head1">Users who contacted you.</h2>
 {{#each see}}
-    <div style="padding-top: 50px;">
-        <h2>
+    <section id="user">
+        <p>
             {{this.userSeen}}
-        </h2>
-    </div>
+        </p>
+    </section>
 {{/each}}
 
 {{> footer}}
