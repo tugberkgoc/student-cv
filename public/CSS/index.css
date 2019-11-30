@@ -378,6 +378,11 @@ input.editor[type=submit] {
   display: block;
 }
 
+.block-element1 {
+  display: block;
+  text-align: left;
+}
+
 #about-page-span {
   display: inline-block;
   margin-top: 80px;
