@@ -12,7 +12,7 @@ router.post('/', async ctx => {
 		const cvName = ctx.request.body.q
 		const cv = await new Cv(dbName)
 		const searchData = await cv.search(cvName)
-		return await ctx.render('result', {data,result: searchData, query: cvName})
+		return await ctx.render('result', {data, result: searchData, query: cvName})
 	} catch (err) {
 		throw err
 	}

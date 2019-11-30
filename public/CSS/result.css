@@ -1,42 +1,48 @@
-#msg{
-    padding-top: 100px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
+#result-span {
+  padding-top: 30px;
+  display: block;
+  padding-bottom: 120px;
 }
 
-#r1{
-    height: 30px;
-    background-color: #f1f1f1;
+#msg {
+  padding-top: 100px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
 }
 
-.results{
-    padding-top: 50px;
-    text-align: center;
+#r1 {
+  height: 30px;
+  background-color: #f1f1f1;
 }
 
-#summary{
-    text-align: left;
+.results {
+  padding-top: 50px;
+  text-align: center;
+}
+
+#summary {
+  text-align: left;
 }
 
 
-.submitt{
-    background-color: rgb(84, 124, 160);
-    border: none;
-    color: white;
-    text-align: left;
-    width: 100%;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-    cursor: pointer;
+.submitt {
+  background-color: rgb(84, 124, 160);
+  border: none;
+  color: white;
+  text-align: left;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 
 .submitt:hover {
-    background-color: #f1f1f1;
-    color: black;
+  background-color: #f1f1f1;
+  color: black;
 }

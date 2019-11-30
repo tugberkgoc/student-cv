@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ea2039-3c73-4ba4-9830-05335f306881" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queries/cv.sql" beforeDir="false" afterPath="$PROJECT_DIR$/queries/cv.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queries/seenBy.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/queries/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/queries/user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/cv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/cv.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/cv.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/result.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/result.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/result.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/result.handlebars" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +103,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.search().search with null throws exception">
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="edit2()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
+      <test-names>
+        <test-name value="edit2()" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="getUserUsingID()" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/unit tests/user.spec.js" />
+      <test-names>
+        <test-name value="getUserUsingID()" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="search().search name and summary in cvs" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -121,20 +141,6 @@
       <test-names>
         <test-name value="search()" />
         <test-name value="search name and summary in cvs" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="search().search smt" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
-      <test-names>
-        <test-name value="search()" />
-        <test-name value="search smt" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -152,37 +158,16 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="uploadPicture().try to save picture with wrong user id to the server" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/unit tests/cv.spec.js" />
-      <test-names>
-        <test-name value="uploadPicture()" />
-        <test-name value="try to save picture with wrong user id to the server" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="linter" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="linter" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.index.js" />
+        <item itemvalue="Jest.getUserUsingID()" />
+        <item itemvalue="Jest.edit2()" />
         <item itemvalue="Jest.search().search with null throws exception" />
         <item itemvalue="Jest.search().search name and summary in cvs" />
-        <item itemvalue="Jest.search().search smt" />
-        <item itemvalue="npm.linter" />
-        <item itemvalue="Jest.uploadPicture().try to save picture with wrong user id to the server" />
       </list>
     </recent_temporary>
   </component>
@@ -199,11 +184,6 @@
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@41056177" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2630f556" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@41056177" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@614411db" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -260,7 +240,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574894632369</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bug Fix">
+      <created>1575057372031</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575057372031</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Small Box Sizing Bug">
+      <created>1575058020865</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575058020865</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,14 +288,16 @@
     <MESSAGE value="Fix Import And CSS Files" />
     <MESSAGE value="Code Formatted with using ESLint Settings" />
     <MESSAGE value="Some CSS Work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some CSS Work" />
+    <MESSAGE value="Bug Fix" />
+    <MESSAGE value="Small Box Sizing Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small Box Sizing Bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routers/cv.js</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -311,6 +307,7 @@
     <SUITE FILE_PATH="coverage/student_cv$getUserUsingID__.info" NAME="getUserUsingID() Coverage Results" MODIFIED="1574862825814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$login__.info" NAME="login() Coverage Results" MODIFIED="1574862327412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$getCVUsingUserID__.info" NAME="getCVUsingUserID() Coverage Results" MODIFIED="1574876680053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/student_cv$edit2__.info" NAME="edit2() Coverage Results" MODIFIED="1575043846336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvObj___when_creating_an_object__error_is_occured.info" NAME="cvObj().when creating an object, error is occured Coverage Results" MODIFIED="1574875477358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$edit__.info" NAME="edit() Coverage Results" MODIFIED="1574875725980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/student_cv$cvPull___pull_cv_data.info" NAME="cvPull().pull cv data Coverage Results" MODIFIED="1574864875679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

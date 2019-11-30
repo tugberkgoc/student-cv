@@ -3,23 +3,35 @@
 
 {{> header}}
 
+<span id="result-span">
+
 {{#if query}}
   <p id="msg">Results for "{{query}}"</p>
 {{/if}}
-{{#if result}}
-  {{#each result}}
+  {{#if result}}
 
-  <section class="results">
-    <form id='r1' action="/cv/view/{{this.userID}}" method="POST">
-      <input class="submitt" type="submit" value="{{this.name}}">
-    </form>  
-    <p id="summary">{{this.summary}}</p>
-  </section>  
-  {{/each}}
+    {{#if data}}
+      {{#each result}}
+        <section class="results">
+          <form id='r1' action="/cv/view/{{this.userID}}" method="POST">
+            <input class="submitt" type="submit" value="{{this.name}}">
+          </form>
+          <p id="summary">{{this.summary}}</p>
+       </section>
+      {{/each}}
+    {{else}}
+      {{#each result}}
+        <section class="results">
+          <input class="submitt" type="submit" value="{{this.name}}">
+          <p id="summary">{{this.summary}}</p>
+        </section>
+      {{/each}}
+    {{/if}}
 
-{{else}}
-  <p id="msg">404</p>
-{{/if}}
+  {{else}}
+    <p id="msg">404</p>
+  {{/if}}
 
+</span>
 
 {{> footer}}
