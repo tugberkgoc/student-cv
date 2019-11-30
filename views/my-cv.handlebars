@@ -3,49 +3,66 @@
 
 {{> header}}
 
-<div style="padding-top: 100px;">
+<div style="padding-top: 83px;">
 
   
     {{#if user}}
       {{#if cvData}}
       <section class='cv'>
-  
+
+        <nav id="nav2">
+          <ul>
+                <li><a id="A" href='/cv/edit'>Edit CV</a></li>
+                <li><a id="B" href="/seenBy">Contacted by</a></li>
+          </ul>
+        </nav>
+          {{else}}
+            <nav id="nav2">
+          <ul>
+              <li><a id="A" href='/cv/edit'>Create CV</a></li>
+          </ul>
+        </nav>
+          {{/if}}
+        {{else}}
+          <nav id="nav2">
+          <ul>
+              <li><a id="A" href="/contact?toId={{toId}}&name={{cvData.name}}">Contact</a></li>
+          </ul>
+        </nav>
+        {{/if}}
+    
+    {{#if cvData}}  
+    <div class="main">
         <h2 class="cvTitle">
           {{cvData.name}}
         </h2>
         <section class="cvAddress">
-          <p>{{cvData.addressLine1}}</p>
+          <p>Address: {{cvData.addressLine1}}</p>
           <p>{{cvData.addressLine2}}</p>
-          <p>{{cvData.postcode}}</p>
-          <p>{{cvData.country}}</p>
-          <p>{{cvData.phoneNumber}}</p>
+          <p>Post Code: {{cvData.postcode}}</p>
+          <p>Country: {{cvData.country}}</p>
+          <p>Phome Number: {{cvData.phoneNumber}}</p>
         </section>
         <section class="cvDetails">
       
-          <h3>Personal profile</h3>
+          <h3 id="PP">Personal profile</h3>
           <p>{{cvData.careerObj}}</p>
           <p>{{cvData.careerSum}}</p>
           <br/>
-          <h3>Skills</h3>
+          <h3 id="Sk">Skills</h3>
           <p>{{cvData.personalSkills}}</p>
           <br/>
-          <h3>Work experience</h3>
+          <h3 id="WE">Work experience</h3>
           <p>{{cvData.workExperience}}</p>
           <br/>
-          <h3>Education</h3>
+          <h3 id="Ed">Education</h3>
           <p>{{cvData.education}}</p>
           <br/>
-          <h3>References</h3>
+          <h3 id="Ref">References</h3>
           <p>{{cvData.ref}}</p>
       </section>
-        <a class="editButton" href='/cv/edit'>Edit CV</a>
-        <a class="editButton" href="/seenBy">Contacted by</a>
-      {{else}}
-        <a class="editButton" href='/cv/edit'>Create CV</a>
+      </div>
       {{/if}}
-    {{else}}
-      <a class="editButton" href="/contact?toId={{toId}}&name={{cvData.name}}">Contact</a>
-    {{/if}}
 </section>
 
 </div>
