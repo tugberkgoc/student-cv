@@ -6,8 +6,8 @@ const { configureToMatchImageSnapshot } = require('jest-image-snapshot')
 const PuppeteerHar = require('puppeteer-har')
 const shell = require('shelljs')
 
-const width = 800
-const height = 600
+const width = 1600
+const height = 850
 const delayMS = 5
 
 let browser
@@ -26,16 +26,16 @@ beforeAll( async() => {
 	page = await browser.newPage()
 	har = new PuppeteerHar(page)
 	await page.setViewport({ width, height })
-	await shell.exec('acceptanceTests/scripts/beforeAll.sh')
+	await shell.exec('sh acceptanceTests/scripts/beforeAll.sh')
 })
 
 afterAll( async() => {
-	browser.close()
-	await shell.exec('acceptanceTests/scripts/afterAll.sh')
+	await browser.close()
+	await shell.exec('sh acceptanceTests/scripts/afterAll.sh')
 })
 
 beforeEach(async() => {
-	await shell.exec('acceptanceTests/scripts/beforeEach.sh')
+	await shell.exec('sh acceptanceTests/scripts/beforeEach.sh')
 })
 
 describe('Registering', () => {
@@ -46,20 +46,19 @@ describe('Registering', () => {
 		//ARRANGE
 		await page.goto('http://localhost:8080/register', { timeout: 30000, waitUntil: 'load' })
 		//ACT
-		await page.type('input[name=user]', 'NewUser')
-		await page.type('input[name=email', 'email@h.h')
+		await page.type('input[name=user].signup', 'NewUser')
+		await page.type('input[name=email]', 'email@h.h')
 		await page.type('input[name=phoneNumber]', '11111111111')
-		await page.type('input[name=pass]', 'password')
-		await page.click('input[type=submit]')
-		await page.goto('http://localhost:8080', { timeout: 30000, waitUntil: 'load' })
+		await page.type('input[name=pass].signup', 'password')
+		await page.click('input[type=submit].signup')
 		await page.type('input[name=user]', 'NewUser')
 		await page.type('input[name=pass]', 'password')
-		await page.click('input[type=submit]')
+		await page.click('input[type=submit]#myPass')
 		//ASSERT
 		//check that the user is taken to the homepage after attempting to login as the new user:
-		await page.waitForSelector('p')
-		expect( await page.evaluate( () => document.querySelector('p').innerText ) )
-			.toBe('test')
+		await page.waitForSelector('h1')
+		expect( await page.evaluate( () => document.querySelector('h1').innerText ) )
+			.toBe('Welcome to Student CV\'s , Our CV templates & recruiter-approved examples make it easy.')
 
 		// grab a screenshot
 		const image = await page.screenshot()

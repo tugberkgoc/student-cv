@@ -1,3 +1,4 @@
+
 form.signup {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -7,6 +8,7 @@ form.signup {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 45%;
+  overflow: visible;
 }
 
 form.signup > h2 {

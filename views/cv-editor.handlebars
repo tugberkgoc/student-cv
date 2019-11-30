@@ -8,7 +8,7 @@
 <form class="signup" action="/cv/edit" enctype="multipart/form-data" method="post">
 
     <label class='signup'>Name:</label><br>
-    <input class='signup' type="text" name="Name" placeholder="Your fullname" value="{{cvData.name}}"><br>
+    <input class='signup' type="text" name="name" placeholder="Your fullname" value="{{cvData.name}}"><br>
 
     <label class='signup'>Address Line 1:</label><br>
     <input class='signup' type="text" name="addressLine1" placeholder="Address line 1" value="{{cvData.addressLine1}}"><br>
@@ -28,7 +28,7 @@
     <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
 
-    <input class='signup' type="submit" value="Next">
+    <input id='next' class='signup' type="submit" value="Next">
 
 </form>
 {{else}}
@@ -56,7 +56,7 @@
     <label class="signup"><i class=" fa fa-photo"></i> Profile picture:</label>
     <input type="file" name="fileToUpload" >
     
-    <input class='signup' type="submit" value="Next">
+    <input id='next' class='signup' type="submit" value="Next">
 
 </form>
 {{/if}}
