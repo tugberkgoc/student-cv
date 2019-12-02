@@ -36,6 +36,7 @@
         <h2 class="cvTitle">
           {{cvData.name}}
         </h2>
+         {{#if release}}
         <section class="cvAddress">
           <p>Address: {{cvData.addressLine1}}</p>
           <p>{{cvData.addressLine2}}</p>
@@ -43,7 +44,9 @@
           <p>Country: {{cvData.country}}</p>
           <p>Phome Number: {{cvData.phoneNumber}}</p>
         </section>
+          {{/if}}  
         <section class="cvDetails">
+      
       
           <h3 id="PP">Personal profile</h3>
           <p>{{cvData.careerObj}}</p>
