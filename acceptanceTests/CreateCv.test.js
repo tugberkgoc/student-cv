@@ -41,8 +41,8 @@ beforeEach(async() => {
 
 async function clear(page, selector) {
 	await page.evaluate(selector => {
-	  document.querySelector(selector).value = "";
-	}, selector);
+	  document.querySelector(selector).value = ''
+	}, selector)
 }
 
 describe('CreatingCv', () => {
