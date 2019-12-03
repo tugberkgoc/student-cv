@@ -57,7 +57,7 @@ describe('register()', () => {
 	test('error if phone number is missing', async done => {
 		expect.assertions(1)
 		const account = await new Accounts()
-		await expect(account.register('doej', 'email@email.com', '', 'pas'))
+		await expect(account.register('doej', 'email@email.com', '', 'password'))
 			.rejects.toEqual(Error('Missing Phone Number'))
 		done()
 	})
@@ -65,7 +65,7 @@ describe('register()', () => {
 	test('error if phone number is less than 11 digits', async done => {
 		expect.assertions(1)
 		const account = await new Accounts()
-		await expect(account.register('doej', 'email@email.com', '0777889', 'pas'))
+		await expect(account.register('doej', 'email@email.com', '0777889', 'password'))
 			.rejects.toEqual(Error('Phone Number Invalid (length 11)'))
 		done()
 	})
@@ -74,7 +74,7 @@ describe('register()', () => {
 	test('error if phone number is more than 11 digits', async done => {
 		expect.assertions(1)
 		const account = await new Accounts()
-		await expect(account.register('doej', 'email@email.com', '077894567213', 'pas'))
+		await expect(account.register('doej', 'email@email.com', '077894567213', 'password'))
 			.rejects.toEqual(Error('Phone Number Invalid (length 11)'))
 		done()
 	})
