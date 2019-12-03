@@ -35,15 +35,12 @@ module.exports = class User {
 		}
 	}
 
-	// eslint-disable-next-line complexity
 	async register(user, email, phoneNumber, pass) {
 		try {
 			if (user.length === 0) throw new Error('missing username')
 			if (email.length === 0) throw new Error('missing email')
-			if (pass.length === 0) throw new Error('The password is missing.')
-			if (phoneNumber.length === 0) throw new Error('Missing Phone Number')
-			if (phoneNumber.length < 11 || phoneNumber.length > 11) throw new Error('Phone Number Invalid (length 11)')
-			if (pass.length < 6) throw new Error('password is too short')
+			await this.pass(pass)
+			await this.phone(phoneNumber)
 			let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 			const data = await this.db.get(sql)
 			if (data.records !== 0) throw new Error(`username "${user}" already in use`)
@@ -53,6 +50,24 @@ module.exports = class User {
 			await this.db.run(sql)
 			return true
 		} catch (err) {
+			throw err
+		}
+	}
+
+	async pass(pass) {
+		try{
+			if (pass.length === 0) throw new Error('The password is missing.')
+			if (pass.length < 6) throw new Error('password is too short')
+		} catch(err) {
+			throw err
+		}
+	}
+
+	async phone(phoneNumber) {
+		try {
+			if (phoneNumber.length === 0) throw new Error('Missing Phone Number')
+			if (phoneNumber.length < 11 || phoneNumber.length > 11) throw new Error('Phone Number Invalid (length 11)')
+		} catch(err) {
 			throw err
 		}
 	}
