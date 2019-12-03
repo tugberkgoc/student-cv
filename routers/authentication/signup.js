@@ -1,4 +1,6 @@
+/* eslint-disable linebreak-style */
 'use strict'
+
 
 const Router = require('koa-router')
 const User = require('../../modules/user')

@@ -41,8 +41,8 @@ beforeEach(async() => {
 
 async function clear(page, selector) {
 	await page.evaluate(selector => {
-	  document.querySelector(selector).value = "";
-	}, selector);
+	  document.querySelector(selector).value = ''
+	}, selector)
 }
 
 describe('CreatingCv', () => {
@@ -95,7 +95,7 @@ describe('CreatingCv', () => {
 		//check that the user is taken to the homepage after attempting to login as the new user:
 		await page.waitForSelector('h2')
 		expect( await page.evaluate( () => document.querySelector('h2').innerText ) )
-			.toBe('NEWCV')
+			.toBe('USER ID 1')
 
 		// grab a screenshot
 		const image = await page.screenshot()

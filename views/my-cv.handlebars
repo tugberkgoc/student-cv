@@ -34,6 +34,10 @@
     {{#if cvData}}  
     <div class="main">
         <h2 class="cvTitle">
+          User ID {{cvData.userID}}
+        </h2>
+         {{#if release}}
+          <h2 class="cvTitle">
           {{cvData.name}}
         </h2>
         <section class="cvAddress">
@@ -43,7 +47,9 @@
           <p>Country: {{cvData.country}}</p>
           <p>Phome Number: {{cvData.phoneNumber}}</p>
         </section>
+          {{/if}}  
         <section class="cvDetails">
+      
       
           <h3 id="PP">Personal profile</h3>
           <p>{{cvData.careerObj}}</p>
