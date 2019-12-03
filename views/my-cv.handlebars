@@ -34,9 +34,12 @@
     {{#if cvData}}  
     <div class="main">
         <h2 class="cvTitle">
-          {{cvData.name}}
+          User ID {{cvData.userID}}
         </h2>
          {{#if release}}
+          <h2 class="cvTitle">
+          {{cvData.name}}
+        </h2>
         <section class="cvAddress">
           <p>Address: {{cvData.addressLine1}}</p>
           <p>{{cvData.addressLine2}}</p>
